@@ -1,2 +1,2 @@
 export { Main } from './Main'
-export { SingleGame } from './SingleGame'
+export { AboutGame } from './AboutGame'
