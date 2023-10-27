@@ -17,6 +17,20 @@ const linkStyle = {
     },
 }
 
+const iconStyle = {
+    color: 'white',
+    border: '1px',
+    padding: '1px',
+    borderRadius: '3px',
+    backgroundColor: '#3b3b3b',
+    cursor: 'pointer',
+    '&:hover': {
+        color: 'black',
+        transition: 'background-color 0.5s ease', // сделать плавнее
+        backgroundColor: 'white',
+    },
+}
+
 function Aside() {
     return (
         <Box
@@ -60,16 +74,12 @@ function Aside() {
                             gap: '10px',
                         }}
                     >
-                        <StarIcon
-                            sx={{
-                                color: 'white',
-                                border: '1px',
-                                padding: '1px',
-                                borderRadius: '3px',
-                                backgroundColor: '#3b3b3b',
-                            }}
-                        />
-                        <Link underline="none" sx={{ color: 'white' }}>
+                        <StarIcon sx={iconStyle} />
+
+                        <Link
+                            underline="none"
+                            sx={{ color: 'white', cursor: 'pointer' }}
+                        >
                             Last 30 days
                         </Link>
                     </Box>
@@ -80,16 +90,11 @@ function Aside() {
                             gap: '10px',
                         }}
                     >
-                        <LocalFireDepartmentIcon
-                            sx={{
-                                color: 'white',
-                                border: '1px',
-                                padding: '1px',
-                                borderRadius: '3px',
-                                backgroundColor: '#3b3b3b',
-                            }}
-                        />
-                        <Link underline="none" sx={{ color: 'white' }}>
+                        <LocalFireDepartmentIcon sx={iconStyle} />
+                        <Link
+                            underline="none"
+                            sx={{ color: 'white', cursor: 'pointer' }}
+                        >
                             This week
                         </Link>
                     </Box>
@@ -100,16 +105,11 @@ function Aside() {
                             gap: '10px',
                         }}
                     >
-                        <FastForwardIcon
-                            sx={{
-                                color: 'white',
-                                border: '1px',
-                                padding: '1px',
-                                borderRadius: '3px',
-                                backgroundColor: '#3b3b3b',
-                            }}
-                        />
-                        <Link underline="none" sx={{ color: 'white' }}>
+                        <FastForwardIcon sx={iconStyle} />
+                        <Link
+                            underline="none"
+                            sx={{ color: 'white', cursor: 'pointer' }}
+                        >
                             Next week
                         </Link>
                     </Box>
@@ -120,18 +120,11 @@ function Aside() {
                             gap: '10px',
                         }}
                     >
-                        <Typography
-                            sx={{
-                                color: 'white',
-                                border: '1px',
-                                padding: '1px',
-                                borderRadius: '3px',
-                                backgroundColor: '#3b3b3b',
-                            }}
+                        <Typography sx={iconStyle}>{'  '}31</Typography>
+                        <Link
+                            underline="none"
+                            sx={{ color: 'white', cursor: 'pointer' }}
                         >
-                            {'  '}31
-                        </Typography>
-                        <Link underline="none" sx={{ color: 'white' }}>
                             Next week
                         </Link>
                     </Box>

@@ -4,19 +4,31 @@ import React from 'react'
 
 function Header() {
     return (
-        <Box sx={{ padding: '30px' }}>
+        <Box>
             <Box
                 sx={{
                     display: 'flex',
                     alignItems: 'center',
-                    justifyContent: 'space-between',
+                    // justifyContent: 'space-between',
                 }}
             >
-                <Box sx={{ color: 'white', fontWeight: '900' }}>RAWG</Box>
+                <Box
+                    sx={{
+                        color: 'white',
+                        fontWeight: '900',
+                        letterSpacing: '3px',
+                        fontSize: '18px',
+                        marginRight: '40px',
+                    }}
+                >
+                    RAWG
+                </Box>
                 <Button
                     variant="outlined"
+                    size="small"
                     sx={{
                         background: 'white',
+                        marginRight: '20px',
                         '&:hover': {
                             backgroundColor: 'white',
                         },
@@ -24,7 +36,7 @@ function Header() {
                 >
                     Rate top games
                 </Button>
-                <Box sx={{ width: '50rem' }}>
+                <Box sx={{ width: '60rem', marginRight: '30px' }}>
                     {' '}
                     <TextField
                         fullWidth
@@ -33,12 +45,16 @@ function Header() {
                             color: 'White',
                             border: 'none',
                             borderRadius: '50px',
+                            // height: '44px',// криво получается
                             '&::placeholder': {
-                                color: 'red !important',
+                                color: 'red !important', //не работает
                             },
                             '&:hover': {
                                 backgroundColor: 'white',
                                 transition: 'background-color 0.3s ease', // Желаемый цвет фона при наведении
+                            },
+                            '&:focus': {
+                                outline: 'none', // Убираем синюю обводку при активации
                             },
                         }}
                         variant="outlined"
@@ -59,7 +75,7 @@ function Header() {
                         }}
                     />
                 </Box>
-                <Box sx={{ display: 'flex', gap: '10px' }}>
+                <Box sx={{ display: 'flex', gap: '10px', fontWeight: '600' }}>
                     <Link href="#" underline="hover" sx={{ color: 'white' }}>
                         LOG IN
                     </Link>

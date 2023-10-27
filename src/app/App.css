@@ -78,4 +78,5 @@ select {
 }
 body {
     background-color: rgba(0, 0, 0, 0.921);
+    padding: 30px 40px;
 }
