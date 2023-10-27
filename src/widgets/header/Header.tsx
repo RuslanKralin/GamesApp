@@ -1,15 +1,8 @@
-import {
-    Box,
-    Button,
-    TextField,
-    InputAdornment,
-    Link,
-    Container,
-} from '@mui/material'
+import { Box, Button, TextField, InputAdornment, Link } from '@mui/material'
 import SearchIcon from '@mui/icons-material/Search'
 import React from 'react'
 
-function Main() {
+function Header() {
     return (
         <Box sx={{ padding: '30px' }}>
             <Box
@@ -19,7 +12,7 @@ function Main() {
                     justifyContent: 'space-between',
                 }}
             >
-                <Box sx={{ color: 'white' }}>LOGO</Box>
+                <Box sx={{ color: 'white', fontWeight: '900' }}>RAWG</Box>
                 <Button
                     variant="outlined"
                     sx={{
@@ -79,4 +72,4 @@ function Main() {
     )
 }
 
-export default Main
+export default Header
