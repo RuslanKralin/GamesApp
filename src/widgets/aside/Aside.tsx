@@ -37,8 +37,7 @@ function Aside() {
             sx={{
                 display: 'flex',
                 flexDirection: 'column',
-                paddingLeft: '40px',
-                marginTop: '30px',
+                marginTop: '50px',
             }}
         >
             <Link href="#" underline="none" sx={linkStyle}>

@@ -1,10 +1,11 @@
-import { Aside, Header } from 'widgets'
+import { Header } from 'widgets'
+import { MainSection } from './ui/mainSection'
 
 function Home() {
     return (
         <>
             <Header />
-            <Aside />
+            <MainSection />
         </>
     )
 }

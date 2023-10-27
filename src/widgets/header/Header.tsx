@@ -9,7 +9,6 @@ function Header() {
                 sx={{
                     display: 'flex',
                     alignItems: 'center',
-                    // justifyContent: 'space-between',
                 }}
             >
                 <Box
@@ -75,8 +74,18 @@ function Header() {
                         }}
                     />
                 </Box>
-                <Box sx={{ display: 'flex', gap: '10px', fontWeight: '600' }}>
-                    <Link href="#" underline="hover" sx={{ color: 'white' }}>
+                <Box
+                    sx={{
+                        display: 'flex',
+                        gap: '10px',
+                        fontWeight: '600',
+                    }}
+                >
+                    <Link
+                        href="#"
+                        underline="hover"
+                        sx={{ color: 'white', marginRight: '10px' }}
+                    >
                         LOG IN
                     </Link>
                     <Link href="#" underline="hover" sx={{ color: 'white' }}>
