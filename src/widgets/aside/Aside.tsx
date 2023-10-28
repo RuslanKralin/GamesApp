@@ -26,7 +26,7 @@ const iconStyle = {
     cursor: 'pointer',
     '&:hover': {
         color: 'black',
-        transition: 'background-color 0.5s ease', // сделать плавнее
+        transition: 'background-color 0.5s ease',
         backgroundColor: 'white',
     },
 }

@@ -7,7 +7,7 @@ import { ContentSection } from 'widgets/contentSection'
 function MainSection() {
     return (
         <Grid container spacing={2} sx={{ marginTop: '30px' }}>
-            <Grid item xs={1.8}>
+            <Grid item xs={2}>
                 <Aside />
             </Grid>
             <Grid item xs={8}>
