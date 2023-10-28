@@ -17,7 +17,7 @@ function ContentSection() {
     useEffect(() => {
         async function fetchData() {
             const data = await getGames(URL)
-
+            console.log(data)
             setGamesData(data.results)
         }
 
@@ -42,16 +42,15 @@ function ContentSection() {
                     Platforms:{' '}
                 </Button>
             </Box>
-            <Grid container spacing={{ xs: 2, md: 28 }}>
+
+            <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: '2rem' }}>
                 {gamesData.map((game: any) => (
-                    <Grid item xs={2} sm={2} md={3}>
-                        <CardItem
-                            title={game.name}
-                            backGroundImg={game.background_image}
-                        />
-                    </Grid>
+                    <CardItem
+                        title={game.name}
+                        backGroundImg={game.background_image}
+                    />
                 ))}
-            </Grid>
+            </Box>
         </Box>
     )
 }
