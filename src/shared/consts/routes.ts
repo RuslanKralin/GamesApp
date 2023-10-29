@@ -1,6 +1,6 @@
 export const ROUTES = {
-    DEFAULT: '/',
     HOME: '/home',
+    DEFAULT: '/',
     THIS_WEEK: '/this_week',
 
     ABOUTGAME: '/about',

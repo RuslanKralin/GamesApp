@@ -1,23 +1,31 @@
 // import { observer } from 'mobx-react-lite'
 import { Outlet } from 'react-router-dom'
-import { Box, Container } from '@mui/material'
+import { Box } from '@mui/material'
 
 import { Aside, Header } from 'widgets'
 // import { DRAWER_WIDTH, ROUTES } from 'shared/consts'
 
 const Layout = () => {
     return (
-        <Box
-            sx={{
-                display: 'flex',
-            }}
-        >
-            <Header />
-
-            <Aside />
-
-            <Outlet />
-        </Box>
+        <>
+            <Box
+                sx={{
+                    display: 'flex',
+                    alignItems: 'center',
+                }}
+            >
+                {' '}
+                <Header />
+            </Box>
+            <Box sx={{ display: 'flex' }}>
+                <Box sx={{ flexBasis: '15%' }}>
+                    <Aside />
+                </Box>
+                <Box sx={{ flexBasis: '85%' }}>
+                    <Outlet />
+                </Box>
+            </Box>
+        </>
     )
 }
 
