@@ -144,7 +144,7 @@ function Aside() {
                                 fontSize: '18px',
                             }}
                         >
-                            Next week
+                            Release calendar
                         </Link>
                     </Box>
                 </Box>

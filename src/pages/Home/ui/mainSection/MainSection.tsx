@@ -2,7 +2,7 @@ import React from 'react'
 
 // import Grid from '@mui/material/Grid'
 import { Aside } from 'widgets'
-import { ContentSection } from 'widgets/contentSection'
+import { ContentSectionHome } from 'widgets/contentSection'
 import { Box } from '@mui/material'
 
 function MainSection() {
@@ -12,7 +12,7 @@ function MainSection() {
                 <Aside />
             </Box>
             <Box sx={{ flexBasis: '85%' }}>
-                <ContentSection />
+                <ContentSectionHome />
             </Box>
         </Box>
     )
