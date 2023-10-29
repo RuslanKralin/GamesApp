@@ -3,6 +3,7 @@ import { Outlet } from 'react-router-dom'
 import { Box } from '@mui/material'
 
 import { Aside, Header } from 'widgets'
+import { Home } from 'pages'
 // import { DRAWER_WIDTH, ROUTES } from 'shared/consts'
 
 const Layout = () => {
@@ -22,6 +23,8 @@ const Layout = () => {
                     <Aside />
                 </Box>
                 <Box sx={{ flexBasis: '85%' }}>
+                    {/* наверно не правильно */}
+                    <Home />
                     <Outlet />
                 </Box>
             </Box>
