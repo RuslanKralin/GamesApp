@@ -43,7 +43,7 @@ function Aside() {
                 marginTop: '50px',
             }}
         >
-            <Link href="#" underline="none" sx={linkStyle}>
+            <Link href="/home" underline="none" sx={linkStyle}>
                 Home
             </Link>
             <Link href="#" underline="none" sx={linkStyle}>
@@ -99,6 +99,7 @@ function Aside() {
                         <LocalFireDepartmentIcon sx={iconStyle} />
                         <Link
                             underline="none"
+                            href="/this_week"
                             sx={{
                                 color: 'white',
                                 cursor: 'pointer',

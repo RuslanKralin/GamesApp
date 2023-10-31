@@ -9,7 +9,6 @@ function App() {
     return (
         <React.StrictMode>
             <Router />
-            {/* <Home /> */}
         </React.StrictMode>
     )
 }

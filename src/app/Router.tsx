@@ -7,7 +7,7 @@ import {
     RouterProvider,
 } from 'react-router-dom'
 
-import { Home, ThisWeek } from 'pages'
+import { AboutGame, Home, ThisWeek } from 'pages'
 // import { ROUTES } from 'shared/consts'
 import { ROUTES } from 'shared/consts/routes' // ошибка в ином случае, решить позже
 
@@ -19,6 +19,10 @@ const router = createBrowserRouter(
             <Route path={ROUTES.DEFAULT} element={<Layout />}>
                 <Route path={ROUTES.HOME} element={<Home />} />
                 <Route path={ROUTES.THIS_WEEK} element={<ThisWeek />} />
+                <Route
+                    path={ROUTES.ABOUTGAME}
+                    element={<AboutGame name="" background_image="" />}
+                />
             </Route>
         </>
     )
