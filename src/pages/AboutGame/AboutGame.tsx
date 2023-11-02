@@ -1,24 +1,31 @@
 import React, { useEffect, useState } from 'react'
 import { Typography, Box } from '@mui/material'
+import { useParams } from 'react-router-dom'
 
 const API_KEY: string = 'f79ea1df23e047559c8017deb9351d65'
-const URL: string = `https://api.rawg.io/api/games/3498?key=${API_KEY}`
 
-type AboutGamePropsType = {
+interface AboutGamePropsType {
     name: string
     background_image: string
+    // background_image_additional: string
+    id: number
 }
 
-async function getGame(URL: string) {
-    const response = await fetch(URL)
-    console.log(response)
-    const data = await response.json()
-    console.log(data)
-    return data
-}
-getGame(URL)
-function AboutGame(props: AboutGamePropsType) {
+function AboutGame() {
     const [gamesData, setGamesData] = useState<AboutGamePropsType>()
+
+    const { id } = useParams()
+
+    const URL: string = `https://api.rawg.io/api/games/${id}?key=${API_KEY}`
+
+    async function getGame(URL: string) {
+        const response = await fetch(URL)
+        console.log(response)
+        const data = await response.json()
+        console.log(data)
+        return data
+    }
+    getGame(URL)
 
     useEffect(() => {
         async function fetchData() {
@@ -28,7 +35,7 @@ function AboutGame(props: AboutGamePropsType) {
         }
 
         fetchData()
-    }, [])
+    }, [URL])
     return (
         <Box
             sx={{

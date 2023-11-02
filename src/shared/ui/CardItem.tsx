@@ -1,13 +1,10 @@
 import React from 'react'
+import { generatePath, useNavigate } from 'react-router-dom'
 
-import Card from '@mui/material/Card'
-// import CardActions from '@mui/material/CardActions'
-import CardContent from '@mui/material/CardContent'
-import CardMedia from '@mui/material/CardMedia'
-// import Button from '@mui/material/Button'
-// import Typography from '@mui/material/Typography'
+import { ROUTES } from 'shared/consts/routes'
+
+import { Card, CardContent, CardMedia, Button, Link } from '@mui/material'
 import WindowOutlinedIcon from '@mui/icons-material/WindowOutlined'
-import { Button, Link } from '@mui/material'
 
 const linkStyle = {
     color: 'white',
@@ -26,11 +23,10 @@ type CardItemPropsType = {
     title: string
     backGroundImg: string
     id: number
-    getId?: (id: string) => void
-    // to: string
 }
 
 function CardItem(props: CardItemPropsType) {
+    const navigate = useNavigate()
     return (
         <Card
             sx={{
@@ -55,7 +51,13 @@ function CardItem(props: CardItemPropsType) {
                             boxShadow: 'none', // Отменяет стиль при нажатии
                         },
                     }}
-                    onClick={() => {}}
+                    onClick={() =>
+                        navigate(
+                            generatePath(ROUTES.ABOUT_GAME, {
+                                id: String(props.id),
+                            })
+                        )
+                    }
                 >
                     <Link underline="none" sx={linkStyle}>
                         {props.title}

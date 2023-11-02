@@ -5,5 +5,5 @@ export const ROUTES = {
 
     THIS_WEEK: '/this_week',
 
-    ABOUTGAME: '/about',
+    ABOUT_GAME: '/about/:id',
 }
