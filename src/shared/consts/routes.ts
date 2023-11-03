@@ -6,4 +6,6 @@ export const ROUTES = {
     THIS_WEEK: '/this_week',
 
     ABOUT_GAME: '/about/:id',
+
+    LAST_DAYS: '/last_days',
 }

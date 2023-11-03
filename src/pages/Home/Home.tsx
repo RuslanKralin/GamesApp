@@ -27,7 +27,12 @@ function Home() {
         <Box>
             <Typography
                 variant="h2"
-                sx={{ color: 'white', fontWeight: '800', marginBottom: '10px' }}
+                sx={{
+                    color: 'white',
+                    fontWeight: '800',
+                    marginTop: '30px',
+                    marginBottom: '20px',
+                }}
             >
                 New and trending
             </Typography>
@@ -55,8 +60,6 @@ function Home() {
                         title={game.name}
                         backGroundImg={game.background_image}
                         id={game.id}
-                        // getId={getId}
-                        // to={game.id}
                     />
                 ))}
             </Box>
