@@ -5,6 +5,7 @@ import { ROUTES } from 'shared/consts/routes'
 
 import { Card, CardContent, CardMedia, Button, Link } from '@mui/material'
 import WindowOutlinedIcon from '@mui/icons-material/WindowOutlined'
+import AddIcon from '@mui/icons-material/Add'
 
 const linkStyle = {
     color: 'white',
@@ -39,7 +40,7 @@ function CardItem(props: CardItemPropsType) {
             <CardMedia sx={{ height: 170 }} image={props.backGroundImg} />
             <CardContent sx={{ display: 'flex', flexDirection: 'column' }}>
                 <WindowOutlinedIcon
-                    sx={{ color: 'white', marginBottom: '20px' }}
+                    sx={{ color: 'white', marginBottom: '10px' }}
                 />
                 <Button
                     sx={{
@@ -62,6 +63,23 @@ function CardItem(props: CardItemPropsType) {
                     <Link underline="none" sx={linkStyle}>
                         {props.title}
                     </Link>
+                </Button>
+                <Button
+                    variant="text"
+                    sx={{
+                        marginTop: '10px',
+                        color: 'white',
+                        width: '65px',
+                        height: '30px',
+                        bgcolor: '#ffffff1a',
+                        '&:hover': {
+                            backgroundColor: 'white',
+                            color: 'black', // Отменяет стиль при наведении
+                        },
+                    }}
+                >
+                    <AddIcon sx={{ marginRight: '3px', width: '20px' }} />
+                    555
                 </Button>
             </CardContent>
         </Card>
