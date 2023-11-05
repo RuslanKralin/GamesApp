@@ -6,11 +6,7 @@ import Router from './Router'
 // import { Home } from 'pages'
 
 function App() {
-    return (
-        <React.StrictMode>
-            <Router />
-        </React.StrictMode>
-    )
+    return <Router />
 }
 
 export default App

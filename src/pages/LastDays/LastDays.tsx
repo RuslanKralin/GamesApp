@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Typography, Box, Button } from '@mui/material'
 import { CardItem } from 'shared/ui'
 
-const API_KEY: string = 'f79ea1df23e047559c8017deb9351d65'
+const API_KEY: string = 'e1f2ed8b762a4f76ab4883d16cfec313'
 const URL_THIS_WEEK: string = `https://api.rawg.io/api/games?key=${API_KEY}&dates=2019-09-01,2019-09-30`
 
 async function getGames(URL: string) {
