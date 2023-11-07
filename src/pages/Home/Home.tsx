@@ -2,9 +2,6 @@ import React, { useEffect, useState } from 'react'
 import { Typography, Box, Button } from '@mui/material'
 import { default as CardItem } from '../../shared/ui/CardItem'
 
-const API_KEY: string = 'e1f2ed8b762a4f76ab4883d16cfec313'
-const URL: string = `https://api.rawg.io/api/games?key=${API_KEY}`
-
 async function getGames(URL: string) {
     const response = await fetch(URL)
     const data = await response.json()
@@ -12,6 +9,9 @@ async function getGames(URL: string) {
 }
 
 function Home() {
+    const { REACT_APP_API_ENDPOINT, REACT_APP_API_KEY } = process.env
+    const URL: string = `${REACT_APP_API_ENDPOINT}/games?key=${REACT_APP_API_KEY}`
+
     const [gamesData, setGamesData] = useState([])
 
     useEffect(() => {
