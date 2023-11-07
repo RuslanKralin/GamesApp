@@ -30,7 +30,7 @@ function ScreenShotSide(props: ScreenShotSidePropsType) {
                     display: 'flex',
                     flexWrap: 'wrap',
                     gap: '15px',
-                    marginBottom: '30px',
+                    marginBottom: '40px',
                 }}
             >
                 {props.nessessaryShots &&
@@ -58,7 +58,7 @@ function ScreenShotSide(props: ScreenShotSidePropsType) {
                     bgcolor: 'white',
                     color: 'black',
                     padding: '15px 0',
-                    marginBottom: '8px',
+                    marginBottom: '10px',
                     '&:hover': {
                         bgcolor: 'grey',
                         transition: 'bgcolor 0.3s ease',
@@ -73,11 +73,46 @@ function ScreenShotSide(props: ScreenShotSidePropsType) {
                     color: 'grey',
                     textAlign: 'center',
                     fontSize: '14px',
+                    mb: '30px',
                 }}
             >
                 Last Modified: {props.update}
             </Typography>
-            <Typography>Where to buy</Typography>
+            <Typography
+                sx={{
+                    color: 'grey',
+                    // textAlign: 'center',
+                    fontSize: '20px',
+                    mb: '20px',
+                }}
+            >
+                Where to buy
+            </Typography>
+            <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: '20px' }}>
+                <Button
+                    sx={{
+                        width: '11.35rem',
+                        backgroundColor: '#ffffff1a',
+                        color: 'grey',
+                        '&:hover': {
+                            backgroundColor: 'white',
+                            color: 'black',
+                            transition: 'background-color 0.3s ease',
+                        },
+                    }}
+                >
+                    qwe
+                </Button>
+                <Button style={{ width: '11.35rem', background: '#ffffff1a' }}>
+                    qwe
+                </Button>
+                <Button style={{ width: '11.35rem', background: '#ffffff1a' }}>
+                    qwe
+                </Button>
+                <Button style={{ width: '11.35rem', background: '#ffffff1a' }}>
+                    qwe
+                </Button>
+            </Box>
         </>
     )
 }

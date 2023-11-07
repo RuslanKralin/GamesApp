@@ -5,8 +5,8 @@ import SportsEsportsIcon from '@mui/icons-material/SportsEsports'
 import WindowOutlinedIcon from '@mui/icons-material/WindowOutlined'
 
 type DescriptionSidePropsType = {
-    release: string
-    gameTitle: string
+    release: string | undefined
+    gameTitle: string | undefined
 }
 
 function DescriptionSide(props: DescriptionSidePropsType) {
