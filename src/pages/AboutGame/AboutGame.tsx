@@ -3,18 +3,31 @@ import { useParams } from 'react-router-dom'
 
 import { Box, Link } from '@mui/material'
 
-import { DescriptionSide, ScreenShotSide } from 'widgets/Aside/ui'
+import { DescriptionSide, ScreenShotSide } from 'pages/AboutGame/ui'
 
+export type BuyBtnStores = {
+    name: string
+    image_background: string
+    url: string
+}
 interface AboutGamePropsType {
     name: string
     background_image: string
     id: number
     updated: string
     released: string
+    stores: Array<BuyBtnStores> | undefined
+    description_raw: string | undefined
 }
 
+// export type BuyBtnStores = {
+//     nameBtn: string
+//     bgBtn: string
+//     url: string
+// }
+
 function AboutGame() {
-    const API_KEY: string = 'e1f2ed8b762a4f76ab4883d16cfec313'
+    const { REACT_APP_API_ENDPOINT, REACT_APP_API_KEY } = process.env
 
     const [gamesData, setGamesData] = useState<AboutGamePropsType>()
     const [nessessaryShots, setNessessaryShots] = useState([])
@@ -22,14 +35,14 @@ function AboutGame() {
 
     const { id } = useParams()
 
-    const URL: string = `https://api.rawg.io/api/games/${id}?key=${API_KEY}`
-    const URL_SCREEN_SHOT: string = `https://api.rawg.io/api/games/${id}/screenshots?key=${API_KEY}`
+    const URL: string = `${REACT_APP_API_ENDPOINT}/games/${id}?key=${REACT_APP_API_KEY}`
+    const URL_SCREEN_SHOT: string = `${REACT_APP_API_ENDPOINT}/games/${id}/screenshots?key=${REACT_APP_API_KEY}`
 
     async function getGame(URL: string) {
         const response = await fetch(URL)
         const data = await response.json()
         setGamesData(data)
-        gamesData && console.log(gamesData)
+        console.log(gamesData)
         return data
     }
 
@@ -39,7 +52,7 @@ function AboutGame() {
         const nessessaryShots = dataScreenShots.results.slice(1, 5)
         const mainShot = dataScreenShots.results[0]
         setMainShots(mainShot.image)
-        console.log(mainShot)
+        // console.log(mainShot)
         setNessessaryShots(nessessaryShots)
         return nessessaryShots
     }
@@ -86,11 +99,13 @@ function AboutGame() {
                     {' Games /'}
                 </Link>
             </Box>
-            <Box sx={{ display: 'flex' }}>
+
+            <Box sx={{ display: 'flex', gap: '20px' }}>
                 <Box sx={{ flexBasis: '60%' }}>
                     <DescriptionSide
                         release={gamesData?.released}
                         gameTitle={gamesData?.name}
+                        aboutGame={gamesData?.description_raw}
                     />
                 </Box>
                 <Box sx={{ flexBasis: '40%' }}>
@@ -98,6 +113,7 @@ function AboutGame() {
                         mainShot={mainShot}
                         nessessaryShots={nessessaryShots}
                         update={gamesData?.updated}
+                        stores={gamesData?.stores}
                     />
                 </Box>
             </Box>

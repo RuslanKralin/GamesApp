@@ -1,14 +1,21 @@
 import React from 'react'
-import { Typography, Box, Button } from '@mui/material'
+import { Typography, Box, Button, Link } from '@mui/material'
 import EditIcon from '@mui/icons-material/Edit'
 
+export type BuyBtnStores = {
+    name: string
+    image_background: string
+    url: string
+}
 type ScreenShotSidePropsType = {
     nessessaryShots: any
     update: any
     mainShot: any
+    stores: Array<BuyBtnStores> | undefined
 }
 
 function ScreenShotSide(props: ScreenShotSidePropsType) {
+    const URL_STEAM: string = 'https://store.steampowered.com/7854,'
     return (
         <>
             <Box
@@ -89,29 +96,37 @@ function ScreenShotSide(props: ScreenShotSidePropsType) {
                 Where to buy
             </Typography>
             <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: '20px' }}>
-                <Button
-                    sx={{
-                        width: '11.35rem',
-                        backgroundColor: '#ffffff1a',
-                        color: 'grey',
-                        '&:hover': {
-                            backgroundColor: 'white',
-                            color: 'black',
-                            transition: 'background-color 0.3s ease',
-                        },
-                    }}
-                >
-                    qwe
-                </Button>
-                <Button style={{ width: '11.35rem', background: '#ffffff1a' }}>
-                    qwe
-                </Button>
-                <Button style={{ width: '11.35rem', background: '#ffffff1a' }}>
-                    qwe
-                </Button>
-                <Button style={{ width: '11.35rem', background: '#ffffff1a' }}>
-                    qwe
-                </Button>
+                {props.stores?.map((s: any) => (
+                    <Button
+                        sx={{
+                            width: '11.35rem',
+                            height: '40px',
+                            backgroundColor: '#ffffff1a',
+                            color: 'grey',
+                            '&:hover': {
+                                backgroundColor: 'white',
+                                color: 'black',
+                                transition: 'background-color 0.3s ease',
+                            },
+                        }}
+                    >
+                        <Link
+                            underline="none"
+                            href={URL_STEAM}
+                            sx={{
+                                color: 'grey',
+                                '&:hover': {
+                                    backgroundColor: 'white',
+                                    color: 'black',
+                                    transition: 'background-color 0.3s ease',
+                                },
+                            }}
+                        >
+                            {s.store.name}
+                            {console.log(s)}
+                        </Link>
+                    </Button>
+                ))}
             </Box>
         </>
     )

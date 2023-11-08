@@ -3,10 +3,12 @@ import React from 'react'
 import { Typography, Box } from '@mui/material'
 import SportsEsportsIcon from '@mui/icons-material/SportsEsports'
 import WindowOutlinedIcon from '@mui/icons-material/WindowOutlined'
+import { About, BtnGroup } from './ui'
 
 type DescriptionSidePropsType = {
     release: string | undefined
     gameTitle: string | undefined
+    aboutGame: string | undefined
 }
 
 function DescriptionSide(props: DescriptionSidePropsType) {
@@ -33,7 +35,7 @@ function DescriptionSide(props: DescriptionSidePropsType) {
                 <WindowOutlinedIcon sx={{ color: 'white' }} />
                 <SportsEsportsIcon sx={{ color: 'white' }} />
             </Box>
-            <Box>
+            <Box sx={{ marginBottom: '30px' }}>
                 <Typography
                     variant="h3"
                     sx={{
@@ -46,6 +48,8 @@ function DescriptionSide(props: DescriptionSidePropsType) {
                     {props.gameTitle}
                 </Typography>
             </Box>
+            <BtnGroup />
+            <About aboutGame={props.aboutGame} />
         </>
     )
 }
