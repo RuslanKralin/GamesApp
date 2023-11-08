@@ -3,7 +3,11 @@ import { useParams } from 'react-router-dom'
 
 import { Box, Link } from '@mui/material'
 
-import { DescriptionSide, ScreenShotSide } from 'pages/AboutGame/ui'
+import {
+    DescriptionSide,
+    ScreenShotSide,
+    SimilarGames,
+} from 'pages/AboutGame/ui'
 
 export type BuyBtnStores = {
     name: string
@@ -100,7 +104,7 @@ function AboutGame() {
                 </Link>
             </Box>
 
-            <Box sx={{ display: 'flex', gap: '20px' }}>
+            <Box sx={{ display: 'flex', gap: '20px', mb: '50px' }}>
                 <Box sx={{ flexBasis: '60%' }}>
                     <DescriptionSide
                         release={gamesData?.released}
@@ -116,6 +120,9 @@ function AboutGame() {
                         stores={gamesData?.stores}
                     />
                 </Box>
+            </Box>
+            <Box sx={{ textAlign: 'center' }}>
+                <SimilarGames gameTitle={gamesData?.name} />
             </Box>
         </Box>
     )
