@@ -123,7 +123,7 @@ function ScreenShotSide(props: ScreenShotSidePropsType) {
                             }}
                         >
                             {s.store.name}
-                            {console.log(s)}
+                            {/* {console.log(s)} */}
                         </Link>
                     </Button>
                 ))}

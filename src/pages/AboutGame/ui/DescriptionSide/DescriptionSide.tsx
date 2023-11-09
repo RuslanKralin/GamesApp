@@ -4,11 +4,20 @@ import { Typography, Box } from '@mui/material'
 import SportsEsportsIcon from '@mui/icons-material/SportsEsports'
 import WindowOutlinedIcon from '@mui/icons-material/WindowOutlined'
 import { About, BtnGroup } from './ui'
+import { Info } from './ui/Info'
 
+export type PlatformsType = {
+    name: string
+}
 type DescriptionSidePropsType = {
     release: string | undefined
     gameTitle: string | undefined
     aboutGame: string | undefined
+    platforms: Array<PlatformsType> | undefined
+    genres: string[] | undefined
+    released: string | undefined
+    developers: string[] | undefined
+    publishers: string[] | undefined
 }
 
 function DescriptionSide(props: DescriptionSidePropsType) {
@@ -50,6 +59,13 @@ function DescriptionSide(props: DescriptionSidePropsType) {
             </Box>
             <BtnGroup />
             <About aboutGame={props.aboutGame} />
+            <Info
+                platforms={props.platforms}
+                genres={props.genres}
+                released={props.released}
+                developers={props.developers}
+                publishers={props.publishers}
+            />
         </>
     )
 }

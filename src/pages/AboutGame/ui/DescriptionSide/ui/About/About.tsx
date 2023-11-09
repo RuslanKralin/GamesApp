@@ -4,7 +4,7 @@ import { Typography, Box } from '@mui/material'
 
 function BtnGroup(props: any) {
     return (
-        <Box sx={{ display: 'flex', flexDirection: 'column' }}>
+        <Box sx={{ display: 'flex', flexDirection: 'column', mb: '30px' }}>
             <Box sx={{ mb: '10px' }}>
                 <Typography
                     variant="h5"

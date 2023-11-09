@@ -9,6 +9,10 @@ import {
     SimilarGames,
 } from 'pages/AboutGame/ui'
 
+export type PlatformsType = {
+    name: string
+}
+
 export type BuyBtnStores = {
     name: string
     image_background: string
@@ -22,13 +26,11 @@ interface AboutGamePropsType {
     released: string
     stores: Array<BuyBtnStores> | undefined
     description_raw: string | undefined
+    platforms: Array<PlatformsType> | undefined
+    genres: string[]
+    developers: string[]
+    publishers: string[]
 }
-
-// export type BuyBtnStores = {
-//     nameBtn: string
-//     bgBtn: string
-//     url: string
-// }
 
 function AboutGame() {
     const { REACT_APP_API_ENDPOINT, REACT_APP_API_KEY } = process.env
@@ -36,17 +38,19 @@ function AboutGame() {
     const [gamesData, setGamesData] = useState<AboutGamePropsType>()
     const [nessessaryShots, setNessessaryShots] = useState([])
     const [mainShot, setMainShots] = useState<string>()
+    const [dataSameSeries, setDataSameSeries] = useState<AboutGamePropsType>()
 
     const { id } = useParams()
 
     const URL: string = `${REACT_APP_API_ENDPOINT}/games/${id}?key=${REACT_APP_API_KEY}`
     const URL_SCREEN_SHOT: string = `${REACT_APP_API_ENDPOINT}/games/${id}/screenshots?key=${REACT_APP_API_KEY}`
+    const URL_SAME_GAMES: string = `${REACT_APP_API_ENDPOINT}/games/${id}/suggested?key=${REACT_APP_API_KEY}`
 
     async function getGame(URL: string) {
         const response = await fetch(URL)
         const data = await response.json()
         setGamesData(data)
-        console.log(gamesData)
+        // console.log(data)
         return data
     }
 
@@ -61,11 +65,22 @@ function AboutGame() {
         return nessessaryShots
     }
 
+    async function getGamesSameSeries(URL: string) {
+        const response = await fetch(URL_SAME_GAMES)
+        console.log(response)
+        // const dataSameSeries = await response.json()
+        // setDataSameSeries(dataSameSeries)
+        // console.log(dataSameSeries)
+        // console.log(dataSameSeries)
+        // return dataSameSeries
+    }
+
     useEffect(() => {
         getGame(URL)
         getGameScreenShots(URL_SCREEN_SHOT)
+        getGamesSameSeries(URL_SAME_GAMES)
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [URL, URL_SCREEN_SHOT])
+    }, [URL, URL_SCREEN_SHOT, URL_SAME_GAMES])
 
     return (
         <Box
@@ -110,6 +125,11 @@ function AboutGame() {
                         release={gamesData?.released}
                         gameTitle={gamesData?.name}
                         aboutGame={gamesData?.description_raw}
+                        platforms={gamesData?.platforms}
+                        genres={gamesData?.genres}
+                        released={gamesData?.released}
+                        developers={gamesData?.developers}
+                        publishers={gamesData?.publishers}
                     />
                 </Box>
                 <Box sx={{ flexBasis: '40%' }}>
