@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Typography, Box, Button } from '@mui/material'
 import { default as CardItem } from '../../shared/ui/CardItem'
+import { HoverCardItem } from 'shared/ui'
 
 async function getGames(URL: string) {
     const response = await fetch(URL)
@@ -63,6 +64,8 @@ function Home() {
                         backGroundImg={game.background_image}
                         id={game.id}
                         added_by_status={game.added_by_status.owned}
+                        released={game.released}
+                        genres={game.genres}
                     />
                 ))}
             </Box>

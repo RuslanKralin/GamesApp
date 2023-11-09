@@ -54,6 +54,8 @@ function ThisWeek() {
                         backGroundImg={game.background_image}
                         id={game.id}
                         added_by_status={game.added_by_status.owned}
+                        released={game.released}
+                        genres={game.genres}
                     />
                 ))}
             </Box>

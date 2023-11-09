@@ -1,11 +1,22 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { generatePath, useNavigate } from 'react-router-dom'
 
 import { ROUTES } from 'shared/consts/routes'
 
-import { Card, CardContent, CardMedia, Button, Link } from '@mui/material'
+import {
+    Card,
+    CardContent,
+    CardMedia,
+    Button,
+    Link,
+    Box,
+    Typography,
+} from '@mui/material'
 import WindowOutlinedIcon from '@mui/icons-material/WindowOutlined'
 import AddIcon from '@mui/icons-material/Add'
+import RedeemIcon from '@mui/icons-material/Redeem'
+import MoreHorizIcon from '@mui/icons-material/MoreHoriz'
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos'
 
 const linkStyle = {
     color: 'white',
@@ -20,25 +31,69 @@ const linkStyle = {
     },
 }
 
+const btnStyle = {
+    color: 'white',
+    backgroundColor: '#ffffff1a',
+    fontSize: '12px',
+    justifyContent: 'space-between',
+    '&:hover': {
+        color: 'yellow',
+        transition: 'background-color 0.5s ease',
+        backgroundColor: '#ffffff1a',
+    },
+}
+
 type CardItemPropsType = {
     title: string
     backGroundImg: string
     id: number
     added_by_status: number
-    // added_by_status: any
-    // owned: any
+    released: string
+    genres: Array<string>
 }
 
 function CardItem(props: CardItemPropsType) {
     const navigate = useNavigate()
+
+    const [isHovered, setIsHovered] = useState(false)
+
+    const iconStyle = {
+        width: '30px',
+        display: isHovered ? 'flex' : 'none',
+        height: '30px',
+        color: 'white',
+        border: '1px',
+        padding: '1px',
+        borderRadius: '5px',
+        backgroundColor: '#3b3b3b',
+        cursor: 'pointer',
+        '&:hover': {
+            color: 'black',
+            transition: 'background-color 0.5s ease',
+            backgroundColor: 'white',
+        },
+    }
+
+    const hoverStyle = {
+        display: isHovered ? 'flex' : 'none',
+        flexDirection: 'column',
+        // position: 'absolute',
+        zIndex: '1000',
+    }
     return (
         <Card
             sx={{
+                // position: 'relative',
                 width: '280px',
                 borderRadius: '10px',
                 backgroundColor: '#ffffff12',
                 height: '100%',
+                '&:hover': {
+                    ...hoverStyle,
+                },
             }}
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
         >
             <CardMedia sx={{ height: 170 }} image={props.backGroundImg} />
             <CardContent sx={{ display: 'flex', flexDirection: 'column' }}>
@@ -67,24 +122,127 @@ function CardItem(props: CardItemPropsType) {
                         {props.title}
                     </Link>
                 </Button>
-                <Button
-                    variant="text"
+                <Box
                     sx={{
+                        display: 'flex',
+                        alignItems: 'center',
                         marginTop: '10px',
-                        paddingRight: '10px',
-                        color: 'white',
-                        width: '65px',
-                        height: '30px',
-                        bgcolor: '#ffffff1a',
-                        '&:hover': {
-                            backgroundColor: 'white',
-                            color: 'black', // Отменяет стиль при наведении
-                        },
+                        marginBottom: '20px',
                     }}
                 >
-                    <AddIcon sx={{ marginRight: '3px', width: '20px' }} />
-                    {props.added_by_status}
-                </Button>
+                    <Button
+                        variant="text"
+                        sx={{
+                            paddingRight: '10px',
+                            color: 'white',
+                            width: '65px',
+                            height: '30px',
+                            bgcolor: '#ffffff1a',
+                            '&:hover': {
+                                backgroundColor: 'white',
+                                color: 'black', // Отменяет стиль при наведении
+                            },
+                        }}
+                    >
+                        <AddIcon sx={{ marginRight: '3px', width: '20px' }} />
+                        {props.added_by_status}
+                    </Button>
+
+                    <Button>
+                        <RedeemIcon sx={iconStyle} />
+                    </Button>
+
+                    <Button>
+                        <MoreHorizIcon sx={iconStyle} />
+                    </Button>
+                </Box>
+                <Box sx={hoverStyle}>
+                    <Box
+                        sx={{
+                            display: 'flex',
+                            justifyContent: 'space-between',
+                            alignItems: 'center',
+                            mb: '10px',
+                        }}
+                    >
+                        <Typography sx={{ color: 'grey', fontSize: '12px' }}>
+                            Release date:
+                        </Typography>
+                        <Typography sx={{ color: 'white' }}>
+                            {props.released}
+                        </Typography>
+                    </Box>
+                    <Box
+                        sx={{ borderBottom: '1px solid grey', mb: '10px' }}
+                    ></Box>
+
+                    <Box
+                        sx={{
+                            display: 'flex',
+                            justifyContent: 'space-between',
+                            alignItems: 'center',
+                            mb: '10px',
+                        }}
+                    >
+                        <Box>
+                            <Typography
+                                sx={{ color: 'grey', fontSize: '12px' }}
+                            >
+                                Genres:
+                            </Typography>
+                        </Box>
+                        <Box>
+                            {props.genres.map((g: any) => (
+                                <Link
+                                    sx={{
+                                        cursor: 'pointer',
+                                        color: 'white',
+                                        fontSize: '14px',
+                                        '&:hover': {
+                                            color: 'grey',
+                                            transition:
+                                                'background-color 0.5s ease',
+                                        },
+                                    }}
+                                >
+                                    {g.name + ' ,'}
+                                </Link>
+                            ))}
+                        </Box>
+                    </Box>
+                    <Box
+                        sx={{ borderBottom: '1px solid grey', mb: '10px' }}
+                    ></Box>
+
+                    <Box
+                        sx={{
+                            display: 'flex',
+                            justifyContent: 'space-between',
+                            alignItems: 'center',
+                            mb: '10px',
+                        }}
+                    >
+                        <Typography sx={{ color: 'grey', fontSize: '12px' }}>
+                            Chart:
+                        </Typography>
+                        <Typography sx={{ color: 'white' }}>qwe</Typography>
+                    </Box>
+                    <Box
+                        sx={{ borderBottom: '1px solid grey', mb: '10px' }}
+                    ></Box>
+                    <Box
+                        sx={{
+                            display: 'flex',
+                            flexDirection: 'column',
+                            gap: '10px',
+                        }}
+                    >
+                        <Button sx={btnStyle} endIcon={<ArrowForwardIosIcon />}>
+                            Show more like this
+                        </Button>
+                        <Button sx={btnStyle}>Hide this game</Button>
+                    </Box>
+                </Box>
             </CardContent>
         </Card>
     )
