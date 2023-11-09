@@ -13,12 +13,13 @@ function Home() {
     const URL: string = `${REACT_APP_API_ENDPOINT}/games?key=${REACT_APP_API_KEY}`
 
     const [gamesData, setGamesData] = useState([])
-
+    console.log(gamesData)
     useEffect(() => {
         async function fetchData() {
             const data = await getGames(URL)
-            console.log(data)
+            // console.log(data)
             setGamesData(data.results)
+            // console.log(data.results[0].added_by_status.owned)
         }
 
         fetchData()
@@ -61,6 +62,7 @@ function Home() {
                         title={game.name}
                         backGroundImg={game.background_image}
                         id={game.id}
+                        added_by_status={game.added_by_status.owned}
                     />
                 ))}
             </Box>

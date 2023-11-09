@@ -53,6 +53,7 @@ function ThisWeek() {
                         title={game.name}
                         backGroundImg={game.background_image}
                         id={game.id}
+                        added_by_status={game.added_by_status.owned}
                     />
                 ))}
             </Box>

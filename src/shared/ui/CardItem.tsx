@@ -24,6 +24,9 @@ type CardItemPropsType = {
     title: string
     backGroundImg: string
     id: number
+    added_by_status: number
+    // added_by_status: any
+    // owned: any
 }
 
 function CardItem(props: CardItemPropsType) {
@@ -68,6 +71,7 @@ function CardItem(props: CardItemPropsType) {
                     variant="text"
                     sx={{
                         marginTop: '10px',
+                        paddingRight: '10px',
                         color: 'white',
                         width: '65px',
                         height: '30px',
@@ -79,7 +83,7 @@ function CardItem(props: CardItemPropsType) {
                     }}
                 >
                     <AddIcon sx={{ marginRight: '3px', width: '20px' }} />
-                    555
+                    {props.added_by_status}
                 </Button>
             </CardContent>
         </Card>
