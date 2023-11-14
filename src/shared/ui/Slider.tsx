@@ -24,7 +24,11 @@ function Slider(props: SliderPropsType) {
     return (
         <Box sx={{ position: 'relative' }}>
             <Box sx={{ position: 'absolute' }}>
-                <CardMedia component="img" image={activeImage} />
+                <CardMedia
+                    component="img"
+                    image={activeImage}
+                    sx={{ height: '180px' }}
+                />
             </Box>
             <Box
                 sx={{
@@ -45,7 +49,7 @@ function Slider(props: SliderPropsType) {
                                 borderBottom: '4px solid grey',
                                 flexGrow: 1,
                                 '&:hover': {
-                                    borderBottom: '4px solid black',
+                                    borderBottom: '4px solid green',
                                 },
                             }}
                             onMouseEnter={() => {
