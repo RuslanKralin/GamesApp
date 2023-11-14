@@ -56,6 +56,7 @@ function LastDays() {
                         added_by_status={game.added_by_status.owned}
                         released={game.released}
                         genres={game.genres}
+                        short_screenshots={game.short_screenshots}
                     />
                 ))}
             </Box>

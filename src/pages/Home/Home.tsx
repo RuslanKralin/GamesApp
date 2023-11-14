@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Typography, Box, Button } from '@mui/material'
 import { default as CardItem } from '../../shared/ui/CardItem'
-import { HoverCardItem } from 'shared/ui'
+// import { HoverCardItem } from 'shared/ui'
 
 async function getGames(URL: string) {
     const response = await fetch(URL)
@@ -14,7 +14,7 @@ function Home() {
     const URL: string = `${REACT_APP_API_ENDPOINT}/games?key=${REACT_APP_API_KEY}`
 
     const [gamesData, setGamesData] = useState([])
-    console.log(gamesData)
+    // console.log(gamesData)
     useEffect(() => {
         async function fetchData() {
             const data = await getGames(URL)
@@ -66,6 +66,7 @@ function Home() {
                         added_by_status={game.added_by_status.owned}
                         released={game.released}
                         genres={game.genres}
+                        short_screenshots={game.short_screenshots}
                     />
                 ))}
             </Box>

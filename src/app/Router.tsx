@@ -12,7 +12,12 @@ import { ROUTES } from 'shared/consts/routes' // ошибка в ином слу
 const router = createBrowserRouter(
     createRoutesFromElements(
         <>
-            <Route path={ROUTES.DEFAULT} element={<Layout />}>
+            <Route
+                path={ROUTES.DEFAULT}
+                element={
+                    <Layout url="https://media.rawg.io/media/screenshots/3e4/3e4576a772b3df47bfc52b86e4cf7e03.jpg" />
+                }
+            >
                 <Route path={ROUTES.HOME} element={<Home />} />
                 <Route path={ROUTES.THIS_WEEK} element={<ThisWeek />} />
                 <Route path={ROUTES.ABOUT_GAME} element={<AboutGame />} />

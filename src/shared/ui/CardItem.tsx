@@ -17,6 +17,7 @@ import AddIcon from '@mui/icons-material/Add'
 import RedeemIcon from '@mui/icons-material/Redeem'
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz'
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos'
+import Slider from './Slider'
 
 const linkStyle = {
     color: 'white',
@@ -50,12 +51,14 @@ type CardItemPropsType = {
     added_by_status: number
     released: string
     genres: Array<string>
+    short_screenshots: string[]
 }
 
 function CardItem(props: CardItemPropsType) {
     const navigate = useNavigate()
 
     const [isHovered, setIsHovered] = useState(false)
+    const [shotFromSlider, setShotFromSlider] = useState('')
 
     const iconStyle = {
         width: '30px',
@@ -77,25 +80,37 @@ function CardItem(props: CardItemPropsType) {
     const hoverStyle = {
         display: isHovered ? 'flex' : 'none',
         flexDirection: 'column',
-        // position: 'absolute',
-        zIndex: '1000',
+        // zIndex: '1',
     }
+
+    function getShotFromSlider(src: string) {
+        setShotFromSlider(src)
+        console.log(src)
+    }
+
     return (
         <Card
             sx={{
-                // position: 'relative',
+                position: 'relative',
+                zIndex: isHovered ? '999' : '1',
                 width: '280px',
                 borderRadius: '10px',
                 backgroundColor: '#ffffff12',
                 height: '100%',
-                '&:hover': {
-                    ...hoverStyle,
-                },
             }}
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
         >
-            <CardMedia sx={{ height: 170 }} image={props.backGroundImg} />
+            {isHovered ? (
+                <Slider
+                    short_screenshots={props.short_screenshots}
+                    getShotFromSlider={getShotFromSlider}
+                    backGroundImg={props.backGroundImg}
+                />
+            ) : (
+                <CardMedia sx={{ height: 170 }} image={props.backGroundImg} />
+            )}
+            {/* <CardMedia component="img" image={shotFromSlider} /> */}
             <CardContent sx={{ display: 'flex', flexDirection: 'column' }}>
                 <WindowOutlinedIcon
                     sx={{ color: 'white', marginBottom: '10px' }}
