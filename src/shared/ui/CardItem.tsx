@@ -58,7 +58,6 @@ function CardItem(props: CardItemPropsType) {
     const navigate = useNavigate()
 
     const [isHovered, setIsHovered] = useState(false)
-    // const [shotFromSlider, setShotFromSlider] = useState('')
 
     const iconStyle = {
         width: '30px',
@@ -82,11 +81,6 @@ function CardItem(props: CardItemPropsType) {
         flexDirection: 'column',
     }
 
-    // function getShotFromSlider(src: string) {
-    //     setShotFromSlider(src)
-    //     console.log(src)
-    // }
-
     return (
         <Card
             sx={{
@@ -96,6 +90,10 @@ function CardItem(props: CardItemPropsType) {
                 borderRadius: '10px',
                 backgroundColor: '#ffffff12',
                 height: '100%',
+                transition: 'transform 0.3s ease',
+                '&:hover': {
+                    transform: 'scale(1.03)',
+                },
             }}
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
@@ -103,20 +101,18 @@ function CardItem(props: CardItemPropsType) {
             {isHovered ? (
                 <Slider
                     short_screenshots={props.short_screenshots}
-                    // getShotFromSlider={getShotFromSlider}
                     backGroundImg={props.backGroundImg}
                 />
             ) : (
                 <CardMedia sx={{ height: 170 }} image={props.backGroundImg} />
             )}
-            {/* <CardMedia component="img" image={shotFromSlider} /> */}
             <CardContent sx={{ display: 'flex', flexDirection: 'column' }}>
                 <WindowOutlinedIcon
                     sx={{ color: 'white', marginBottom: '10px' }}
                 />
                 <Button
                     sx={{
-                        all: 'unset', // Отменяет все настраиваемые стили
+                        all: 'unset', // НЕ ОТМЕНЯЕТ
                         '&:hover': {
                             backgroundColor: 'transparent', // Отменяет стиль при наведении
                         },
@@ -154,7 +150,7 @@ function CardItem(props: CardItemPropsType) {
                             bgcolor: '#ffffff1a',
                             '&:hover': {
                                 backgroundColor: 'white',
-                                color: 'black', // Отменяет стиль при наведении
+                                color: 'black',
                             },
                         }}
                     >

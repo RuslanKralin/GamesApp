@@ -20,7 +20,11 @@ function Slider(props: SliderPropsType) {
     }, [props.short_screenshots])
 
     return (
-        <Box sx={{ position: 'relative' }}>
+        <Box
+            sx={{
+                position: 'relative',
+            }}
+        >
             <Box sx={{ position: 'absolute' }}>
                 <CardMedia
                     component="img"
