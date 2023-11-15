@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react'
 type SliderPropsType = {
     short_screenshots: string[]
     backGroundImg: string
-    getShotFromSlider: (src: string) => void
+    // getShotFromSlider: (src: string) => void
 }
 
 function Slider(props: SliderPropsType) {
@@ -13,7 +13,7 @@ function Slider(props: SliderPropsType) {
 
     const handleMouseEnter = (src: string): void => {
         setActiveImage(src)
-        props.getShotFromSlider(src)
+        // props.getShotFromSlider(src)
     }
 
     useEffect(() => {

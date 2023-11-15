@@ -58,7 +58,7 @@ function CardItem(props: CardItemPropsType) {
     const navigate = useNavigate()
 
     const [isHovered, setIsHovered] = useState(false)
-    const [shotFromSlider, setShotFromSlider] = useState('')
+    // const [shotFromSlider, setShotFromSlider] = useState('')
 
     const iconStyle = {
         width: '30px',
@@ -80,13 +80,12 @@ function CardItem(props: CardItemPropsType) {
     const hoverStyle = {
         display: isHovered ? 'flex' : 'none',
         flexDirection: 'column',
-        // zIndex: '1',
     }
 
-    function getShotFromSlider(src: string) {
-        setShotFromSlider(src)
-        console.log(src)
-    }
+    // function getShotFromSlider(src: string) {
+    //     setShotFromSlider(src)
+    //     console.log(src)
+    // }
 
     return (
         <Card
@@ -104,7 +103,7 @@ function CardItem(props: CardItemPropsType) {
             {isHovered ? (
                 <Slider
                     short_screenshots={props.short_screenshots}
-                    getShotFromSlider={getShotFromSlider}
+                    // getShotFromSlider={getShotFromSlider}
                     backGroundImg={props.backGroundImg}
                 />
             ) : (
