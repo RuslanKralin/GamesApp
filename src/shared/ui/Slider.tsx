@@ -8,14 +8,14 @@ type SliderPropsType = {
 
 function Slider(props: SliderPropsType) {
     const [activeImage, setActiveImage] = useState<string>(props.backGroundImg)
-    console.log(props.short_screenshots)
+    // console.log(props.short_screenshots)
 
     const handleMouseEnter = (src: string): void => {
         setActiveImage(src)
     }
 
     useEffect(() => {
-        console.log('qwe')
+        // console.log('qwe')
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [props.short_screenshots])
 

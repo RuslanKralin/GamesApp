@@ -1,8 +1,24 @@
+import React, { useState } from 'react'
+import { ChangeEventHandler } from 'react'
 import { Box, Button, TextField, InputAdornment, Link } from '@mui/material'
+
 import SearchIcon from '@mui/icons-material/Search'
-import React from 'react'
 
 function Header() {
+    const { REACT_APP_API_ENDPOINT, REACT_APP_API_KEY } = process.env
+
+    const [searchParams, setSearchParams] = useState('')
+
+    const URL_SEARCH = `${REACT_APP_API_ENDPOINT}/games?key=${REACT_APP_API_KEY}/search=${searchParams}`
+    console.log(URL_SEARCH)
+
+    const handleChange: ChangeEventHandler<
+        HTMLInputElement | HTMLTextAreaElement
+    > = (event: any) => {
+        let param = event.currentTarget.value
+        console.log(param)
+        setSearchParams(param)
+    }
     return (
         <Box>
             <Box
@@ -38,23 +54,25 @@ function Header() {
                 <Box sx={{ width: '60rem', marginRight: '30px' }}>
                     {' '}
                     <TextField
+                        type="search"
                         fullWidth
                         sx={{
                             backgroundColor: '#3b3b3b',
-                            color: 'White',
+                            color: 'white',
                             border: 'none',
                             borderRadius: '50px',
-                            // height: '44px',// криво получается
-                            '&::placeholder': {
-                                color: 'red !important', //не работает
-                            },
                             '&:hover': {
                                 backgroundColor: 'white',
-                                transition: 'background-color 0.3s ease', // Желаемый цвет фона при наведении
+                                transition: 'background-color 0.3s ease',
                             },
-                            '&:focus': {
-                                outline: 'none', // Убираем синюю обводку при активации
-                            },
+                            '& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline':
+                                {
+                                    borderColor: 'transparent', // Убираем цвет обводки при активации
+                                },
+                            '& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-input':
+                                {
+                                    boxShadow: 'none', // Убираем тень при активации
+                                },
                         }}
                         variant="outlined"
                         placeholder="Search all you need"
@@ -72,6 +90,8 @@ function Header() {
                                 </InputAdornment>
                             ),
                         }}
+                        onChange={handleChange}
+                        value={searchParams}
                     />
                 </Box>
                 <Box
