@@ -1,7 +1,22 @@
 import React, { useEffect, useState } from 'react'
 import { Typography, Box, Button } from '@mui/material'
+
+import GridOnIcon from '@mui/icons-material/GridOn'
+import WebAssetIcon from '@mui/icons-material/WebAsset'
+
 import { default as CardItem } from '../../shared/ui/CardItem'
+
 // import { HoverCardItem } from 'shared/ui'
+
+const iconStyle = {
+    border: '1px grey',
+    borderRadius: '5px',
+    color: 'white',
+    backgroundColor: '#ffffff12',
+    padding: '5px',
+    width: '50px',
+    height: '50px',
+}
 
 async function getGames(URL: string) {
     const response = await fetch(URL)
@@ -47,16 +62,65 @@ function Home() {
             >
                 Based on player counts and release date
             </Typography>
-            <Box sx={{ display: 'flex', gap: '10px', marginBottom: '30px' }}>
-                <Button sx={{ color: 'white', backgroundColor: '#ffffff12' }}>
-                    Order by:{' '}
-                </Button>
-                <Button sx={{ color: 'white', backgroundColor: '#ffffff12' }}>
-                    Platforms:{' '}
-                </Button>
+            <Box
+                sx={{
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                    alignItems: 'center',
+                    marginBottom: '30px',
+                }}
+            >
+                <Box sx={{ display: 'flex', gap: '10px' }}>
+                    <Button
+                        sx={{ color: 'white', backgroundColor: '#ffffff12' }}
+                    >
+                        Order by:{' '}
+                    </Button>
+                    <Button
+                        sx={{ color: 'white', backgroundColor: '#ffffff12' }}
+                    >
+                        Platforms:{' '}
+                    </Button>
+                </Box>
+                <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                    <Typography sx={{ color: 'grey', marginRight: '20px' }}>
+                        Display options:
+                    </Typography>
+                    <Box sx={{ display: 'flex', gap: '10px' }}>
+                        <Button
+                            sx={{
+                                padding: 0,
+                                minWidth: 0,
+                                '& .MuiButton-label': {
+                                    padding: 0,
+                                },
+                            }}
+                        >
+                            <GridOnIcon style={iconStyle} />
+                        </Button>
+                        <Button
+                            sx={{
+                                padding: 0,
+                                minWidth: 0,
+                                '& .MuiButton-label': {
+                                    padding: 0,
+                                },
+                            }}
+                        >
+                            <WebAssetIcon style={iconStyle} />
+                        </Button>
+                    </Box>
+                </Box>
             </Box>
 
-            <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: '2rem' }}>
+            <Box
+                sx={{
+                    display: 'flex',
+                    flexWrap: 'wrap',
+                    gap: '2rem',
+                    justifyContent: 'space-between',
+                }}
+            >
                 {gamesData.map((game: any) => (
                     <CardItem
                         key={game.id}
