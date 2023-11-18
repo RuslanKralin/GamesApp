@@ -5,8 +5,10 @@ import GridOnIcon from '@mui/icons-material/GridOn'
 import WebAssetIcon from '@mui/icons-material/WebAsset'
 
 import { default as CardItem } from '../../shared/ui/CardItem'
+import { CardItemBigSize } from 'shared/ui'
 
 // import { HoverCardItem } from 'shared/ui'
+type DisplayOptinsType = 'lines' | 'bigSize'
 
 const iconStyle = {
     border: '1px grey',
@@ -27,6 +29,9 @@ async function getGames(URL: string) {
 function Home() {
     const { REACT_APP_API_ENDPOINT, REACT_APP_API_KEY } = process.env
     const URL: string = `${REACT_APP_API_ENDPOINT}/games?key=${REACT_APP_API_KEY}`
+
+    const [displayOptions, setDisplayOptions] =
+        useState<DisplayOptinsType>('lines')
 
     const [gamesData, setGamesData] = useState([])
     // console.log(gamesData)
@@ -95,6 +100,7 @@ function Home() {
                                     padding: 0,
                                 },
                             }}
+                            onClick={() => setDisplayOptions('lines')}
                         >
                             <GridOnIcon style={iconStyle} />
                         </Button>
@@ -106,6 +112,7 @@ function Home() {
                                     padding: 0,
                                 },
                             }}
+                            onClick={() => setDisplayOptions('bigSize')}
                         >
                             <WebAssetIcon style={iconStyle} />
                         </Button>
@@ -113,27 +120,55 @@ function Home() {
                 </Box>
             </Box>
 
-            <Box
-                sx={{
-                    display: 'flex',
-                    flexWrap: 'wrap',
-                    gap: '2rem',
-                    justifyContent: 'space-between',
-                }}
-            >
-                {gamesData.map((game: any) => (
-                    <CardItem
-                        key={game.id}
-                        title={game.name}
-                        backGroundImg={game.background_image}
-                        id={game.id}
-                        added_by_status={game.added_by_status.owned}
-                        released={game.released}
-                        genres={game.genres}
-                        short_screenshots={game.short_screenshots}
-                    />
-                ))}
-            </Box>
+            {displayOptions === 'lines' && (
+                <Box
+                    sx={{
+                        display: 'flex',
+                        flexWrap: 'wrap',
+                        gap: '2rem',
+                        justifyContent: 'space-between',
+                    }}
+                >
+                    {gamesData.map((game: any) => (
+                        <CardItem
+                            key={game.id}
+                            title={game.name}
+                            backGroundImg={game.background_image}
+                            id={game.id}
+                            added_by_status={game.added_by_status.owned}
+                            released={game.released}
+                            genres={game.genres}
+                            short_screenshots={game.short_screenshots}
+                        />
+                    ))}
+                </Box>
+            )}
+
+            {displayOptions === 'bigSize' && (
+                <Box
+                    sx={{
+                        display: 'flex',
+                        gap: '30px',
+                        flexDirection: 'column',
+                        alignItems: 'center',
+                        marginLeft: 'auto',
+                        marginRight: 'auto',
+                    }}
+                >
+                    {gamesData.map((game: any) => (
+                        <CardItemBigSize
+                            key={game.id}
+                            title={game.name}
+                            backGroundImg={game.background_image}
+                            id={game.id}
+                            added_by_status={game.added_by_status.owned}
+                            released={game.released}
+                            genres={game.genres}
+                            short_screenshots={game.short_screenshots}
+                        />
+                    ))}
+                </Box>
+            )}
         </Box>
     )
 }
