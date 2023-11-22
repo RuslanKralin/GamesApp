@@ -29,7 +29,7 @@ function Slider(props: SliderPropsType) {
                 <CardMedia
                     component="img"
                     image={activeImage}
-                    sx={{ height: '270px', width: '700px' }}
+                    sx={{ height: '350px', width: '700px' }}
                 />
             </Box>
             <Box
@@ -37,17 +37,18 @@ function Slider(props: SliderPropsType) {
                     display: 'flex',
                     justifyContent: 'center',
                     gap: '5px',
-                    minHeight: '260px',
+                    minHeight: '340px',
                     padding: '0 10px',
                 }}
             >
                 {props.short_screenshots &&
                     props.short_screenshots.map((shot: any) => (
                         <Box
-                            key={shot}
+                            key={shot.id}
                             sx={{
                                 zIndex: '99',
-                                minHeight: '170px',
+                                minHeight: '350px',
+                                // padding: '10px 10px 10px 10px',
                                 borderBottom: '4px solid grey',
                                 flexGrow: 1,
                                 '&:hover': {

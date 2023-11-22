@@ -44,7 +44,7 @@ function Slider(props: SliderPropsType) {
                 {props.short_screenshots &&
                     props.short_screenshots.map((shot: any) => (
                         <Box
-                            key={shot}
+                            key={shot.id}
                             sx={{
                                 zIndex: '99',
                                 minHeight: '170px',

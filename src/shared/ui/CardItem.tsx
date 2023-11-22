@@ -61,7 +61,6 @@ function CardItem(props: CardItemPropsType) {
 
     const iconStyle = {
         width: '30px',
-        // display: isHovered ? 'flex' : 'none',
         height: '30px',
         color: 'white',
         border: '1px',
