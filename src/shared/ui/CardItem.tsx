@@ -61,7 +61,7 @@ function CardItem(props: CardItemPropsType) {
 
     const iconStyle = {
         width: '30px',
-        display: isHovered ? 'flex' : 'none',
+        // display: isHovered ? 'flex' : 'none',
         height: '30px',
         color: 'white',
         border: '1px',
@@ -78,33 +78,34 @@ function CardItem(props: CardItemPropsType) {
 
     const hoverStyle = {
         position: 'absolute',
-
-        top: '85%',
+        top: '88%',
         width: '280px',
         zIndex: 100,
-        backgroundColor: 'red',
+        backgroundColor: '#202020',
+        borderRadius: '5px',
         display: isHovered ? 'flex' : 'none',
         flexDirection: 'column',
-        transition: 'transform 0.3s ease',
+        padding: '0 10px 10px',
         '&:hover': {
-            transform: 'scale(1.03)',
+            display: 'flex',
         },
     }
 
     return (
-        <Box sx={{ position: 'relative' }}>
+        <Box
+            sx={{
+                position: 'relative',
+                transition: 'transform 0.3s ease',
+                '&:hover': {
+                    zIndex: 100,
+                    transform: 'scale(1.03)',
+                },
+            }}
+        >
             <Card
                 sx={{
-                    // position: 'relative',
-                    // zIndex: isHovered ? '999' : '1',
                     width: '280px',
-                    borderRadius: '10px',
-                    backgroundColor: '#ffffff12',
-                    // height: '100%',
-                    transition: 'transform 0.3s ease',
-                    '&:hover': {
-                        transform: 'scale(1.03)',
-                    },
+                    backgroundColor: '#202020',
                 }}
                 onMouseEnter={() => setIsHovered(true)}
                 onMouseLeave={() => setIsHovered(false)}
@@ -149,6 +150,7 @@ function CardItem(props: CardItemPropsType) {
                     <Box
                         sx={{
                             display: 'flex',
+                            gap: '10px',
                             alignItems: 'center',
                             marginTop: '10px',
                             marginBottom: '20px',
@@ -173,18 +175,44 @@ function CardItem(props: CardItemPropsType) {
                             />
                             {props.added_by_status}
                         </Button>
+                        <Box
+                            sx={{
+                                display: isHovered ? 'flex' : 'none',
+                                gap: '10px',
+                            }}
+                        >
+                            <Button
+                                sx={{
+                                    padding: 0,
+                                    minWidth: 0,
+                                    '& .MuiButton-label': {
+                                        padding: 0,
+                                    },
+                                }}
+                            >
+                                <RedeemIcon sx={iconStyle} />
+                            </Button>
 
-                        <Button>
-                            <RedeemIcon sx={iconStyle} />
-                        </Button>
-
-                        <Button>
-                            <MoreHorizIcon sx={iconStyle} />
-                        </Button>
+                            <Button
+                                sx={{
+                                    padding: 0,
+                                    minWidth: 0,
+                                    '& .MuiButton-label': {
+                                        padding: 0,
+                                    },
+                                }}
+                            >
+                                <MoreHorizIcon sx={iconStyle} />
+                            </Button>
+                        </Box>
                     </Box>
                 </CardContent>
             </Card>
-            <Box sx={hoverStyle}>
+            <Box
+                sx={hoverStyle}
+                onMouseEnter={() => setIsHovered(true)}
+                onMouseLeave={() => setIsHovered(false)}
+            >
                 <Box
                     sx={{
                         display: 'flex',
