@@ -77,184 +77,193 @@ function CardItem(props: CardItemPropsType) {
     }
 
     const hoverStyle = {
+        position: 'absolute',
+
+        top: '85%',
+        width: '280px',
+        zIndex: 100,
+        backgroundColor: 'red',
         display: isHovered ? 'flex' : 'none',
         flexDirection: 'column',
+        transition: 'transform 0.3s ease',
+        '&:hover': {
+            transform: 'scale(1.03)',
+        },
     }
 
     return (
-        <Card
-            sx={{
-                position: 'relative',
-                zIndex: isHovered ? '999' : '1',
-                width: '280px',
-                borderRadius: '10px',
-                backgroundColor: '#ffffff12',
-                height: '100%',
-                transition: 'transform 0.3s ease',
-                '&:hover': {
-                    transform: 'scale(1.03)',
-                },
-            }}
-            onMouseEnter={() => setIsHovered(true)}
-            onMouseLeave={() => setIsHovered(false)}
-        >
-            {isHovered ? (
-                <Slider
-                    short_screenshots={props.short_screenshots}
-                    backGroundImg={props.backGroundImg}
-                />
-            ) : (
-                <CardMedia sx={{ height: 170 }} image={props.backGroundImg} />
-            )}
-            <CardContent sx={{ display: 'flex', flexDirection: 'column' }}>
-                <WindowOutlinedIcon
-                    sx={{ color: 'white', marginBottom: '10px' }}
-                />
-                <Button
-                    sx={{
-                        all: 'unset', // НЕ ОТМЕНЯЕТ
-                        '&:hover': {
-                            backgroundColor: 'transparent', // Отменяет стиль при наведении
-                        },
-                        '&:active': {
-                            boxShadow: 'none', // Отменяет стиль при нажатии
-                        },
-                    }}
-                    onClick={() =>
-                        navigate(
-                            generatePath(ROUTES.ABOUT_GAME, {
-                                id: String(props.id),
-                            })
-                        )
-                    }
-                >
-                    <Link underline="none" sx={linkStyle}>
-                        {props.title}
-                    </Link>
-                </Button>
+        <Box sx={{ position: 'relative' }}>
+            <Card
+                sx={{
+                    // position: 'relative',
+                    // zIndex: isHovered ? '999' : '1',
+                    width: '280px',
+                    borderRadius: '10px',
+                    backgroundColor: '#ffffff12',
+                    // height: '100%',
+                    transition: 'transform 0.3s ease',
+                    '&:hover': {
+                        transform: 'scale(1.03)',
+                    },
+                }}
+                onMouseEnter={() => setIsHovered(true)}
+                onMouseLeave={() => setIsHovered(false)}
+            >
+                {isHovered ? (
+                    <Slider
+                        short_screenshots={props.short_screenshots}
+                        backGroundImg={props.backGroundImg}
+                    />
+                ) : (
+                    <CardMedia
+                        sx={{ height: 170 }}
+                        image={props.backGroundImg}
+                    />
+                )}
+                <CardContent sx={{ display: 'flex', flexDirection: 'column' }}>
+                    <WindowOutlinedIcon
+                        sx={{ color: 'white', marginBottom: '10px' }}
+                    />
+                    <Button
+                        sx={{
+                            all: 'unset', // НЕ ОТМЕНЯЕТ
+                            '&:hover': {
+                                backgroundColor: 'transparent', // Отменяет стиль при наведении
+                            },
+                            '&:active': {
+                                boxShadow: 'none', // Отменяет стиль при нажатии
+                            },
+                        }}
+                        onClick={() =>
+                            navigate(
+                                generatePath(ROUTES.ABOUT_GAME, {
+                                    id: String(props.id),
+                                })
+                            )
+                        }
+                    >
+                        <Link underline="none" sx={linkStyle}>
+                            {props.title}
+                        </Link>
+                    </Button>
+                    <Box
+                        sx={{
+                            display: 'flex',
+                            alignItems: 'center',
+                            marginTop: '10px',
+                            marginBottom: '20px',
+                        }}
+                    >
+                        <Button
+                            variant="text"
+                            sx={{
+                                paddingRight: '10px',
+                                color: 'white',
+                                width: '65px',
+                                height: '30px',
+                                bgcolor: '#ffffff1a',
+                                '&:hover': {
+                                    backgroundColor: 'white',
+                                    color: 'black',
+                                },
+                            }}
+                        >
+                            <AddIcon
+                                sx={{ marginRight: '3px', width: '20px' }}
+                            />
+                            {props.added_by_status}
+                        </Button>
+
+                        <Button>
+                            <RedeemIcon sx={iconStyle} />
+                        </Button>
+
+                        <Button>
+                            <MoreHorizIcon sx={iconStyle} />
+                        </Button>
+                    </Box>
+                </CardContent>
+            </Card>
+            <Box sx={hoverStyle}>
                 <Box
                     sx={{
                         display: 'flex',
+                        justifyContent: 'space-between',
                         alignItems: 'center',
-                        marginTop: '10px',
-                        marginBottom: '20px',
+                        mb: '10px',
                     }}
                 >
-                    <Button
-                        variant="text"
-                        sx={{
-                            paddingRight: '10px',
-                            color: 'white',
-                            width: '65px',
-                            height: '30px',
-                            bgcolor: '#ffffff1a',
-                            '&:hover': {
-                                backgroundColor: 'white',
-                                color: 'black',
-                            },
-                        }}
-                    >
-                        <AddIcon sx={{ marginRight: '3px', width: '20px' }} />
-                        {props.added_by_status}
-                    </Button>
-
-                    <Button>
-                        <RedeemIcon sx={iconStyle} />
-                    </Button>
-
-                    <Button>
-                        <MoreHorizIcon sx={iconStyle} />
-                    </Button>
+                    <Typography sx={{ color: 'grey', fontSize: '12px' }}>
+                        Release date:
+                    </Typography>
+                    <Typography sx={{ color: 'white' }}>
+                        {props.released}
+                    </Typography>
                 </Box>
-                <Box sx={hoverStyle}>
-                    <Box
-                        sx={{
-                            display: 'flex',
-                            justifyContent: 'space-between',
-                            alignItems: 'center',
-                            mb: '10px',
-                        }}
-                    >
+                <Box sx={{ borderBottom: '1px solid grey', mb: '10px' }}></Box>
+
+                <Box
+                    sx={{
+                        display: 'flex',
+                        justifyContent: 'space-between',
+                        alignItems: 'center',
+                        mb: '10px',
+                    }}
+                >
+                    <Box>
                         <Typography sx={{ color: 'grey', fontSize: '12px' }}>
-                            Release date:
-                        </Typography>
-                        <Typography sx={{ color: 'white' }}>
-                            {props.released}
+                            Genres:
                         </Typography>
                     </Box>
-                    <Box
-                        sx={{ borderBottom: '1px solid grey', mb: '10px' }}
-                    ></Box>
-
-                    <Box
-                        sx={{
-                            display: 'flex',
-                            justifyContent: 'space-between',
-                            alignItems: 'center',
-                            mb: '10px',
-                        }}
-                    >
-                        <Box>
-                            <Typography
-                                sx={{ color: 'grey', fontSize: '12px' }}
+                    <Box>
+                        {props.genres.map((g: any) => (
+                            <Link
+                                sx={{
+                                    cursor: 'pointer',
+                                    color: 'white',
+                                    fontSize: '14px',
+                                    '&:hover': {
+                                        color: 'grey',
+                                        transition:
+                                            'background-color 0.5s ease',
+                                    },
+                                }}
                             >
-                                Genres:
-                            </Typography>
-                        </Box>
-                        <Box>
-                            {props.genres.map((g: any) => (
-                                <Link
-                                    sx={{
-                                        cursor: 'pointer',
-                                        color: 'white',
-                                        fontSize: '14px',
-                                        '&:hover': {
-                                            color: 'grey',
-                                            transition:
-                                                'background-color 0.5s ease',
-                                        },
-                                    }}
-                                >
-                                    {g.name + ' ,'}
-                                </Link>
-                            ))}
-                        </Box>
-                    </Box>
-                    <Box
-                        sx={{ borderBottom: '1px solid grey', mb: '10px' }}
-                    ></Box>
-
-                    <Box
-                        sx={{
-                            display: 'flex',
-                            justifyContent: 'space-between',
-                            alignItems: 'center',
-                            mb: '10px',
-                        }}
-                    >
-                        <Typography sx={{ color: 'grey', fontSize: '12px' }}>
-                            Chart:
-                        </Typography>
-                        <Typography sx={{ color: 'white' }}>qwe</Typography>
-                    </Box>
-                    <Box
-                        sx={{ borderBottom: '1px solid grey', mb: '10px' }}
-                    ></Box>
-                    <Box
-                        sx={{
-                            display: 'flex',
-                            flexDirection: 'column',
-                            gap: '10px',
-                        }}
-                    >
-                        <Button sx={btnStyle} endIcon={<ArrowForwardIosIcon />}>
-                            Show more like this
-                        </Button>
-                        <Button sx={btnStyle}>Hide this game</Button>
+                                {g.name + ' ,'}
+                            </Link>
+                        ))}
                     </Box>
                 </Box>
-            </CardContent>
-        </Card>
+                <Box sx={{ borderBottom: '1px solid grey', mb: '10px' }}></Box>
+
+                <Box
+                    sx={{
+                        display: 'flex',
+                        justifyContent: 'space-between',
+                        alignItems: 'center',
+                        mb: '10px',
+                    }}
+                >
+                    <Typography sx={{ color: 'grey', fontSize: '12px' }}>
+                        Chart:
+                    </Typography>
+                    <Typography sx={{ color: 'white' }}>qwe</Typography>
+                </Box>
+                <Box sx={{ borderBottom: '1px solid grey', mb: '10px' }}></Box>
+                <Box
+                    sx={{
+                        display: 'flex',
+                        flexDirection: 'column',
+                        gap: '10px',
+                    }}
+                >
+                    <Button sx={btnStyle} endIcon={<ArrowForwardIosIcon />}>
+                        Show more like this
+                    </Button>
+                    <Button sx={btnStyle}>Hide this game</Button>
+                </Box>
+            </Box>
+        </Box>
     )
 }
 

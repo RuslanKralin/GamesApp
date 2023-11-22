@@ -1,6 +1,13 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { ChangeEventHandler } from 'react'
-import { Box, Button, TextField, InputAdornment, Link } from '@mui/material'
+import {
+    Box,
+    Button,
+    TextField,
+    InputAdornment,
+    Link,
+    debounce,
+} from '@mui/material'
 
 import SearchIcon from '@mui/icons-material/Search'
 
@@ -10,15 +17,22 @@ function Header() {
     const [searchParams, setSearchParams] = useState('')
 
     const URL_SEARCH = `${REACT_APP_API_ENDPOINT}/games?key=${REACT_APP_API_KEY}/search=${searchParams}`
-    console.log(URL_SEARCH)
+    // console.log(URL_SEARCH)
 
     const handleChange: ChangeEventHandler<
         HTMLInputElement | HTMLTextAreaElement
     > = (event: any) => {
         let param = event.currentTarget.value
-        console.log(param)
         setSearchParams(param)
+        // console.log('request' + searchParams)
+        debounseSearch()
     }
+
+    const debounseSearch = debounce(
+        () => console.log('request' + searchParams),
+        5000
+    )
+
     return (
         <Box>
             <Box
