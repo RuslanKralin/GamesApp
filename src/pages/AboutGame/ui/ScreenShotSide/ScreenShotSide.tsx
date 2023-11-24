@@ -43,6 +43,7 @@ function ScreenShotSide(props: ScreenShotSidePropsType) {
                 {props.nessessaryShots &&
                     props.nessessaryShots.map((s: any) => (
                         <Box
+                            key={s.id}
                             sx={{
                                 width: '184px',
                                 height: '102px',

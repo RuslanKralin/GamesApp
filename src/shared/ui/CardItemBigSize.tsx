@@ -205,7 +205,6 @@ function CardItemBigSize(props: CardItemPropsType) {
                 </Box>
 
                 <Box>
-                    {' '}
                     {/* Инфа */}
                     <Box sx={{ display: 'flex', gap: '20px' }}>
                         <Box

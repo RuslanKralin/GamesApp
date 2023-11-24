@@ -245,6 +245,7 @@ function CardItem(props: CardItemPropsType) {
                     <Box>
                         {props.genres.map((g: any) => (
                             <Link
+                                key={g.id}
                                 sx={{
                                     cursor: 'pointer',
                                     color: 'white',

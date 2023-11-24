@@ -46,8 +46,12 @@ function Slider(props: SliderPropsType) {
                         <Box
                             key={shot.id}
                             sx={{
+                                // position: 'absolute',
+                                // top: '200px',
                                 zIndex: '99',
                                 minHeight: '170px',
+                                // padding: '20px 10px',
+                                // backgroundColor: 'red',
                                 borderBottom: '4px solid grey',
                                 flexGrow: 1,
                                 '&:hover': {
