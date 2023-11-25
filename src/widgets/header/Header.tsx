@@ -41,7 +41,7 @@ function Header() {
     const [searchParams, setSearchParams] = useState('')
     const [searchData, setSearchData] = useState<Response>()
 
-    const debounseSearch = debounce(() => getGamasBySearch(URL_SEARCH), 2000)
+    const URL_SEARCH = `https://rawg.io/api/games?page_size=20&search=${searchParams}&page=1&key=${REACT_APP_API_KEY}`
 
     const handleChange: ChangeEventHandler<
         HTMLInputElement | HTMLTextAreaElement
@@ -49,19 +49,20 @@ function Header() {
         let inputValue = event.target.value
         setSearchParams(inputValue)
         setIsOpenWindow(true)
-        // console.log(inputValue)
-        // console.log(searchParams)
-        debounseSearch()
+        getGamesBySearch(inputValue)
     }
+
+    // const debounseSearch = debounce(getGamesBySearch, 2000)
+    const debounseHandleChange = debounce(handleChange, 3000)
 
     // useEffect(() => {
     //     console.log(searchParams) // Выполнить операции с актуальным значением searchParams
     // }, [searchParams])
 
-    const URL_SEARCH = `https://rawg.io/api/games?page_size=20&search=${searchParams}&page=1&key=${REACT_APP_API_KEY}`
-
-    async function getGamasBySearch(URL: string) {
-        const response = await fetch(URL_SEARCH)
+    async function getGamesBySearch(inputValue: string) {
+        const response = await fetch(
+            `https://rawg.io/api/games?page_size=20&search=${inputValue}&page=1&key=${REACT_APP_API_KEY}`
+        )
         const data = await response.json()
         console.log(data)
         setSearchData(data)
@@ -146,7 +147,7 @@ function Header() {
                                 </InputAdornment>
                             ),
                         }}
-                        onChange={handleChange}
+                        onChange={debounseHandleChange}
                         // value={searchParams}
                     />
                     {searchData && isOpenWindow === true && (
