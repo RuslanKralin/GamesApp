@@ -3,7 +3,7 @@ import { Outlet } from 'react-router-dom'
 import { Box } from '@mui/material'
 
 import { Aside, Header } from 'widgets'
-import { url } from 'inspector'
+// import { url } from 'inspector'
 // import { Home } from 'pages'
 // import { DRAWER_WIDTH, ROUTES } from 'shared/consts'
 

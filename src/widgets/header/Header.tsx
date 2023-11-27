@@ -25,10 +25,13 @@ function Header() {
     const [isOpenWindow, setIsOpenWindow] = useState(false)
     const [searchParams, setSearchParams] = useState<string>('')
     const [searchData, setSearchData] = useState<searchData>()
+    // const [handleClickOutsideTrigger, setHandleClickOutsideTrigger] =
+    useState(false)
     const wrapperRef = useRef<HTMLDivElement>(null)
 
     useEffect(() => {
         document.addEventListener('mousedown', handleClickOutside)
+        setSearchParams('')
         return () => {
             document.removeEventListener('mousedown', handleClickOutside)
         }
@@ -37,8 +40,6 @@ function Header() {
     const handleClickOutside = (event: any) => {
         if (wrapperRef.current && !wrapperRef.current.contains(event.target)) {
             setIsOpenWindow(false)
-            setSearchParams('') // не работает
-            console.log('qweqwe')
         }
     }
 
@@ -48,6 +49,7 @@ function Header() {
         HTMLInputElement | HTMLTextAreaElement
     > = (event: any) => {
         let inputValue = event.target.value
+        // console.log(inputValue)
         setSearchParams(inputValue)
         setIsOpenWindow(true)
         getGamesBySearch(inputValue)
@@ -147,6 +149,7 @@ function Header() {
                             ),
                         }}
                         onChange={debounseHandleChange}
+                        // value={searchParams}
                     />
                     {searchData &&
                         isOpenWindow === true &&
