@@ -160,7 +160,6 @@ function CardItem(props: CardItemPropsType) {
                             color="secondary"
                             sx={{
                                 paddingRight: '10px',
-
                                 width: '65px',
                                 height: '30px',
                                 bgcolor: '#ffffff1a',
