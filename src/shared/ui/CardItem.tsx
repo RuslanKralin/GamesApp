@@ -20,7 +20,7 @@ import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos'
 import Slider from './Slider'
 
 const linkStyle = {
-    color: 'white',
+    // color: 'white',
     fontWeight: '800',
     fontSize: '24px',
     lineHeight: '28px',
@@ -142,7 +142,7 @@ function CardItem(props: CardItemPropsType) {
                             )
                         }
                     >
-                        <Link underline="none" sx={linkStyle}>
+                        <Link underline="none" sx={linkStyle} color={'primary'}>
                             {props.title}
                         </Link>
                     </Button>
@@ -157,9 +157,10 @@ function CardItem(props: CardItemPropsType) {
                     >
                         <Button
                             variant="text"
+                            color="secondary"
                             sx={{
                                 paddingRight: '10px',
-                                color: 'white',
+
                                 width: '65px',
                                 height: '30px',
                                 bgcolor: '#ffffff1a',

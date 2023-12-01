@@ -50,8 +50,9 @@ function Home() {
         <Box>
             <Typography
                 variant="h2"
+                color="primary"
                 sx={{
-                    color: 'white',
+                    // color: 'primary',
                     fontWeight: '800',
                     marginTop: '30px',
                     marginBottom: '20px',
