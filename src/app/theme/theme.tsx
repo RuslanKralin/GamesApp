@@ -1,27 +1,18 @@
-import { createTheme } from '@mui/material'
-import { blue, green, orange, red } from '@mui/material/colors'
-import { deepPurple } from '@mui/material/colors'
+import { PaletteMode } from '@mui/material'
+// import { amber, deepOrange, grey } from '@mui/material/colors'
+import darkTheme from './dark'
+import lightTheme from './light'
 
-const theme = createTheme({
+const theme = {
     palette: {
-        primary: {
-            main: red[500],
-        },
-        secondary: {
-            main: green[500],
-        },
-        background: {
-            default: 'rgba(0, 0, 0, 0.921)',
-        },
+        primary: 'white',
     },
-    components: {
-        MuiButton: {
-            styleOverrides: {
-                root: {
-                    borderRadius: 10,
-                },
-            },
-        },
+}
+
+export const getDesignTokens = (mode: PaletteMode) => ({
+    palette: {
+        mode,
+        ...(mode === 'light' ? { lightTheme } : { darkTheme }),
     },
 })
 
