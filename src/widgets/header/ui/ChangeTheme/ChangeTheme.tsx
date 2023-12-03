@@ -1,20 +1,17 @@
-import React from 'react'
-import { Button } from '@mui/material'
-import FlareIcon from '@mui/icons-material/Flare'
-import ModeNightIcon from '@mui/icons-material/ModeNight'
-import { useThemeContext } from '../../../../app/theme/ThemeContextProvider'
+import { useContext } from 'react'
+
+import { IconButton } from '@mui/material'
+import { toggleThemeContext } from 'app/theme'
+import LightModeIcon from '@mui/icons-material/LightMode'
+import DarkModeIcon from '@mui/icons-material/DarkMode'
 
 function ChangeTheme() {
-    const { mode, toggleColorMode } = useThemeContext()
+    const { toggleTheme, isDefaultTheme } = useContext(toggleThemeContext)
 
     return (
-        <Button onClick={toggleColorMode}>
-            {mode === 'dark' ? (
-                <FlareIcon sx={{ color: 'yellow' }} />
-            ) : (
-                <ModeNightIcon sx={{ color: 'yellow' }} />
-            )}
-        </Button>
+        <IconButton onClick={toggleTheme}>
+            {isDefaultTheme ? <DarkModeIcon /> : <LightModeIcon />}
+        </IconButton>
     )
 }
 
