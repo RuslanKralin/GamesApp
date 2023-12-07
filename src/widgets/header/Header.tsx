@@ -12,7 +12,8 @@ import {
 
 import SearchIcon from '@mui/icons-material/Search'
 
-import SearchResultWindow from './ui/SearchResultWindow'
+import SearchResultWindow from './ui/SearchResultWindow/SearchResultWindow'
+import { ChangeTheme } from './ui/ChangeTheme'
 
 type searchData = {
     count: number
@@ -178,6 +179,9 @@ function Header() {
                     <Link href="#" underline="hover" sx={{ color: 'white' }}>
                         SIGN UP
                     </Link>
+                </Box>
+                <Box>
+                    <ChangeTheme />
                 </Box>
             </Box>
         </Box>
