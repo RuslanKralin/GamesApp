@@ -78,7 +78,7 @@ function Home() {
             </Typography>
             <Typography
                 sx={{
-                    color: 'white',
+                    color: 'primary',
                     marginBottom: '20px',
                 }}
             >
@@ -94,12 +94,18 @@ function Home() {
             >
                 <Box sx={{ display: 'flex', gap: '10px' }}>
                     <Button
-                        sx={{ color: 'white', backgroundColor: '#ffffff12' }}
+                        sx={{
+                            color: 'primary',
+                            backgroundColor: 'background.paper',
+                        }}
                     >
                         Order by:{' '}
                     </Button>
                     <Button
-                        sx={{ color: 'white', backgroundColor: '#ffffff12' }}
+                        sx={{
+                            color: 'primary',
+                            backgroundColor: 'background.paper',
+                        }}
                     >
                         Platforms:{' '}
                     </Button>

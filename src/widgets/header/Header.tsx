@@ -82,7 +82,7 @@ function Header() {
             >
                 <Box
                     sx={{
-                        color: 'white',
+                        color: 'primary',
                         fontWeight: '900',
                         letterSpacing: '3px',
                         fontSize: '18px',
@@ -92,9 +92,11 @@ function Header() {
                     RAWG
                 </Box>
                 <Button
+                    color="warning"
                     variant="outlined"
                     size="small"
                     sx={{
+                        fontWeight: '600',
                         background: 'white',
                         marginRight: '20px',
                         '&:hover': {
@@ -170,13 +172,14 @@ function Header() {
                     }}
                 >
                     <Link
+                        color="primary"
                         href="#"
                         underline="hover"
-                        sx={{ color: 'white', marginRight: '10px' }}
+                        sx={{ marginRight: '10px' }}
                     >
                         LOG IN
                     </Link>
-                    <Link href="#" underline="hover" sx={{ color: 'white' }}>
+                    <Link href="#" underline="hover" color="primary">
                         SIGN UP
                     </Link>
                 </Box>

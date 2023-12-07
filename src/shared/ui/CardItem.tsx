@@ -80,7 +80,7 @@ function CardItem(props: CardItemPropsType) {
         top: '88%',
         width: '280px',
         zIndex: 100,
-        backgroundColor: '#202020',
+        backgroundColor: 'background.card',
         borderRadius: '5px',
         display: isHovered ? 'flex' : 'none',
         flexDirection: 'column',
@@ -96,6 +96,7 @@ function CardItem(props: CardItemPropsType) {
                 position: 'relative',
                 transition: 'transform 0.3s ease',
                 '&:hover': {
+                    borderRadius: '5px',
                     zIndex: 100,
                     transform: 'scale(1.03)',
                 },
@@ -104,7 +105,7 @@ function CardItem(props: CardItemPropsType) {
             <Card
                 sx={{
                     width: '280px',
-                    backgroundColor: '#202020',
+                    backgroundColor: 'background.card',
                 }}
                 onMouseEnter={() => setIsHovered(true)}
                 onMouseLeave={() => setIsHovered(false)}
@@ -157,7 +158,7 @@ function CardItem(props: CardItemPropsType) {
                     >
                         <Button
                             variant="text"
-                            color="secondary"
+                            color="primary"
                             sx={{
                                 paddingRight: '10px',
                                 width: '65px',
@@ -170,7 +171,10 @@ function CardItem(props: CardItemPropsType) {
                             }}
                         >
                             <AddIcon
-                                sx={{ marginRight: '3px', width: '20px' }}
+                                sx={{
+                                    marginRight: '3px',
+                                    width: '20px',
+                                }}
                             />
                             {props.added_by_status}
                         </Button>
@@ -220,10 +224,12 @@ function CardItem(props: CardItemPropsType) {
                         mb: '10px',
                     }}
                 >
-                    <Typography sx={{ color: 'grey', fontSize: '12px' }}>
+                    <Typography
+                        sx={{ color: 'primary.cardInfo', fontSize: '12px' }}
+                    >
                         Release date:
                     </Typography>
-                    <Typography sx={{ color: 'white' }}>
+                    <Typography sx={{ color: 'primary.cardInfo' }}>
                         {props.released}
                     </Typography>
                 </Box>
@@ -238,7 +244,9 @@ function CardItem(props: CardItemPropsType) {
                     }}
                 >
                     <Box>
-                        <Typography sx={{ color: 'grey', fontSize: '12px' }}>
+                        <Typography
+                            sx={{ color: 'primary.cardInfo', fontSize: '12px' }}
+                        >
                             Genres:
                         </Typography>
                     </Box>
@@ -248,7 +256,7 @@ function CardItem(props: CardItemPropsType) {
                                 key={g.id}
                                 sx={{
                                     cursor: 'pointer',
-                                    color: 'white',
+                                    color: 'primary.cardInfo',
                                     fontSize: '14px',
                                     '&:hover': {
                                         color: 'grey',
@@ -272,10 +280,14 @@ function CardItem(props: CardItemPropsType) {
                         mb: '10px',
                     }}
                 >
-                    <Typography sx={{ color: 'grey', fontSize: '12px' }}>
+                    <Typography
+                        sx={{ color: 'primary.cardInfo', fontSize: '12px' }}
+                    >
                         Chart:
                     </Typography>
-                    <Typography sx={{ color: 'white' }}>qwe</Typography>
+                    <Typography sx={{ color: 'primary.cardInfo' }}>
+                        qwe
+                    </Typography>
                 </Box>
                 <Box sx={{ borderBottom: '1px solid grey', mb: '10px' }}></Box>
                 <Box
