@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-empty-interface */
-import { createContext, FC, useEffect, useMemo } from 'react'
+import { createContext, useEffect, useMemo } from 'react'
 import { ThemeProvider, createTheme } from '@mui/material/styles'
 
 import { useBoolState } from 'shared/hooks'

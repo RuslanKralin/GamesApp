@@ -11,14 +11,14 @@ const darkTheme = {
             disabled: 'rgba(243, 244, 246, 0.38)',
         },
         background: {
-            default: 'rgba(14, 19, 32)',
+            default: 'rgba(0, 0, 0, 0.921)',
             paper: '#111927',
             rare: '#1C2536',
             header: 'rgba(14, 19, 32, 0.8)',
             homeHeader: 'rgba(28, 37, 54, 0.8)',
         },
         primary: {
-            main: '#7582EB',
+            main: '#fff',
             light: '#828DF8',
             dark: 'rgb(99, 102, 241)',
             contrastText: PRIMARY_TEXT,
