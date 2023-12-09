@@ -58,7 +58,7 @@ const btnStyle = {
         backgroundColor: '#ffffff1a',
     },
 }
-type PlatformType = {
+interface platform {
     id: number
     slug: string
 }
@@ -69,9 +69,9 @@ type CardItemPropsType = {
     id: number
     added_by_status: number
     released: string
-    genres: Array<string>
+    genres: string[]
     short_screenshots: string[]
-    platforms: Array<PlatformType>
+    parent_platforms: platform[]
 }
 
 function CardItem(props: CardItemPropsType) {
@@ -110,6 +110,8 @@ function CardItem(props: CardItemPropsType) {
         },
     }
 
+    // console.log(props.parent_platforms)
+
     return (
         <Box
             sx={{
@@ -143,41 +145,80 @@ function CardItem(props: CardItemPropsType) {
                 )}
                 <CardContent sx={{ display: 'flex', flexDirection: 'column' }}>
                     <Box sx={{ display: 'flex', gap: '5px', mb: '10px' }}>
-                        <img
-                            alt="windows"
-                            src={windows}
-                            style={{ width: '20px', height: '20px' }}
-                        />
-                        <img
-                            alt="apple"
-                            src={apple}
-                            style={{ width: '20px', height: '20px' }}
-                        />
-                        <img
-                            alt="linux"
-                            src={linux}
-                            style={{ width: '20px', height: '20px' }}
-                        />
-                        <img
-                            alt="mobile"
-                            src={mobile}
-                            style={{ width: '20px', height: '20px' }}
-                        />
-                        <img
-                            alt="nintendo"
-                            src={nintendo}
-                            style={{ width: '20px', height: '20px' }}
-                        />
-                        <img
-                            alt="playStation"
-                            src={playStation}
-                            style={{ width: '20px', height: '20px' }}
-                        />
-                        <img
-                            alt="xbox"
-                            src={xbox}
-                            style={{ width: '20px', height: '20px' }}
-                        />
+                        {props.parent_platforms.map((p: any) => (
+                            <>
+                                {p.platform.slug === 'pc' && (
+                                    <img
+                                        alt="windows"
+                                        src={windows}
+                                        style={{
+                                            width: '20px',
+                                            height: '20px',
+                                        }}
+                                    />
+                                )}
+                                {p.platform.slug === 'playstation' && (
+                                    <img
+                                        alt="playStation"
+                                        src={playStation}
+                                        style={{
+                                            width: '20px',
+                                            height: '20px',
+                                        }}
+                                    />
+                                )}
+                                {p.platform.slug === 'xbox' && (
+                                    <img
+                                        alt="xbox"
+                                        src={xbox}
+                                        style={{
+                                            width: '20px',
+                                            height: '20px',
+                                        }}
+                                    />
+                                )}
+                                {p.platform.slug === 'ios' && (
+                                    <img
+                                        alt="apple"
+                                        src={apple}
+                                        style={{
+                                            width: '20px',
+                                            height: '20px',
+                                        }}
+                                    />
+                                )}
+                                {p.platform.slug === 'nintendo' && (
+                                    <img
+                                        alt="nintendo"
+                                        src={nintendo}
+                                        style={{
+                                            width: '20px',
+                                            height: '20px',
+                                        }}
+                                    />
+                                )}
+                                {p.platform.slug === 'android' && (
+                                    <img
+                                        alt="mobile"
+                                        src={mobile}
+                                        style={{
+                                            width: '20px',
+                                            height: '20px',
+                                        }}
+                                    />
+                                )}
+                                {p.platform.slug === 'linux' && (
+                                    <img
+                                        alt="linux"
+                                        src={linux}
+                                        style={{
+                                            width: '20px',
+                                            height: '20px',
+                                        }}
+                                    />
+                                )}
+                            </>
+                        ))}
                     </Box>
 
                     <Button

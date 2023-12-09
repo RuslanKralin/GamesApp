@@ -57,7 +57,7 @@ function LastDays() {
                         released={game.released}
                         genres={game.genres}
                         short_screenshots={game.short_screenshots}
-                        platforms={game.platforms}
+                        parent_platforms={game.parent_platforms}
                     />
                 ))}
             </Box>
