@@ -12,7 +12,22 @@ import {
     Box,
     Typography,
 } from '@mui/material'
-import WindowOutlinedIcon from '@mui/icons-material/WindowOutlined'
+// import { SvgIcon, IconButton } from '@mui/material'
+// @ts-ignore
+import windows from 'shared/assets/icons/windows.svg'
+// @ts-ignore
+import apple from 'shared/assets/icons/apple.svg'
+// @ts-ignore
+import linux from 'shared/assets/icons/linux.svg'
+// @ts-ignore
+import mobile from 'shared/assets/icons/mobile.svg'
+// @ts-ignore
+import nintendo from 'shared/assets/icons/nintendo.svg'
+// @ts-ignore
+import playStation from 'shared/assets/icons/playStation.svg'
+// @ts-ignore
+import xbox from 'shared/assets/icons/xbox.svg'
+
 import AddIcon from '@mui/icons-material/Add'
 import RedeemIcon from '@mui/icons-material/Redeem'
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz'
@@ -43,6 +58,10 @@ const btnStyle = {
         backgroundColor: '#ffffff1a',
     },
 }
+interface platform {
+    id: number
+    slug: string
+}
 
 type CardItemPropsType = {
     title: string
@@ -50,8 +69,9 @@ type CardItemPropsType = {
     id: number
     added_by_status: number
     released: string
-    genres: Array<string>
+    genres: string[]
     short_screenshots: string[]
+    parent_platforms: platform[]
 }
 
 function CardItem(props: CardItemPropsType) {
@@ -80,7 +100,7 @@ function CardItem(props: CardItemPropsType) {
         top: '88%',
         width: '280px',
         zIndex: 100,
-        backgroundColor: '#202020',
+        backgroundColor: 'background.card',
         borderRadius: '5px',
         display: isHovered ? 'flex' : 'none',
         flexDirection: 'column',
@@ -90,12 +110,15 @@ function CardItem(props: CardItemPropsType) {
         },
     }
 
+    // console.log(props.parent_platforms)
+
     return (
         <Box
             sx={{
                 position: 'relative',
                 transition: 'transform 0.3s ease',
                 '&:hover': {
+                    borderRadius: '5px',
                     zIndex: 100,
                     transform: 'scale(1.03)',
                 },
@@ -104,7 +127,7 @@ function CardItem(props: CardItemPropsType) {
             <Card
                 sx={{
                     width: '280px',
-                    backgroundColor: '#202020',
+                    backgroundColor: 'background.card',
                 }}
                 onMouseEnter={() => setIsHovered(true)}
                 onMouseLeave={() => setIsHovered(false)}
@@ -121,9 +144,83 @@ function CardItem(props: CardItemPropsType) {
                     />
                 )}
                 <CardContent sx={{ display: 'flex', flexDirection: 'column' }}>
-                    <WindowOutlinedIcon
-                        sx={{ color: 'white', marginBottom: '10px' }}
-                    />
+                    <Box sx={{ display: 'flex', gap: '5px', mb: '10px' }}>
+                        {props.parent_platforms.map((p: any) => (
+                            <>
+                                {p.platform.slug === 'pc' && (
+                                    <img
+                                        alt="windows"
+                                        src={windows}
+                                        style={{
+                                            width: '20px',
+                                            height: '20px',
+                                        }}
+                                    />
+                                )}
+                                {p.platform.slug === 'playstation' && (
+                                    <img
+                                        alt="playStation"
+                                        src={playStation}
+                                        style={{
+                                            width: '20px',
+                                            height: '20px',
+                                        }}
+                                    />
+                                )}
+                                {p.platform.slug === 'xbox' && (
+                                    <img
+                                        alt="xbox"
+                                        src={xbox}
+                                        style={{
+                                            width: '20px',
+                                            height: '20px',
+                                        }}
+                                    />
+                                )}
+                                {p.platform.slug === 'ios' && (
+                                    <img
+                                        alt="apple"
+                                        src={apple}
+                                        style={{
+                                            width: '20px',
+                                            height: '20px',
+                                        }}
+                                    />
+                                )}
+                                {p.platform.slug === 'nintendo' && (
+                                    <img
+                                        alt="nintendo"
+                                        src={nintendo}
+                                        style={{
+                                            width: '20px',
+                                            height: '20px',
+                                        }}
+                                    />
+                                )}
+                                {p.platform.slug === 'android' && (
+                                    <img
+                                        alt="mobile"
+                                        src={mobile}
+                                        style={{
+                                            width: '20px',
+                                            height: '20px',
+                                        }}
+                                    />
+                                )}
+                                {p.platform.slug === 'linux' && (
+                                    <img
+                                        alt="linux"
+                                        src={linux}
+                                        style={{
+                                            width: '20px',
+                                            height: '20px',
+                                        }}
+                                    />
+                                )}
+                            </>
+                        ))}
+                    </Box>
+
                     <Button
                         sx={{
                             all: 'unset', // НЕ ОТМЕНЯЕТ
@@ -157,12 +254,12 @@ function CardItem(props: CardItemPropsType) {
                     >
                         <Button
                             variant="text"
-                            color="secondary"
                             sx={{
+                                color: 'white',
                                 paddingRight: '10px',
                                 width: '65px',
                                 height: '30px',
-                                bgcolor: '#ffffff1a',
+                                backgroundColor: '#3b3b3b',
                                 '&:hover': {
                                     backgroundColor: 'white',
                                     color: 'black',
@@ -170,7 +267,10 @@ function CardItem(props: CardItemPropsType) {
                             }}
                         >
                             <AddIcon
-                                sx={{ marginRight: '3px', width: '20px' }}
+                                sx={{
+                                    marginRight: '3px',
+                                    width: '20px',
+                                }}
                             />
                             {props.added_by_status}
                         </Button>
@@ -220,10 +320,12 @@ function CardItem(props: CardItemPropsType) {
                         mb: '10px',
                     }}
                 >
-                    <Typography sx={{ color: 'grey', fontSize: '12px' }}>
+                    <Typography
+                        sx={{ color: 'primary.cardInfo', fontSize: '12px' }}
+                    >
                         Release date:
                     </Typography>
-                    <Typography sx={{ color: 'white' }}>
+                    <Typography sx={{ color: 'primary.cardInfo' }}>
                         {props.released}
                     </Typography>
                 </Box>
@@ -238,7 +340,9 @@ function CardItem(props: CardItemPropsType) {
                     }}
                 >
                     <Box>
-                        <Typography sx={{ color: 'grey', fontSize: '12px' }}>
+                        <Typography
+                            sx={{ color: 'primary.cardInfo', fontSize: '12px' }}
+                        >
                             Genres:
                         </Typography>
                     </Box>
@@ -248,7 +352,7 @@ function CardItem(props: CardItemPropsType) {
                                 key={g.id}
                                 sx={{
                                     cursor: 'pointer',
-                                    color: 'white',
+                                    color: 'primary.cardInfo',
                                     fontSize: '14px',
                                     '&:hover': {
                                         color: 'grey',
@@ -272,10 +376,14 @@ function CardItem(props: CardItemPropsType) {
                         mb: '10px',
                     }}
                 >
-                    <Typography sx={{ color: 'grey', fontSize: '12px' }}>
+                    <Typography
+                        sx={{ color: 'primary.cardInfo', fontSize: '12px' }}
+                    >
                         Chart:
                     </Typography>
-                    <Typography sx={{ color: 'white' }}>qwe</Typography>
+                    <Typography sx={{ color: 'primary.cardInfo' }}>
+                        qwe
+                    </Typography>
                 </Box>
                 <Box sx={{ borderBottom: '1px solid grey', mb: '10px' }}></Box>
                 <Box

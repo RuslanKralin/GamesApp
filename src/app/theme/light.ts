@@ -9,19 +9,21 @@ const lightTheme = {
             disabled: 'rgba(55, 65, 81, 0.26)',
         },
         background: {
-            default: '#fff',
-            paper: 'rgb(255, 255, 255)',
-            rare: '#fff',
+            default: '#fffee8',
+            btn: 'grey',
+            card: '#adad9a',
+            btnHover: '#4B5563',
             header: 'rgba(255, 255, 255, 0.8)',
         },
         primary: {
-            main: '#6366F1',
-            light: '#828DF8',
-            dark: '#464dc8',
-            contrastText: '#FFFFFF',
+            main: 'rgba(0, 0, 0, 0.921)',
+            cardInfo: 'rgba(0, 0, 0, 0.921)',
+            // light: '#828DF8',
+            // dark: '#464dc8',
+            // contrastText: '#FFFFFF',
         },
         secondary: {
-            main: '#10B981',
+            main: '#ffffff12',
             light: '#3FC79A',
             dark: '#0B815A',
             contrastText: '#FFFFFF',
@@ -68,91 +70,91 @@ const lightTheme = {
         },
         divider: '#D1D5DB',
     },
-    components: {
-        MuiOutlinedInput: {
-            styleOverrides: {
-                input: {
-                    '-webkit-text-fill-color': '#111827',
-                    '-webkit-box-shadow':
-                        '0 0 0px 1000px linear-gradient(65.7deg, -67.89%, 125.28%) inset',
-                    transition: 'background-color 5000s ease-in-out 0s',
-                },
+    // components: {
+    //     MuiOutlinedInput: {
+    //         styleOverrides: {
+    //             input: {
+    //                 '-webkit-text-fill-color': '#111827',
+    //                 '-webkit-box-shadow':
+    //                     '0 0 0px 1000px linear-gradient(65.7deg, -67.89%, 125.28%) inset',
+    //                 transition: 'background-color 5000s ease-in-out 0s',
+    //             },
 
-                notchedOutline: {
-                    borderColor: '#D1D5DB',
-                },
-            },
-        },
-        MuiTableHead: {
-            styleOverrides: {
-                root: {
-                    backgroundColor: 'rgb(248, 249, 250)',
-                    '.MuiTableCell-root': {
-                        color: 'rgb(47, 55, 70)',
-                    },
-                },
-            },
-        },
-        MuiTableRow: {
-            styleOverrides: {
-                root: {
-                    borderBottom: '1px solid #dfe4eb',
-                },
-            },
-        },
-        MuiAlert: {
-            styleOverrides: {
-                standardError: {
-                    backgroundColor: 'rgb(254, 252, 252)',
-                    color: 'rgb(101, 91, 90)',
-                    fontSize: 16,
-                },
-            },
-        },
-        MuiLinearProgress: {
-            styleOverrides: {
-                root: {
-                    backgroundColor: 'rgb(195, 196, 249)',
-                    '& .MuiLinearProgress-barColorPrimary': {
-                        backgroundColor: 'rgb(99, 102, 241)',
-                    },
-                },
-            },
-        },
-        MuiCssBaseline: {
-            styleOverrides: {
-                body: {
-                    scrollbarColor: 'rgba(55, 65, 81, 0.04) #FFF',
-                    '&::-webkit-scrollbar, & *::-webkit-scrollbar': {
-                        backgroundColor: '#FFF',
-                    },
-                    '&::-webkit-scrollbar-thumb, & *::-webkit-scrollbar-thumb':
-                        {
-                            borderRadius: 8,
-                            backgroundColor: 'rgba(55, 65, 81, 0.04)',
-                            minHeight: 24,
-                            border: '3px solid rgba(55, 65, 81, 0.04)',
-                        },
-                    '&::-webkit-scrollbar-thumb:focus, & *::-webkit-scrollbar-thumb:focus':
-                        {
-                            backgroundColor: 'rgba(17, 25, 39, 0.12)',
-                        },
-                    '&::-webkit-scrollbar-thumb:active, & *::-webkit-scrollbar-thumb:active':
-                        {
-                            backgroundColor: 'rgba(17, 25, 39, 0.12)',
-                        },
-                    '&::-webkit-scrollbar-thumb:hover, & *::-webkit-scrollbar-thumb:hover':
-                        {
-                            backgroundColor: 'rgba(17, 25, 39, 0.12)',
-                        },
-                    '&::-webkit-scrollbar-corner, & *::-webkit-scrollbar-corner':
-                        {
-                            backgroundColor: 'rgba(17, 25, 39, 0.12)',
-                        },
-                },
-            },
-        },
-    },
+    //             notchedOutline: {
+    //                 borderColor: '#D1D5DB',
+    //             },
+    //         },
+    //     },
+    //     MuiTableHead: {
+    //         styleOverrides: {
+    //             root: {
+    //                 backgroundColor: 'rgb(248, 249, 250)',
+    //                 '.MuiTableCell-root': {
+    //                     color: 'rgb(47, 55, 70)',
+    //                 },
+    //             },
+    //         },
+    //     },
+    //     MuiTableRow: {
+    //         styleOverrides: {
+    //             root: {
+    //                 borderBottom: '1px solid #dfe4eb',
+    //             },
+    //         },
+    //     },
+    //     MuiAlert: {
+    //         styleOverrides: {
+    //             standardError: {
+    //                 backgroundColor: 'rgb(254, 252, 252)',
+    //                 color: 'rgb(101, 91, 90)',
+    //                 fontSize: 16,
+    //             },
+    //         },
+    //     },
+    //     MuiLinearProgress: {
+    //         styleOverrides: {
+    //             root: {
+    //                 backgroundColor: 'rgb(195, 196, 249)',
+    //                 '& .MuiLinearProgress-barColorPrimary': {
+    //                     backgroundColor: 'rgb(99, 102, 241)',
+    //                 },
+    //             },
+    //         },
+    //     },
+    //     MuiCssBaseline: {
+    //         styleOverrides: {
+    //             body: {
+    //                 scrollbarColor: 'rgba(55, 65, 81, 0.04) #FFF',
+    //                 '&::-webkit-scrollbar, & *::-webkit-scrollbar': {
+    //                     backgroundColor: '#FFF',
+    //                 },
+    //                 '&::-webkit-scrollbar-thumb, & *::-webkit-scrollbar-thumb':
+    //                     {
+    //                         borderRadius: 8,
+    //                         backgroundColor: 'rgba(55, 65, 81, 0.04)',
+    //                         minHeight: 24,
+    //                         border: '3px solid rgba(55, 65, 81, 0.04)',
+    //                     },
+    //                 '&::-webkit-scrollbar-thumb:focus, & *::-webkit-scrollbar-thumb:focus':
+    //                     {
+    //                         backgroundColor: 'rgba(17, 25, 39, 0.12)',
+    //                     },
+    //                 '&::-webkit-scrollbar-thumb:active, & *::-webkit-scrollbar-thumb:active':
+    //                     {
+    //                         backgroundColor: 'rgba(17, 25, 39, 0.12)',
+    //                     },
+    //                 '&::-webkit-scrollbar-thumb:hover, & *::-webkit-scrollbar-thumb:hover':
+    //                     {
+    //                         backgroundColor: 'rgba(17, 25, 39, 0.12)',
+    //                     },
+    //                 '&::-webkit-scrollbar-corner, & *::-webkit-scrollbar-corner':
+    //                     {
+    //                         backgroundColor: 'rgba(17, 25, 39, 0.12)',
+    //                     },
+    //             },
+    //         },
+    //     },
+    // },
 }
 
 export default lightTheme

@@ -17,7 +17,7 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
 import { ROUTES } from 'shared/consts/routes'
 
 const titleStyle = {
-    color: 'white',
+    color: 'primary',
     fontWeight: '800',
     fontSize: '24px',
     lineHeight: '28px',
@@ -25,7 +25,7 @@ const titleStyle = {
 }
 
 const linkTitleStyle = {
-    color: 'white',
+    color: 'primary',
     fontWeight: '800',
     fontSize: '24px',
     lineHeight: '28px',
@@ -37,7 +37,7 @@ const linkTitleStyle = {
 }
 
 const linkSubStyle = {
-    color: 'white',
+    color: 'primary',
     cursor: 'pointer',
     fontSize: '18px',
 }
@@ -67,7 +67,12 @@ function Aside() {
                 marginTop: '50px',
             }}
         >
-            <Link href={ROUTES.HOME} underline="none" sx={linkTitleStyle}>
+            <Link
+                href={ROUTES.HOME}
+                underline="none"
+                sx={linkTitleStyle}
+                // color="primary"
+            >
                 Home
             </Link>
             <Link href="#" underline="none" sx={linkTitleStyle}>

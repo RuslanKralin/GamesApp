@@ -78,7 +78,7 @@ function Home() {
             </Typography>
             <Typography
                 sx={{
-                    color: 'white',
+                    color: 'primary',
                     marginBottom: '20px',
                 }}
             >
@@ -94,12 +94,26 @@ function Home() {
             >
                 <Box sx={{ display: 'flex', gap: '10px' }}>
                     <Button
-                        sx={{ color: 'white', backgroundColor: '#ffffff12' }}
+                        sx={{
+                            color: 'primary',
+                            backgroundColor: 'background.btn',
+                            '&:hover': {
+                                backgroundColor: 'background.btnHover',
+                                transition: 'backgroundColor 0.3s ease',
+                            },
+                        }}
                     >
                         Order by:{' '}
                     </Button>
                     <Button
-                        sx={{ color: 'white', backgroundColor: '#ffffff12' }}
+                        sx={{
+                            color: 'primary',
+                            backgroundColor: 'background.btn',
+                            '&:hover': {
+                                backgroundColor: 'background.btnHover',
+                                transition: 'backgroundColor 0.3s ease',
+                            },
+                        }}
                     >
                         Platforms:{' '}
                     </Button>
@@ -111,10 +125,15 @@ function Home() {
                     <Box sx={{ display: 'flex', gap: '10px' }}>
                         <Button
                             sx={{
+                                backgroundColor: 'background.btn',
                                 padding: 0,
                                 minWidth: 0,
                                 '& .MuiButton-label': {
                                     padding: 0,
+                                },
+                                '&:hover': {
+                                    backgroundColor: 'background.btnHover',
+                                    transition: 'backgroundColor 0.3s ease',
                                 },
                             }}
                             onClick={() => setDisplayOptions('lines')}
@@ -123,10 +142,15 @@ function Home() {
                         </Button>
                         <Button
                             sx={{
+                                backgroundColor: 'background.btn',
                                 padding: 0,
                                 minWidth: 0,
                                 '& .MuiButton-label': {
                                     padding: 0,
+                                },
+                                '&:hover': {
+                                    backgroundColor: 'background.btnHover',
+                                    transition: 'backgroundColor 0.3s ease',
                                 },
                             }}
                             onClick={() => setDisplayOptions('bigSize')}
@@ -167,6 +191,7 @@ function Home() {
                                 released={game.released}
                                 genres={game.genres}
                                 short_screenshots={game.short_screenshots}
+                                parent_platforms={game.parent_platforms}
                             />
                         ))}
                     </Box>
@@ -212,6 +237,7 @@ function Home() {
                                     released={game.released}
                                     genres={game.genres}
                                     short_screenshots={game.short_screenshots}
+                                    platforms={game.platforms}
                                 />
                             </div>
                         ))}

@@ -8,13 +8,13 @@ function BtnGroup(props: any) {
             <Box sx={{ mb: '10px' }}>
                 <Typography
                     variant="h5"
-                    sx={{ color: 'white', fontWeight: '800' }}
+                    sx={{ color: 'primary', fontWeight: '800' }}
                 >
                     About
                 </Typography>
             </Box>
             <Box>
-                <Typography sx={{ color: 'white' }}>
+                <Typography sx={{ color: 'primary' }}>
                     {props.aboutGame}
                 </Typography>
             </Box>
