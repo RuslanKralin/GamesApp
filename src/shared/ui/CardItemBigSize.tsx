@@ -21,7 +21,7 @@ import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos'
 import { SliderBigSize } from '.'
 
 const linkStyle = {
-    color: 'white',
+    color: 'primary',
     fontWeight: '800',
     fontSize: '24px',
     lineHeight: '28px',
@@ -37,7 +37,7 @@ const btnStyle = {
     width: '180px',
     height: '40px',
     color: 'white',
-    backgroundColor: '#ffffff1a',
+    backgroundColor: 'background.btn',
     fontSize: '10px',
     justifyContent: 'space-between',
     '&:hover': {
@@ -45,6 +45,10 @@ const btnStyle = {
         transition: 'background-color 0.5s ease',
         backgroundColor: '#ffffff1a',
     },
+}
+type PlatformType = {
+    id: number
+    slug: string
 }
 
 type CardItemPropsType = {
@@ -55,6 +59,7 @@ type CardItemPropsType = {
     released: string
     genres: Array<string>
     short_screenshots: string[]
+    platforms: Array<PlatformType>
 }
 
 function CardItemBigSize(props: CardItemPropsType) {
@@ -141,11 +146,11 @@ function CardItemBigSize(props: CardItemPropsType) {
                                 <Button
                                     variant="text"
                                     sx={{
-                                        paddingRight: '10px',
                                         color: 'white',
+                                        paddingRight: '10px',
                                         width: '65px',
                                         height: '30px',
-                                        bgcolor: '#ffffff1a',
+                                        backgroundColor: '#3b3b3b',
                                         '&:hover': {
                                             backgroundColor: 'white',
                                             color: 'black',

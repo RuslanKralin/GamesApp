@@ -51,7 +51,7 @@ function DescriptionSide(props: DescriptionSidePropsType) {
                         fontWeight: '700',
                         fontSize: '72px',
                         lineHeight: '74px',
-                        color: 'white',
+                        color: 'primary',
                     }}
                 >
                     {props.gameTitle}

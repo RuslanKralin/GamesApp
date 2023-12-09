@@ -12,8 +12,9 @@ const darkTheme = {
         },
         background: {
             default: 'rgba(0, 0, 0, 0.921)',
-            paper: '#ffffff12',
+            btn: '#ffffff12',
             card: '#202020',
+            btnHover: 'rgba(243, 244, 246, 0.38)',
             header: 'rgba(14, 19, 32, 0.8)',
             homeHeader: 'rgba(28, 37, 54, 0.8)',
         },

@@ -57,6 +57,7 @@ function ThisWeek() {
                         released={game.released}
                         genres={game.genres}
                         short_screenshots={game.short_screenshots}
+                        platforms={game.platforms}
                     />
                 ))}
             </Box>

@@ -3,7 +3,7 @@ import { Typography, Box, Button } from '@mui/material'
 import { CardItem } from 'shared/ui'
 
 const API_KEY: string = 'e1f2ed8b762a4f76ab4883d16cfec313'
-const URL_THIS_WEEK: string = `https://api.rawg.io/api/games?key=${API_KEY}&dates=2019-09-01,2019-09-30`
+const URL_THIS_WEEK: string = `https://api.rawg.io/api/games?key=${API_KEY}&dates=2023-11-01,2023-12-01`
 
 async function getGames(URL: string) {
     const response = await fetch(URL_THIS_WEEK)
@@ -57,6 +57,7 @@ function LastDays() {
                         released={game.released}
                         genres={game.genres}
                         short_screenshots={game.short_screenshots}
+                        platforms={game.platforms}
                     />
                 ))}
             </Box>

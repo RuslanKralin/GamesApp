@@ -10,8 +10,9 @@ const lightTheme = {
         },
         background: {
             default: '#fffee8',
-            paper: '#ffffff12',
+            btn: 'grey',
             card: '#adad9a',
+            btnHover: '#4B5563',
             header: 'rgba(255, 255, 255, 0.8)',
         },
         primary: {

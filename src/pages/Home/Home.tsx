@@ -96,7 +96,11 @@ function Home() {
                     <Button
                         sx={{
                             color: 'primary',
-                            backgroundColor: 'background.paper',
+                            backgroundColor: 'background.btn',
+                            '&:hover': {
+                                backgroundColor: 'background.btnHover',
+                                transition: 'backgroundColor 0.3s ease',
+                            },
                         }}
                     >
                         Order by:{' '}
@@ -104,7 +108,11 @@ function Home() {
                     <Button
                         sx={{
                             color: 'primary',
-                            backgroundColor: 'background.paper',
+                            backgroundColor: 'background.btn',
+                            '&:hover': {
+                                backgroundColor: 'background.btnHover',
+                                transition: 'backgroundColor 0.3s ease',
+                            },
                         }}
                     >
                         Platforms:{' '}
@@ -117,10 +125,15 @@ function Home() {
                     <Box sx={{ display: 'flex', gap: '10px' }}>
                         <Button
                             sx={{
+                                backgroundColor: 'background.btn',
                                 padding: 0,
                                 minWidth: 0,
                                 '& .MuiButton-label': {
                                     padding: 0,
+                                },
+                                '&:hover': {
+                                    backgroundColor: 'background.btnHover',
+                                    transition: 'backgroundColor 0.3s ease',
                                 },
                             }}
                             onClick={() => setDisplayOptions('lines')}
@@ -129,10 +142,15 @@ function Home() {
                         </Button>
                         <Button
                             sx={{
+                                backgroundColor: 'background.btn',
                                 padding: 0,
                                 minWidth: 0,
                                 '& .MuiButton-label': {
                                     padding: 0,
+                                },
+                                '&:hover': {
+                                    backgroundColor: 'background.btnHover',
+                                    transition: 'backgroundColor 0.3s ease',
                                 },
                             }}
                             onClick={() => setDisplayOptions('bigSize')}
@@ -173,6 +191,7 @@ function Home() {
                                 released={game.released}
                                 genres={game.genres}
                                 short_screenshots={game.short_screenshots}
+                                platforms={game.platforms}
                             />
                         ))}
                     </Box>
@@ -218,6 +237,7 @@ function Home() {
                                     released={game.released}
                                     genres={game.genres}
                                     short_screenshots={game.short_screenshots}
+                                    platforms={game.platforms}
                                 />
                             </div>
                         ))}

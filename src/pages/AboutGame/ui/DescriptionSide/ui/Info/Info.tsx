@@ -21,7 +21,7 @@ const infoTitleStyle = {
 }
 
 const linkStyle = {
-    color: 'white',
+    color: 'primary',
     cursor: 'pointer',
     '&:hover': {
         color: 'grey',

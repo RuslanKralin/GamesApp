@@ -12,7 +12,22 @@ import {
     Box,
     Typography,
 } from '@mui/material'
-import WindowOutlinedIcon from '@mui/icons-material/WindowOutlined'
+// import { SvgIcon, IconButton } from '@mui/material'
+// @ts-ignore
+import windows from 'shared/assets/icons/windows.svg'
+// @ts-ignore
+import apple from 'shared/assets/icons/apple.svg'
+// @ts-ignore
+import linux from 'shared/assets/icons/linux.svg'
+// @ts-ignore
+import mobile from 'shared/assets/icons/mobile.svg'
+// @ts-ignore
+import nintendo from 'shared/assets/icons/nintendo.svg'
+// @ts-ignore
+import playStation from 'shared/assets/icons/playStation.svg'
+// @ts-ignore
+import xbox from 'shared/assets/icons/xbox.svg'
+
 import AddIcon from '@mui/icons-material/Add'
 import RedeemIcon from '@mui/icons-material/Redeem'
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz'
@@ -43,6 +58,10 @@ const btnStyle = {
         backgroundColor: '#ffffff1a',
     },
 }
+type PlatformType = {
+    id: number
+    slug: string
+}
 
 type CardItemPropsType = {
     title: string
@@ -52,6 +71,7 @@ type CardItemPropsType = {
     released: string
     genres: Array<string>
     short_screenshots: string[]
+    platforms: Array<PlatformType>
 }
 
 function CardItem(props: CardItemPropsType) {
@@ -122,9 +142,44 @@ function CardItem(props: CardItemPropsType) {
                     />
                 )}
                 <CardContent sx={{ display: 'flex', flexDirection: 'column' }}>
-                    <WindowOutlinedIcon
-                        sx={{ color: 'white', marginBottom: '10px' }}
-                    />
+                    <Box sx={{ display: 'flex', gap: '5px', mb: '10px' }}>
+                        <img
+                            alt="windows"
+                            src={windows}
+                            style={{ width: '20px', height: '20px' }}
+                        />
+                        <img
+                            alt="apple"
+                            src={apple}
+                            style={{ width: '20px', height: '20px' }}
+                        />
+                        <img
+                            alt="linux"
+                            src={linux}
+                            style={{ width: '20px', height: '20px' }}
+                        />
+                        <img
+                            alt="mobile"
+                            src={mobile}
+                            style={{ width: '20px', height: '20px' }}
+                        />
+                        <img
+                            alt="nintendo"
+                            src={nintendo}
+                            style={{ width: '20px', height: '20px' }}
+                        />
+                        <img
+                            alt="playStation"
+                            src={playStation}
+                            style={{ width: '20px', height: '20px' }}
+                        />
+                        <img
+                            alt="xbox"
+                            src={xbox}
+                            style={{ width: '20px', height: '20px' }}
+                        />
+                    </Box>
+
                     <Button
                         sx={{
                             all: 'unset', // НЕ ОТМЕНЯЕТ
@@ -158,12 +213,12 @@ function CardItem(props: CardItemPropsType) {
                     >
                         <Button
                             variant="text"
-                            color="primary"
                             sx={{
+                                color: 'white',
                                 paddingRight: '10px',
                                 width: '65px',
                                 height: '30px',
-                                bgcolor: '#ffffff1a',
+                                backgroundColor: '#3b3b3b',
                                 '&:hover': {
                                     backgroundColor: 'white',
                                     color: 'black',

@@ -11,6 +11,8 @@ import {
 } from '@mui/material'
 
 import SearchIcon from '@mui/icons-material/Search'
+// @ts-ignore
+import goal from 'shared/assets/images/goal.png'
 
 import SearchResultWindow from './ui/SearchResultWindow/SearchResultWindow'
 import { ChangeTheme } from './ui/ChangeTheme'
@@ -92,11 +94,13 @@ function Header() {
                     RAWG
                 </Box>
                 <Button
+                    // startIcon={goal}
                     color="warning"
                     variant="outlined"
                     size="small"
                     sx={{
-                        fontWeight: '600',
+                        width: '170px',
+
                         background: 'white',
                         marginRight: '20px',
                         '&:hover': {
@@ -104,12 +108,28 @@ function Header() {
                         },
                     }}
                 >
-                    Rate top games
+                    <img
+                        alt="goal"
+                        src={goal}
+                        style={{
+                            width: '20px',
+                            height: '20px',
+                            marginLeft: '-20px',
+                        }}
+                    />
+                    <Typography
+                        sx={{
+                            color: 'warning',
+                            fontWeight: '600',
+                        }}
+                    >
+                        Rate top games
+                    </Typography>
                 </Button>
                 <Box
                     sx={{
                         width: '60rem',
-                        marginRight: '30px',
+                        marginRight: '15px',
                         position: 'relative',
                     }}
                 >
@@ -118,6 +138,7 @@ function Header() {
                         type="search"
                         fullWidth
                         sx={{
+                            // width: '50rem',
                             backgroundColor: '#3b3b3b',
                             color: 'white',
                             border: 'none',
@@ -175,11 +196,16 @@ function Header() {
                         color="primary"
                         href="#"
                         underline="hover"
-                        sx={{ marginRight: '10px' }}
+                        sx={{ marginRight: '10px', fontSize: '0.8rem' }}
                     >
                         LOG IN
                     </Link>
-                    <Link href="#" underline="hover" color="primary">
+                    <Link
+                        href="#"
+                        underline="hover"
+                        color="primary"
+                        sx={{ fontSize: '0.8rem' }}
+                    >
                         SIGN UP
                     </Link>
                 </Box>
