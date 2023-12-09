@@ -246,15 +246,23 @@ function CardItemBigSize(props: CardItemPropsType) {
                                 </Typography>
                             </Box>
                             <Box>
-                                {props.genres.map((g: any) => (
+                                {props.genres.map((g: any, index: number) => (
                                     <Link
+                                        key={g.id}
                                         sx={{
                                             cursor: 'pointer',
-                                            color: 'white',
+                                            color: 'primary.cardInfo',
                                             fontSize: '14px',
+                                            '&:hover': {
+                                                color: 'grey',
+                                                transition:
+                                                    'background-color 0.5s ease',
+                                            },
                                         }}
                                     >
-                                        {g.name + ' ,'}
+                                        {g.name}
+                                        {index !== props.genres.length - 1 &&
+                                            ', '}
                                     </Link>
                                 ))}
                             </Box>

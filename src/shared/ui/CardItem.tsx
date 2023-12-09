@@ -347,7 +347,7 @@ function CardItem(props: CardItemPropsType) {
                         </Typography>
                     </Box>
                     <Box>
-                        {props.genres.map((g: any) => (
+                        {props.genres.map((g: any, index: number) => (
                             <Link
                                 key={g.id}
                                 sx={{
@@ -361,7 +361,8 @@ function CardItem(props: CardItemPropsType) {
                                     },
                                 }}
                             >
-                                {g.name + ' ,'}
+                                {g.name}
+                                {index !== props.genres.length - 1 && ', '}
                             </Link>
                         ))}
                     </Box>
