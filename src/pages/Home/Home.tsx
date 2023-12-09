@@ -39,7 +39,7 @@ function Home() {
 
     const [gamesData, setGamesData] = useState([])
 
-    const [correntPage, setCorrentPage] = useState(1)
+    const [correntPage, setCorrentPage] = useState(2)
 
     const fetchMoreData: Fn = async () => {
         const response = await fetch(
@@ -243,30 +243,6 @@ function Home() {
                         ))}
                     </InfiniteScroll>
                 </Box>
-
-                // <Box
-                //     sx={{
-                //         display: 'flex',
-                //         gap: '30px',
-                //         flexDirection: 'column',
-                //         alignItems: 'center',
-                //         marginLeft: 'auto',
-                //         marginRight: 'auto',
-                //     }}
-                // >
-                //     {gamesData.map((game: any) => (
-                //         <CardItemBigSize
-                //             key={game.id}
-                //             title={game.name}
-                //             backGroundImg={game.background_image}
-                //             id={game.id}
-                //             added_by_status={game.added_by_status.owned}
-                //             released={game.released}
-                //             genres={game.genres}
-                //             short_screenshots={game.short_screenshots}
-                //         />
-                //     ))}
-                // </Box>
             )}
         </Box>
     )
