@@ -255,8 +255,7 @@ function CardItemBigSize(props: CardItemPropsType) {
                                             fontSize: '14px',
                                             '&:hover': {
                                                 color: 'grey',
-                                                transition:
-                                                    'background-color 0.5s ease',
+                                                transition: 'color 0.5s ease',
                                             },
                                         }}
                                     >

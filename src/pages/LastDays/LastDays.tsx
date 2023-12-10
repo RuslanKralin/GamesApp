@@ -33,6 +33,12 @@ function LastDays() {
     const { REACT_APP_API_ENDPOINT, REACT_APP_API_KEY } = process.env
     const URL: string = `${REACT_APP_API_ENDPOINT}/games?key=${REACT_APP_API_KEY}`
 
+    const vampire_320 =
+        'https://media.rawg.io/media/stories-320/c66/c6692dc6b3d737d6e483b8ce64390b96.mp4'
+
+    const stalker_320 =
+        'https://media.rawg.io/media/stories-320/771/771a8dc6c1a6ad44cb45ce88f7bad80a.mp4'
+
     const [gamesData, setGamesData] = useState([])
     const [displayOptions, setDisplayOptions] =
         useState<DisplayOptinsType>('lines')
@@ -182,6 +188,8 @@ function LastDays() {
                                 genres={game.genres}
                                 short_screenshots={game.short_screenshots}
                                 parent_platforms={game.parent_platforms}
+                                videoVampire={vampire_320}
+                                videoStalker={stalker_320}
                             />
                         ))}
                     </Box>

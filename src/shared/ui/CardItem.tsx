@@ -72,6 +72,8 @@ type CardItemPropsType = {
     genres: string[]
     short_screenshots: string[]
     parent_platforms: platform[]
+    videoVampire: string
+    videoStalker: string
 }
 
 function CardItem(props: CardItemPropsType) {
@@ -132,7 +134,7 @@ function CardItem(props: CardItemPropsType) {
                 onMouseEnter={() => setIsHovered(true)}
                 onMouseLeave={() => setIsHovered(false)}
             >
-                {isHovered ? (
+                {isHovered && props.id !== 303576 ? (
                     <Slider
                         short_screenshots={props.short_screenshots}
                         backGroundImg={props.backGroundImg}
@@ -140,8 +142,18 @@ function CardItem(props: CardItemPropsType) {
                 ) : (
                     <CardMedia
                         sx={{ height: 170 }}
-                        image={props.backGroundImg}
-                    />
+                        image={
+                            !isHovered || props.id === 303576
+                                ? props.backGroundImg
+                                : undefined
+                        }
+                        onMouseEnter={() => setIsHovered(true)}
+                        onMouseLeave={() => setIsHovered(false)}
+                    >
+                        {isHovered && props.id === 303576 && (
+                            <video src={props.videoVampire} autoPlay muted />
+                        )}
+                    </CardMedia>
                 )}
                 <CardContent sx={{ display: 'flex', flexDirection: 'column' }}>
                     <Box sx={{ display: 'flex', gap: '5px', mb: '10px' }}>

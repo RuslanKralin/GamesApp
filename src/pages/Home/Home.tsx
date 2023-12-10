@@ -32,7 +32,13 @@ async function getGames(URL: string) {
 
 function Home() {
     const { REACT_APP_API_ENDPOINT, REACT_APP_API_KEY } = process.env
-    const URL: string = `${REACT_APP_API_ENDPOINT}/games?key=${REACT_APP_API_KEY}`
+    const URL: string = `${REACT_APP_API_ENDPOINT}/games/lists/main?discover=true&ordering=-relevance&page_size=40&key=${REACT_APP_API_KEY}`
+
+    const vampire_320 =
+        'https://media.rawg.io/media/stories-320/c66/c6692dc6b3d737d6e483b8ce64390b96.mp4'
+
+    const stalker_320 =
+        'https://media.rawg.io/media/stories-320/771/771a8dc6c1a6ad44cb45ce88f7bad80a.mp4'
 
     const [displayOptions, setDisplayOptions] =
         useState<DisplayOptinsType>('lines')
@@ -43,14 +49,14 @@ function Home() {
 
     const fetchMoreData: Fn = async () => {
         const response = await fetch(
-            `${REACT_APP_API_ENDPOINT}/games?key=${REACT_APP_API_KEY}&page=${correntPage}`
+            `${REACT_APP_API_ENDPOINT}/games/lists/main?discover=true&ordering=-relevance&page_size=40&key=${REACT_APP_API_KEY}&page=${correntPage}`
         )
         const nextData = await response.json()
 
         setCorrentPage((prev) => prev + 1)
         const nextPageGames: [] = nextData.results
         setGamesData((prevData) => [...prevData, ...nextPageGames])
-        console.log(nextPageGames)
+        // console.log(nextPageGames)
     }
 
     useEffect(() => {
@@ -58,6 +64,7 @@ function Home() {
             const data = await getGames(URL)
 
             setGamesData(data.results)
+            console.log(data.results)
         }
         fetchData()
         // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -192,6 +199,8 @@ function Home() {
                                 genres={game.genres}
                                 short_screenshots={game.short_screenshots}
                                 parent_platforms={game.parent_platforms}
+                                videoVampire={vampire_320}
+                                videoStalker={stalker_320}
                             />
                         ))}
                     </Box>
