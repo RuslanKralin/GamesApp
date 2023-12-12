@@ -330,6 +330,7 @@ function Aside() {
                 </Box>
             </Box>
 
+            {/* GANRES BLOCK */}
             <Link href="#" underline="none" sx={linkTitleStyle}>
                 Genres
             </Link>
@@ -356,7 +357,7 @@ function Aside() {
 
                         <Link
                             underline="none"
-                            href={ROUTES.LAST_DAYS}
+                            href={ROUTES.ACTION_PAGE}
                             sx={linkSubStyle}
                         >
                             Action

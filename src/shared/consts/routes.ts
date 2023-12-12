@@ -8,4 +8,6 @@ export const ROUTES = {
     ABOUT_GAME: '/about/:id',
 
     LAST_DAYS: '/last_days',
+
+    ACTION_PAGE: '/action',
 }
