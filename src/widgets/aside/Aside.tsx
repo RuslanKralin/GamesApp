@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Box, Typography, Link } from '@mui/material'
+import { Box, Typography, Link, Button } from '@mui/material'
 import StarIcon from '@mui/icons-material/Star'
 import LocalFireDepartmentIcon from '@mui/icons-material/LocalFireDepartment'
 import FastForwardIcon from '@mui/icons-material/FastForward'
@@ -40,6 +40,20 @@ const linkSubStyle = {
     color: 'primary',
     cursor: 'pointer',
     fontSize: '18px',
+}
+
+const linkItemSytle = {
+    display: 'flex',
+    alignItems: 'center',
+    gap: '10px',
+    '&:hover': {
+        // Стили, применяемые при наведении на компонент Box
+        '& svg': {
+            color: 'black',
+            transition: 'background-color 0.5s ease',
+            backgroundColor: 'white',
+        },
+    },
 }
 
 const iconStyle = {
@@ -89,30 +103,18 @@ function Aside() {
                         gap: '10px',
                     }}
                 >
-                    <Box
-                        sx={{
-                            display: 'flex',
-                            alignItems: 'center',
-                            gap: '10px',
-                        }}
-                    >
+                    <Box sx={linkItemSytle}>
                         <StarIcon sx={iconStyle} />
-
                         <Link
                             underline="none"
-                            href={ROUTES.LAST_DAYS}
+                            href={ROUTES.THIS_WEEK}
                             sx={linkSubStyle}
                         >
                             Last 30 days
                         </Link>
                     </Box>
-                    <Box
-                        sx={{
-                            display: 'flex',
-                            alignItems: 'center',
-                            gap: '10px',
-                        }}
-                    >
+
+                    <Box sx={linkItemSytle}>
                         <LocalFireDepartmentIcon sx={iconStyle} />
                         <Link
                             underline="none"
@@ -122,25 +124,13 @@ function Aside() {
                             This week
                         </Link>
                     </Box>
-                    <Box
-                        sx={{
-                            display: 'flex',
-                            alignItems: 'center',
-                            gap: '10px',
-                        }}
-                    >
+                    <Box sx={linkItemSytle}>
                         <FastForwardIcon sx={iconStyle} />
                         <Link underline="none" sx={linkSubStyle}>
                             Next week
                         </Link>
                     </Box>
-                    <Box
-                        sx={{
-                            display: 'flex',
-                            alignItems: 'center',
-                            gap: '10px',
-                        }}
-                    >
+                    <Box sx={linkItemSytle}>
                         <DateRangeIcon sx={iconStyle} />
 
                         <Link underline="none" sx={linkSubStyle}>
@@ -161,13 +151,7 @@ function Aside() {
                         gap: '10px',
                     }}
                 >
-                    <Box
-                        sx={{
-                            display: 'flex',
-                            alignItems: 'center',
-                            gap: '10px',
-                        }}
-                    >
+                    <Box sx={linkItemSytle}>
                         <EmojiEventsIcon sx={iconStyle} />
 
                         <Link
@@ -178,13 +162,7 @@ function Aside() {
                             Best of the year
                         </Link>
                     </Box>
-                    <Box
-                        sx={{
-                            display: 'flex',
-                            alignItems: 'center',
-                            gap: '10px',
-                        }}
-                    >
+                    <Box sx={linkItemSytle}>
                         <AssessmentIcon sx={iconStyle} />
                         <Link
                             underline="none"
@@ -194,13 +172,7 @@ function Aside() {
                             Popular in 2022
                         </Link>
                     </Box>
-                    <Box
-                        sx={{
-                            display: 'flex',
-                            alignItems: 'center',
-                            gap: '10px',
-                        }}
-                    >
+                    <Box sx={linkItemSytle}>
                         <Diversity1Icon sx={iconStyle} />
                         <Link underline="none" sx={linkSubStyle}>
                             All the time top 250
@@ -223,13 +195,7 @@ function Aside() {
                         gap: '10px',
                     }}
                 >
-                    <Box
-                        sx={{
-                            display: 'flex',
-                            alignItems: 'center',
-                            gap: '10px',
-                        }}
-                    >
+                    <Box sx={linkItemSytle}>
                         <SportsEsportsIcon sx={iconStyle} />
 
                         <Link
@@ -240,13 +206,7 @@ function Aside() {
                             Platforms
                         </Link>
                     </Box>
-                    <Box
-                        sx={{
-                            display: 'flex',
-                            alignItems: 'center',
-                            gap: '10px',
-                        }}
-                    >
+                    <Box sx={linkItemSytle}>
                         <DownloadIcon sx={iconStyle} />
                         <Link
                             underline="none"
@@ -256,13 +216,7 @@ function Aside() {
                             Stores
                         </Link>
                     </Box>
-                    <Box
-                        sx={{
-                            display: 'flex',
-                            alignItems: 'center',
-                            gap: '10px',
-                        }}
-                    >
+                    <Box sx={linkItemSytle}>
                         <FolderCopyIcon sx={iconStyle} />
                         <Link underline="none" sx={linkSubStyle}>
                             Collections
@@ -282,13 +236,7 @@ function Aside() {
                         gap: '10px',
                     }}
                 >
-                    <Box
-                        sx={{
-                            display: 'flex',
-                            alignItems: 'center',
-                            gap: '10px',
-                        }}
-                    >
+                    <Box sx={linkItemSytle}>
                         <ComputerIcon sx={iconStyle} />
 
                         <Link
@@ -299,13 +247,7 @@ function Aside() {
                             PC
                         </Link>
                     </Box>
-                    <Box
-                        sx={{
-                            display: 'flex',
-                            alignItems: 'center',
-                            gap: '10px',
-                        }}
-                    >
+                    <Box sx={linkItemSytle}>
                         <SportsEsportsIcon sx={iconStyle} />
                         <Link
                             underline="none"
@@ -315,13 +257,7 @@ function Aside() {
                             Play Station 4
                         </Link>
                     </Box>
-                    <Box
-                        sx={{
-                            display: 'flex',
-                            alignItems: 'center',
-                            gap: '10px',
-                        }}
-                    >
+                    <Box sx={linkItemSytle}>
                         <FolderCopyIcon sx={iconStyle} />
                         <Link underline="none" sx={linkSubStyle}>
                             Xbox One

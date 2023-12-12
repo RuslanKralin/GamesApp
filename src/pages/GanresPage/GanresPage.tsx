@@ -31,6 +31,7 @@ async function getGames(URL: string) {
 
 function GanresPage({ pageTitle, description }: Props) {
     const { REACT_APP_API_ENDPOINT, REACT_APP_API_KEY } = process.env
+
     const URL: string = `https://rawg.io/api/games?genres=4&page=1&page_size=40&filter=true&comments=true&key=${REACT_APP_API_KEY}`
 
     const vampire_320 =
