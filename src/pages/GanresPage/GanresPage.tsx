@@ -8,11 +8,17 @@ import { CardItem, CardItemBigSize } from 'shared/ui'
 import InfiniteScroll from 'react-infinite-scroll-component'
 
 type Props = {
+    url?: string
     pageTitle?: string
     description?: string
 }
+
 type Fn = () => void
 type DisplayOptinsType = 'lines' | 'bigSize'
+type TypeGamesData = {
+    seo_description: string
+    results: any[]
+}
 
 const iconStyle = {
     border: '1px grey',
@@ -23,6 +29,7 @@ const iconStyle = {
     width: '50px',
     height: '50px',
 }
+
 async function getGames(URL: string) {
     const response = await fetch(URL)
     const data = await response.json()
@@ -43,7 +50,12 @@ function GanresPage({ pageTitle, description }: Props) {
     const [displayOptions, setDisplayOptions] =
         useState<DisplayOptinsType>('lines')
 
-    const [gamesData, setGamesData] = useState([])
+    const [gamesData, setGamesData] = useState<TypeGamesData>({
+        seo_description: '',
+        results: [],
+    })
+    // const [pageDataInfo, setPageDataInfo] = useState([]);
+
     const [correntPage, setCorrentPage] = useState(2)
 
     const fetchMoreData: Fn = async () => {
@@ -54,7 +66,10 @@ function GanresPage({ pageTitle, description }: Props) {
 
         setCorrentPage((prev) => prev + 1)
         const nextPageGames: [] = nextData.results
-        setGamesData((prevData) => [...prevData, ...nextPageGames])
+        setGamesData((prevData) => ({
+            ...prevData,
+            results: [...prevData.results, ...nextPageGames],
+        }))
         // console.log(nextPageGames)
     }
 
@@ -62,8 +77,10 @@ function GanresPage({ pageTitle, description }: Props) {
         async function fetchData() {
             const data = await getGames(URL)
 
-            setGamesData(data.results)
-            console.log(data.results)
+            setGamesData(data)
+            // console.log(data.results)
+            // setPageDataInfo(data);
+            console.log(data.seo_description)
         }
         fetchData()
         // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -93,19 +110,7 @@ function GanresPage({ pageTitle, description }: Props) {
                 </Box>
             </Box>
             <Box>
-                <Typography>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Quae deleniti facere architecto, magni, sed optio rerum
-                    iusto fugiat fugit pariatur facilis voluptatem hic laborum
-                    vitae iste. Beatae repudiandae saepe quod. Lorem ipsum dolor
-                    sit amet consectetur adipisicing elit. Quae deleniti facere
-                    architecto, magni, sed optio rerum iusto fugiat fugit
-                    pariatur facilis voluptatem hic laborum vitae iste. Beatae
-                    repudiandae saepe quod. sit amet consectetur adipisicing
-                    elit. Quae deleniti facere architecto, magni, sed optio
-                    rerum iusto fugiat fugit pariatur facilis voluptatem hic
-                    laborum vitae iste. Beatae repudiandae saepe quod.
-                </Typography>
+                <Typography>{gamesData.seo_description}</Typography>
             </Box>
             <TagGroup />
             <Box
@@ -186,7 +191,7 @@ function GanresPage({ pageTitle, description }: Props) {
             </Box>
             {displayOptions === 'lines' && (
                 <InfiniteScroll
-                    dataLength={gamesData.length}
+                    dataLength={gamesData.results.length}
                     next={fetchMoreData}
                     hasMore={true}
                     loader={<h4>Loading...</h4>}
@@ -204,7 +209,7 @@ function GanresPage({ pageTitle, description }: Props) {
                             justifyContent: 'space-between',
                         }}
                     >
-                        {gamesData.map((game: any) => (
+                        {gamesData.results.map((game: any) => (
                             <CardItem
                                 key={game.id}
                                 title={game.name}
@@ -234,7 +239,7 @@ function GanresPage({ pageTitle, description }: Props) {
                     }}
                 >
                     <InfiniteScroll
-                        dataLength={gamesData.length}
+                        dataLength={gamesData.results.length}
                         next={fetchMoreData}
                         hasMore={true}
                         loader={<h4>Loading...</h4>}
@@ -244,12 +249,12 @@ function GanresPage({ pageTitle, description }: Props) {
                             </p>
                         }
                     >
-                        {gamesData.map((game: any, index: number) => (
+                        {gamesData.results.map((game: any, index: number) => (
                             <div
                                 key={game.id}
                                 style={{
                                     marginBottom:
-                                        index !== gamesData.length - 1
+                                        index !== gamesData.results.length - 1
                                             ? '50px'
                                             : 0,
                                 }}

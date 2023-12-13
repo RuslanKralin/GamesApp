@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import { Box, Typography, Link, Button } from '@mui/material'
 import StarIcon from '@mui/icons-material/Star'
@@ -73,6 +73,13 @@ const iconStyle = {
 }
 
 function Aside() {
+    const { REACT_APP_API_ENDPOINT, REACT_APP_API_KEY } = process.env
+
+    const [url, setUrl] = useState('')
+
+    // function getUrl(URL: string) {
+    //     setUrl(URL)
+    // }
     return (
         <Box
             sx={{
@@ -295,6 +302,9 @@ function Aside() {
                             underline="none"
                             href={ROUTES.ACTION_PAGE}
                             sx={linkSubStyle}
+                            // onClick={getUrl(
+                            //     `https://rawg.io/api/games?genres=4&page=1&page_size=40&filter=true&comments=true&key=${REACT_APP_API_KEY}`
+                            // )}
                         >
                             Action
                         </Link>
