@@ -23,6 +23,8 @@ const router = createBrowserRouter(
                 <Route path={ROUTES.ABOUT_GAME} element={<AboutGame />} />
                 <Route path={ROUTES.LAST_DAYS} element={<LastDays />} />
                 <Route path={ROUTES.ACTION_PAGE} element={<GanresPage />} />
+                <Route path={ROUTES.STRATEGY_PAGE} element={<GanresPage />} />
+                <Route path={ROUTES.RPG_PAGE} element={<GanresPage />} />
             </Route>
         </>
     )

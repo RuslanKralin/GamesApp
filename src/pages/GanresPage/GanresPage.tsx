@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { Box, Button, Typography } from '@mui/material'
+import { useLocation } from 'react-router-dom'
+
+import { pageMetaInfo } from 'app/data'
 
 import { TagGroup } from './ui/TagGroup'
 import GridOnIcon from '@mui/icons-material/GridOn'
@@ -15,9 +18,10 @@ type Props = {
 
 type Fn = () => void
 type DisplayOptinsType = 'lines' | 'bigSize'
-type TypeGamesData = {
-    seo_description: string
-    results: any[]
+interface TypeGamesData {
+    description: string
+    results: never[]
+    seo_h1: string
 }
 
 const iconStyle = {
@@ -39,20 +43,42 @@ async function getGames(URL: string) {
 function GanresPage({ pageTitle, description }: Props) {
     const { REACT_APP_API_ENDPOINT, REACT_APP_API_KEY } = process.env
 
-    const URL: string = `https://rawg.io/api/games?genres=4&page=1&page_size=40&filter=true&comments=true&key=${REACT_APP_API_KEY}`
+    const location = useLocation()
+    const currentURL = location.pathname
+    const actionPageMetaInfo = pageMetaInfo[0]
+    const strategyPageMetaInfo = pageMetaInfo[1]
+    const rpgPageMetaInfo = pageMetaInfo[2]
 
-    const vampire_320 =
-        'https://media.rawg.io/media/stories-320/c66/c6692dc6b3d737d6e483b8ce64390b96.mp4'
+    const actionUrl = actionPageMetaInfo.url
+    const strategyUrl = strategyPageMetaInfo.url
+    const rpgUrl = rpgPageMetaInfo.url
 
-    const stalker_320 =
-        'https://media.rawg.io/media/stories-320/771/771a8dc6c1a6ad44cb45ce88f7bad80a.mp4'
+    // const [url, setUrl] = useState('')
+
+    const getCurrentURL = () => {
+        if (currentURL === '/action') {
+            return actionUrl
+        } else if (currentURL === '/strategy') {
+            return strategyUrl
+        } else if (currentURL === '/RPG') {
+            return rpgUrl
+        }
+
+        return currentURL
+    }
+
+    const url = getCurrentURL()
+
+    const URL: string = `${url}&key=${REACT_APP_API_KEY}`
+    // console.log(URL)
 
     const [displayOptions, setDisplayOptions] =
         useState<DisplayOptinsType>('lines')
 
     const [gamesData, setGamesData] = useState<TypeGamesData>({
-        seo_description: '',
+        description: '',
         results: [],
+        seo_h1: '',
     })
     // const [pageDataInfo, setPageDataInfo] = useState([]);
 
@@ -60,7 +86,7 @@ function GanresPage({ pageTitle, description }: Props) {
 
     const fetchMoreData: Fn = async () => {
         const response = await fetch(
-            `https://rawg.io/api/games?genres=4&page=1&page_size=40&filter=true&comments=true&key=${REACT_APP_API_KEY}&page=${correntPage}`
+            `${url}&key=${REACT_APP_API_KEY}&page=${correntPage}`
         )
         const nextData = await response.json()
 
@@ -80,9 +106,10 @@ function GanresPage({ pageTitle, description }: Props) {
             setGamesData(data)
             // console.log(data.results)
             // setPageDataInfo(data);
-            console.log(data.seo_description)
+            console.log(gamesData.description)
         }
         fetchData()
+
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
     return (
@@ -102,7 +129,7 @@ function GanresPage({ pageTitle, description }: Props) {
                 }}
             >
                 <Typography variant="h1" sx={{ fontWeight: '700' }}>
-                    Action games
+                    {gamesData.seo_h1}
                 </Typography>
                 <Box>
                     <Button>qwe</Button>
@@ -110,7 +137,9 @@ function GanresPage({ pageTitle, description }: Props) {
                 </Box>
             </Box>
             <Box>
-                <Typography>{gamesData.seo_description}</Typography>
+                <Typography>
+                    {gamesData.description.replace(/<\/?p>/g, '')}
+                </Typography>
             </Box>
             <TagGroup />
             <Box
@@ -220,8 +249,6 @@ function GanresPage({ pageTitle, description }: Props) {
                                 genres={game.genres}
                                 short_screenshots={game.short_screenshots}
                                 parent_platforms={game.parent_platforms}
-                                videoVampire={vampire_320}
-                                videoStalker={stalker_320}
                             />
                         ))}
                     </Box>

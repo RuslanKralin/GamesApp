@@ -138,26 +138,22 @@ function Header() {
                         type="search"
                         fullWidth
                         sx={{
-                            // width: '50rem',
                             backgroundColor: '#3b3b3b',
-                            color: 'white',
                             border: 'none',
                             borderRadius: '50px',
                             '&:hover': {
                                 backgroundColor: 'white',
                                 transition: 'background-color 0.3s ease',
+                                '&::placeholder': {
+                                    color: 'black',
+                                },
                             },
-                            '& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline':
-                                {
-                                    borderColor: 'transparent', // Убираем цвет обводки при активации
-                                },
-                            '& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-input':
-                                {
-                                    boxShadow: 'none', // Убираем тень при активации
-                                },
+                            '&::placeholder': {
+                                color: 'grey',
+                            },
                         }}
                         variant="outlined"
-                        placeholder="Search all you need"
+                        placeholder="Search 860,253 games"
                         InputProps={{
                             startAdornment: (
                                 <InputAdornment position="start">
@@ -165,7 +161,7 @@ function Header() {
                                         sx={{
                                             color: 'grey',
                                             '&:hover': {
-                                                color: 'black',
+                                                color: 'red', // не работает
                                             },
                                         }}
                                     />

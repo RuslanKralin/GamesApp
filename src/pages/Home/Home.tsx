@@ -64,7 +64,7 @@ function Home() {
             const data = await getGames(URL)
 
             setGamesData(data.results)
-            console.log(data.results)
+            // console.log(data.results)
         }
         fetchData()
         // eslint-disable-next-line react-hooks/exhaustive-deps

@@ -72,8 +72,8 @@ type CardItemPropsType = {
     genres: string[]
     short_screenshots: string[]
     parent_platforms: platform[]
-    videoVampire: string
-    videoStalker: string
+    videoVampire?: string
+    videoStalker?: string
 }
 
 function CardItem(props: CardItemPropsType) {

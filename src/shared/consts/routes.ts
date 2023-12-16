@@ -10,4 +10,6 @@ export const ROUTES = {
     LAST_DAYS: '/last_days',
 
     ACTION_PAGE: '/action',
+    STRATEGY_PAGE: '/strategy',
+    RPG_PAGE: '/RPG',
 }
