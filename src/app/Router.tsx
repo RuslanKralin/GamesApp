@@ -25,6 +25,11 @@ const router = createBrowserRouter(
                 <Route path={ROUTES.ACTION_PAGE} element={<GanresPage />} />
                 <Route path={ROUTES.STRATEGY_PAGE} element={<GanresPage />} />
                 <Route path={ROUTES.RPG_PAGE} element={<GanresPage />} />
+                <Route path={ROUTES.SHOOTER_PAGE} element={<GanresPage />} />
+                <Route path={ROUTES.ADVENTURE_PAGE} element={<GanresPage />} />
+                <Route path={ROUTES.PUZZLE_PAGE} element={<GanresPage />} />
+                <Route path={ROUTES.RACING_PAGE} element={<GanresPage />} />
+                <Route path={ROUTES.SPORTS_PAGE} element={<GanresPage />} />
             </Route>
         </>
     )

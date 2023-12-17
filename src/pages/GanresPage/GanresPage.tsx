@@ -45,13 +45,24 @@ function GanresPage({ pageTitle, description }: Props) {
 
     const location = useLocation()
     const currentURL = location.pathname
+
     const actionPageMetaInfo = pageMetaInfo[0]
     const strategyPageMetaInfo = pageMetaInfo[1]
     const rpgPageMetaInfo = pageMetaInfo[2]
+    const shooterPageMetaInfo = pageMetaInfo[3]
+    const adventurePageMetaInfo = pageMetaInfo[4]
+    const puzzlePageMetaInfo = pageMetaInfo[5]
+    const racingPageMetaInfo = pageMetaInfo[6]
+    const sportsPageMetaInfo = pageMetaInfo[7]
 
     const actionUrl = actionPageMetaInfo.url
     const strategyUrl = strategyPageMetaInfo.url
     const rpgUrl = rpgPageMetaInfo.url
+    const shooterUrl = shooterPageMetaInfo.url
+    const adventureUrl = adventurePageMetaInfo.url
+    const puzzleUrl = puzzlePageMetaInfo.url
+    const racingUrl = racingPageMetaInfo.url
+    const sportsUrl = sportsPageMetaInfo.url
 
     // const [url, setUrl] = useState('')
 
@@ -62,6 +73,16 @@ function GanresPage({ pageTitle, description }: Props) {
             return strategyUrl
         } else if (currentURL === '/RPG') {
             return rpgUrl
+        } else if (currentURL === '/shooter') {
+            return shooterUrl
+        } else if (currentURL === '/adventure') {
+            return adventureUrl
+        } else if (currentURL === '/puzzle') {
+            return puzzleUrl
+        } else if (currentURL === '/racing') {
+            return racingUrl
+        } else if (currentURL === '/sports') {
+            return sportsUrl
         }
 
         return currentURL
