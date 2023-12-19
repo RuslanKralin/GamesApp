@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Box, Button, Typography } from '@mui/material'
-import { useLocation } from 'react-router-dom'
+import { useLocation, useParams } from 'react-router-dom'
 
 import { pageMetaInfo } from 'app/data'
 
@@ -11,9 +11,7 @@ import { CardItem, CardItemBigSize } from 'shared/ui'
 import InfiniteScroll from 'react-infinite-scroll-component'
 
 type Props = {
-    url?: string
-    pageTitle?: string
-    description?: string
+    id?: number
 }
 
 type Fn = () => void
@@ -40,57 +38,58 @@ async function getGames(URL: string) {
     return data
 }
 
-function GanresPage({ pageTitle, description }: Props) {
+function GanresPage() {
+    const { id } = useParams()
     const { REACT_APP_API_ENDPOINT, REACT_APP_API_KEY } = process.env
 
-    const location = useLocation()
-    const currentURL = location.pathname
+    // const location = useLocation()
+    // const currentURL = location.pathname
 
-    const actionPageMetaInfo = pageMetaInfo[0]
-    const strategyPageMetaInfo = pageMetaInfo[1]
-    const rpgPageMetaInfo = pageMetaInfo[2]
-    const shooterPageMetaInfo = pageMetaInfo[3]
-    const adventurePageMetaInfo = pageMetaInfo[4]
-    const puzzlePageMetaInfo = pageMetaInfo[5]
-    const racingPageMetaInfo = pageMetaInfo[6]
-    const sportsPageMetaInfo = pageMetaInfo[7]
+    // const actionPageMetaInfo = pageMetaInfo[0]
+    // const strategyPageMetaInfo = pageMetaInfo[1]
+    // const rpgPageMetaInfo = pageMetaInfo[2]
+    // const shooterPageMetaInfo = pageMetaInfo[3]
+    // const adventurePageMetaInfo = pageMetaInfo[4]
+    // const puzzlePageMetaInfo = pageMetaInfo[5]
+    // const racingPageMetaInfo = pageMetaInfo[6]
+    // const sportsPageMetaInfo = pageMetaInfo[7]
 
-    const actionUrl = actionPageMetaInfo.url
-    const strategyUrl = strategyPageMetaInfo.url
-    const rpgUrl = rpgPageMetaInfo.url
-    const shooterUrl = shooterPageMetaInfo.url
-    const adventureUrl = adventurePageMetaInfo.url
-    const puzzleUrl = puzzlePageMetaInfo.url
-    const racingUrl = racingPageMetaInfo.url
-    const sportsUrl = sportsPageMetaInfo.url
+    // const actionUrl = actionPageMetaInfo.url
+    // const strategyUrl = strategyPageMetaInfo.url
+    // const rpgUrl = rpgPageMetaInfo.url
+    // const shooterUrl = shooterPageMetaInfo.url
+    // const adventureUrl = adventurePageMetaInfo.url
+    // const puzzleUrl = puzzlePageMetaInfo.url
+    // const racingUrl = racingPageMetaInfo.url
+    // const sportsUrl = sportsPageMetaInfo.url
 
     // const [url, setUrl] = useState('')
 
-    const getCurrentURL = () => {
-        if (currentURL === '/action') {
-            return actionUrl
-        } else if (currentURL === '/strategy') {
-            return strategyUrl
-        } else if (currentURL === '/RPG') {
-            return rpgUrl
-        } else if (currentURL === '/shooter') {
-            return shooterUrl
-        } else if (currentURL === '/adventure') {
-            return adventureUrl
-        } else if (currentURL === '/puzzle') {
-            return puzzleUrl
-        } else if (currentURL === '/racing') {
-            return racingUrl
-        } else if (currentURL === '/sports') {
-            return sportsUrl
-        }
+    // const getCurrentURL = () => {
+    //     if (currentURL === '/action') {
+    //         return actionUrl
+    //     } else if (currentURL === '/strategy') {
+    //         return strategyUrl
+    //     } else if (currentURL === '/RPG') {
+    //         return rpgUrl
+    //     } else if (currentURL === '/shooter') {
+    //         return shooterUrl
+    //     } else if (currentURL === '/adventure') {
+    //         return adventureUrl
+    //     } else if (currentURL === '/puzzle') {
+    //         return puzzleUrl
+    //     } else if (currentURL === '/racing') {
+    //         return racingUrl
+    //     } else if (currentURL === '/sports') {
+    //         return sportsUrl
+    //     }
 
-        return currentURL
-    }
+    //     return currentURL
+    // }
 
-    const url = getCurrentURL()
+    // const url = getCurrentURL()
 
-    const URL: string = `${url}&key=${REACT_APP_API_KEY}`
+    const URL: string = `https://rawg.io/api/games?genres=${id}&page=1&page_size=40&filter=true&comments=true&key=${REACT_APP_API_KEY}`
     // console.log(URL)
 
     const [displayOptions, setDisplayOptions] =
@@ -107,7 +106,7 @@ function GanresPage({ pageTitle, description }: Props) {
 
     const fetchMoreData: Fn = async () => {
         const response = await fetch(
-            `${url}&key=${REACT_APP_API_KEY}&page=${correntPage}`
+            `${URL}&key=${REACT_APP_API_KEY}&page=${correntPage}`
         )
         const nextData = await response.json()
 

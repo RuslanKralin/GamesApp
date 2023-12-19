@@ -22,14 +22,14 @@ const router = createBrowserRouter(
                 <Route path={ROUTES.THIS_WEEK} element={<ThisWeek />} />
                 <Route path={ROUTES.ABOUT_GAME} element={<AboutGame />} />
                 <Route path={ROUTES.LAST_DAYS} element={<LastDays />} />
-                <Route path={ROUTES.ACTION_PAGE} element={<GanresPage />} />
-                <Route path={ROUTES.STRATEGY_PAGE} element={<GanresPage />} />
+                <Route path={ROUTES.GENRE} element={<GanresPage />} />
+                {/* <Route path={ROUTES.STRATEGY_PAGE} element={<GanresPage />} />
                 <Route path={ROUTES.RPG_PAGE} element={<GanresPage />} />
                 <Route path={ROUTES.SHOOTER_PAGE} element={<GanresPage />} />
                 <Route path={ROUTES.ADVENTURE_PAGE} element={<GanresPage />} />
                 <Route path={ROUTES.PUZZLE_PAGE} element={<GanresPage />} />
                 <Route path={ROUTES.RACING_PAGE} element={<GanresPage />} />
-                <Route path={ROUTES.SPORTS_PAGE} element={<GanresPage />} />
+                <Route path={ROUTES.SPORTS_PAGE} element={<GanresPage />} /> */}
             </Route>
         </>
     )

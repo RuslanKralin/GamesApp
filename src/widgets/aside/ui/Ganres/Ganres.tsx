@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { generatePath, useNavigate } from 'react-router-dom'
 
 import { Box, Typography, Link, Button } from '@mui/material'
 // import StarIcon from '@mui/icons-material/Star'
@@ -68,7 +69,9 @@ function Ganres() {
 
                         <Link
                             underline="none"
-                            href={ROUTES.ACTION_PAGE}
+                            href={generatePath(ROUTES.GENRE, {
+                                id: String(4),
+                            })}
                             sx={linkSubStyle}
                         >
                             Action
@@ -88,7 +91,9 @@ function Ganres() {
                         />
                         <Link
                             underline="none"
-                            href={ROUTES.STRATEGY_PAGE}
+                            href={generatePath(ROUTES.GENRE, {
+                                id: String(10),
+                            })}
                             sx={linkSubStyle}
                         >
                             Strategy
@@ -108,7 +113,9 @@ function Ganres() {
                         />
                         <Link
                             underline="none"
-                            href={ROUTES.RPG_PAGE}
+                            href={generatePath(ROUTES.GENRE, {
+                                id: String(5),
+                            })}
                             sx={linkSubStyle}
                         >
                             RPG
@@ -163,7 +170,9 @@ function Ganres() {
                             />
                             <Link
                                 underline="none"
-                                href={ROUTES.SHOOTER_PAGE}
+                                href={generatePath(ROUTES.GENRE, {
+                                    id: String(2),
+                                })}
                                 sx={linkSubStyle}
                             >
                                 Shooter
@@ -183,7 +192,9 @@ function Ganres() {
                             />
                             <Link
                                 underline="none"
-                                href={ROUTES.ADVENTURE_PAGE}
+                                href={generatePath(ROUTES.GENRE, {
+                                    id: String(3),
+                                })}
                                 sx={linkSubStyle}
                             >
                                 Adventure
@@ -204,7 +215,9 @@ function Ganres() {
 
                             <Link
                                 underline="none"
-                                href={ROUTES.PUZZLE_PAGE}
+                                href={generatePath(ROUTES.GENRE, {
+                                    id: String(7),
+                                })}
                                 sx={linkSubStyle}
                             >
                                 Puzzle
@@ -225,7 +238,9 @@ function Ganres() {
 
                             <Link
                                 underline="none"
-                                href={ROUTES.RACING_PAGE}
+                                href={generatePath(ROUTES.GENRE, {
+                                    id: String(1),
+                                })}
                                 sx={linkSubStyle}
                             >
                                 Racing
@@ -245,7 +260,9 @@ function Ganres() {
                             />
                             <Link
                                 underline="none"
-                                href={ROUTES.SPORTS_PAGE}
+                                href={generatePath(ROUTES.GENRE, {
+                                    id: String(15),
+                                })}
                                 sx={linkSubStyle}
                             >
                                 Sports
