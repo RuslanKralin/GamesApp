@@ -8,6 +8,7 @@ import {
 import { Layout } from './Layout'
 import { AboutGame, Home, LastDays, ThisWeek, GanresPage } from 'pages'
 import { ROUTES } from 'shared/consts/routes' // ошибка в ином случае, решить позже
+import { Genres } from 'pages/Genres'
 
 const router = createBrowserRouter(
     createRoutesFromElements(
@@ -23,13 +24,7 @@ const router = createBrowserRouter(
                 <Route path={ROUTES.ABOUT_GAME} element={<AboutGame />} />
                 <Route path={ROUTES.LAST_DAYS} element={<LastDays />} />
                 <Route path={ROUTES.GENRE} element={<GanresPage />} />
-                {/* <Route path={ROUTES.STRATEGY_PAGE} element={<GanresPage />} />
-                <Route path={ROUTES.RPG_PAGE} element={<GanresPage />} />
-                <Route path={ROUTES.SHOOTER_PAGE} element={<GanresPage />} />
-                <Route path={ROUTES.ADVENTURE_PAGE} element={<GanresPage />} />
-                <Route path={ROUTES.PUZZLE_PAGE} element={<GanresPage />} />
-                <Route path={ROUTES.RACING_PAGE} element={<GanresPage />} />
-                <Route path={ROUTES.SPORTS_PAGE} element={<GanresPage />} /> */}
+                <Route path={ROUTES.GENRES_PAGE} element={<Genres />} />
             </Route>
         </>
     )

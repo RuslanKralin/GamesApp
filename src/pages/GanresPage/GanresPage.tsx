@@ -1,18 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import { Box, Button, Typography } from '@mui/material'
-import { useLocation, useParams } from 'react-router-dom'
-
-import { pageMetaInfo } from 'app/data'
+import { useParams } from 'react-router-dom'
 
 import { TagGroup } from './ui/TagGroup'
 import GridOnIcon from '@mui/icons-material/GridOn'
 import WebAssetIcon from '@mui/icons-material/WebAsset'
 import { CardItem, CardItemBigSize } from 'shared/ui'
 import InfiniteScroll from 'react-infinite-scroll-component'
-
-type Props = {
-    id?: number
-}
 
 type Fn = () => void
 type DisplayOptinsType = 'lines' | 'bigSize'
@@ -42,55 +36,7 @@ function GanresPage() {
     const { id } = useParams()
     const { REACT_APP_API_ENDPOINT, REACT_APP_API_KEY } = process.env
 
-    // const location = useLocation()
-    // const currentURL = location.pathname
-
-    // const actionPageMetaInfo = pageMetaInfo[0]
-    // const strategyPageMetaInfo = pageMetaInfo[1]
-    // const rpgPageMetaInfo = pageMetaInfo[2]
-    // const shooterPageMetaInfo = pageMetaInfo[3]
-    // const adventurePageMetaInfo = pageMetaInfo[4]
-    // const puzzlePageMetaInfo = pageMetaInfo[5]
-    // const racingPageMetaInfo = pageMetaInfo[6]
-    // const sportsPageMetaInfo = pageMetaInfo[7]
-
-    // const actionUrl = actionPageMetaInfo.url
-    // const strategyUrl = strategyPageMetaInfo.url
-    // const rpgUrl = rpgPageMetaInfo.url
-    // const shooterUrl = shooterPageMetaInfo.url
-    // const adventureUrl = adventurePageMetaInfo.url
-    // const puzzleUrl = puzzlePageMetaInfo.url
-    // const racingUrl = racingPageMetaInfo.url
-    // const sportsUrl = sportsPageMetaInfo.url
-
-    // const [url, setUrl] = useState('')
-
-    // const getCurrentURL = () => {
-    //     if (currentURL === '/action') {
-    //         return actionUrl
-    //     } else if (currentURL === '/strategy') {
-    //         return strategyUrl
-    //     } else if (currentURL === '/RPG') {
-    //         return rpgUrl
-    //     } else if (currentURL === '/shooter') {
-    //         return shooterUrl
-    //     } else if (currentURL === '/adventure') {
-    //         return adventureUrl
-    //     } else if (currentURL === '/puzzle') {
-    //         return puzzleUrl
-    //     } else if (currentURL === '/racing') {
-    //         return racingUrl
-    //     } else if (currentURL === '/sports') {
-    //         return sportsUrl
-    //     }
-
-    //     return currentURL
-    // }
-
-    // const url = getCurrentURL()
-
     const URL: string = `https://rawg.io/api/games?genres=${id}&page=1&page_size=40&filter=true&comments=true&key=${REACT_APP_API_KEY}`
-    // console.log(URL)
 
     const [displayOptions, setDisplayOptions] =
         useState<DisplayOptinsType>('lines')
@@ -100,7 +46,6 @@ function GanresPage() {
         results: [],
         seo_h1: '',
     })
-    // const [pageDataInfo, setPageDataInfo] = useState([]);
 
     const [correntPage, setCorrentPage] = useState(2)
 

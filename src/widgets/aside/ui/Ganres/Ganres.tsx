@@ -43,7 +43,11 @@ function Ganres() {
 
     return (
         <>
-            <Link href="#" underline="none" sx={linkTitleStyle}>
+            <Link
+                href={ROUTES.GENRES_PAGE}
+                underline="none"
+                sx={linkTitleStyle}
+            >
                 Genres
             </Link>
             <Box sx={{ marginBottom: '30px' }}>

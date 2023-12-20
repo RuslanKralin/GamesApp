@@ -15,7 +15,7 @@ const btnStyle = {
 }
 
 function TagGroup() {
-    const [gamesData, setGamesData] = useState([])
+    // const [gamesData, setGamesData] = useState([])
     return (
         <Box
             sx={{

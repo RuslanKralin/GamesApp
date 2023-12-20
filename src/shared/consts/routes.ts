@@ -10,4 +10,6 @@ export const ROUTES = {
     LAST_DAYS: '/last_days',
 
     GENRE: '/ganres/:id',
+
+    GENRES_PAGE: '/genres',
 }

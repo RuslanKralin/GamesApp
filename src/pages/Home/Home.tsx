@@ -7,7 +7,7 @@ import WebAssetIcon from '@mui/icons-material/WebAsset'
 
 import { default as CardItem } from '../../shared/ui/CardItem'
 import { CardItemBigSize } from 'shared/ui'
-import { useBoolState } from 'shared/hooks'
+// import { useBoolState } from 'shared/hooks'
 
 type DisplayOptinsType = 'lines' | 'bigSize'
 type Fn = () => void
