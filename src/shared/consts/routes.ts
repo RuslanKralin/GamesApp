@@ -9,6 +9,8 @@ export const ROUTES = {
 
     LAST_DAYS: '/last_days',
 
+    NEXT_WEEK: '/next_week',
+
     GENRE: '/ganres/:id',
 
     GENRES_PAGE: '/genres',

@@ -112,7 +112,7 @@ function Aside() {
                         <StarIcon sx={iconStyle} />
                         <Link
                             underline="none"
-                            href={ROUTES.THIS_WEEK}
+                            href={ROUTES.LAST_DAYS}
                             sx={linkSubStyle}
                         >
                             Last 30 days
@@ -131,7 +131,11 @@ function Aside() {
                     </Box>
                     <Box sx={linkItemSytle}>
                         <FastForwardIcon sx={iconStyle} />
-                        <Link underline="none" sx={linkSubStyle}>
+                        <Link
+                            underline="none"
+                            href={ROUTES.NEXT_WEEK}
+                            sx={linkSubStyle}
+                        >
                             Next week
                         </Link>
                     </Box>

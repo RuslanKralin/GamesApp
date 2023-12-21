@@ -7,8 +7,7 @@ import GridOnIcon from '@mui/icons-material/GridOn'
 import WebAssetIcon from '@mui/icons-material/WebAsset'
 import { CardItemBigSize } from 'shared/ui'
 
-const API_KEY: string = 'e1f2ed8b762a4f76ab4883d16cfec313'
-const URL_THIS_WEEK: string = `https://api.rawg.io/api/games?key=${API_KEY}&dates=2023-11-01,2023-12-01`
+// const URL_THIS_WEEK: string = `https://api.rawg.io/api/games?key=${API_KEY}&dates=2023-11-01,2023-12-01`
 
 type DisplayOptinsType = 'lines' | 'bigSize'
 type Fn = () => void
@@ -24,14 +23,15 @@ const iconStyle = {
 }
 
 async function getGames(URL: string) {
-    const response = await fetch(URL_THIS_WEEK)
+    const response = await fetch(URL)
     const data = await response.json()
     return data
 }
 
 function LastDays() {
     const { REACT_APP_API_ENDPOINT, REACT_APP_API_KEY } = process.env
-    const URL: string = `${REACT_APP_API_ENDPOINT}/games?key=${REACT_APP_API_KEY}`
+
+    const URL: string = `${REACT_APP_API_ENDPOINT}/games/lists/recent-games-past?discover=true&ordering=-added&page_size=20&page=1&key=${REACT_APP_API_KEY}`
 
     const vampire_320 =
         'https://media.rawg.io/media/stories-320/c66/c6692dc6b3d737d6e483b8ce64390b96.mp4'
@@ -46,9 +46,7 @@ function LastDays() {
     const [correntPage, setCorrentPage] = useState(2)
 
     const fetchMoreData: Fn = async () => {
-        const response = await fetch(
-            `${REACT_APP_API_ENDPOINT}/games?key=${REACT_APP_API_KEY}&page=${correntPage}` // исправить на корректный запрос
-        )
+        const response = await fetch(`${URL}&page=${correntPage}`)
         const nextData = await response.json()
 
         setCorrentPage((prev) => prev + 1)
@@ -59,7 +57,7 @@ function LastDays() {
 
     useEffect(() => {
         async function fetchData() {
-            const data = await getGames(URL_THIS_WEEK)
+            const data = await getGames(URL)
             console.log(data)
             setGamesData(data.results)
         }

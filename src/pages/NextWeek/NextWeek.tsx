@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react'
-import InfiniteScroll from 'react-infinite-scroll-component'
 import { Typography, Box, Button } from '@mui/material'
+import InfiniteScroll from 'react-infinite-scroll-component'
+import { CardItem } from 'shared/ui'
 
 import GridOnIcon from '@mui/icons-material/GridOn'
 import WebAssetIcon from '@mui/icons-material/WebAsset'
-
-import { CardItem } from 'shared/ui'
 import { CardItemBigSize } from 'shared/ui'
 
 type DisplayOptinsType = 'lines' | 'bigSize'
@@ -27,10 +26,10 @@ async function getGames(URL: string) {
     return data
 }
 
-function ThisWeek() {
+function NextWeek() {
     const { REACT_APP_API_ENDPOINT, REACT_APP_API_KEY } = process.env
 
-    const URL: string = `${REACT_APP_API_ENDPOINT}/games?key=${REACT_APP_API_KEY}&dates=2023-12-01,2023-12-07`
+    const URL: string = `${REACT_APP_API_ENDPOINT}/games/lists/recent-games-future?discover=true&ordering=-added&page_size=20&page=1&key=${REACT_APP_API_KEY}`
 
     const [gamesData, setGamesData] = useState([])
     const [displayOptions, setDisplayOptions] =
@@ -39,9 +38,7 @@ function ThisWeek() {
     const [correntPage, setCorrentPage] = useState(2)
 
     const fetchMoreData: Fn = async () => {
-        const response = await fetch(
-            `${REACT_APP_API_ENDPOINT}/games?key=${REACT_APP_API_KEY}&page=${correntPage}` // исправить на корректный запрос, проблемы со скроллом
-        )
+        const response = await fetch(`${URL}&page=${correntPage}`)
         const nextData = await response.json()
 
         setCorrentPage((prev) => prev + 1)
@@ -70,7 +67,7 @@ function ThisWeek() {
                     marginBottom: '20px',
                 }}
             >
-                This week
+                Next week
             </Typography>
 
             <Box
@@ -151,40 +148,40 @@ function ThisWeek() {
             </Box>
 
             {displayOptions === 'lines' && (
-                <InfiniteScroll
-                    dataLength={gamesData.length}
-                    next={fetchMoreData}
-                    hasMore={true}
-                    loader={<h4>Loading...</h4>}
-                    endMessage={
-                        <p style={{ textAlign: 'center' }}>
-                            <b>Yay! You have seen it all</b>
-                        </p>
-                    }
+                // <InfiniteScroll
+                //     dataLength={gamesData.length}
+                //     next={fetchMoreData}
+                //     hasMore={true}
+                //     loader={<h4>Loading...</h4>}
+                //     endMessage={
+                //         <p style={{ textAlign: 'center' }}>
+                //             <b>Yay! You have seen it all</b>
+                //         </p>
+                //     }
+                // >
+                <Box
+                    sx={{
+                        display: 'flex',
+                        flexWrap: 'wrap',
+                        gap: '2rem',
+                        justifyContent: 'space-between',
+                    }}
                 >
-                    <Box
-                        sx={{
-                            display: 'flex',
-                            flexWrap: 'wrap',
-                            gap: '2rem',
-                            justifyContent: 'space-between',
-                        }}
-                    >
-                        {gamesData.map((game: any) => (
-                            <CardItem
-                                key={game.id}
-                                title={game.name}
-                                backGroundImg={game.background_image}
-                                id={game.id}
-                                added_by_status={game.added_by_status.owned}
-                                released={game.released}
-                                genres={game.genres}
-                                short_screenshots={game.short_screenshots}
-                                parent_platforms={game.parent_platforms}
-                            />
-                        ))}
-                    </Box>
-                </InfiniteScroll>
+                    {gamesData.map((game: any) => (
+                        <CardItem
+                            key={game.id}
+                            title={game.name}
+                            backGroundImg={game.background_image}
+                            id={game.id}
+                            added_by_status={game.added_by_status.owned}
+                            released={game.released}
+                            genres={game.genres}
+                            short_screenshots={game.short_screenshots}
+                            parent_platforms={game.parent_platforms}
+                        />
+                    ))}
+                </Box>
+                // </InfiniteScroll>
             )}
 
             {displayOptions === 'bigSize' && (
@@ -197,7 +194,7 @@ function ThisWeek() {
                         marginRight: 'auto',
                     }}
                 >
-                    <InfiniteScroll
+                    {/* <InfiniteScroll
                         dataLength={gamesData.length}
                         next={fetchMoreData}
                         hasMore={true}
@@ -207,34 +204,32 @@ function ThisWeek() {
                                 <b>Yay! You have seen it all</b>
                             </p>
                         }
-                    >
-                        {gamesData.map((game: any, index: number) => (
-                            <div
-                                key={game.id}
-                                style={{
-                                    marginBottom:
-                                        index !== gamesData.length - 1
-                                            ? '50px'
-                                            : 0,
-                                }}
-                            >
-                                <CardItemBigSize
-                                    title={game.name}
-                                    backGroundImg={game.background_image}
-                                    id={game.id}
-                                    added_by_status={game.added_by_status.owned}
-                                    released={game.released}
-                                    genres={game.genres}
-                                    short_screenshots={game.short_screenshots}
-                                    platforms={game.platforms}
-                                />
-                            </div>
-                        ))}
-                    </InfiniteScroll>
+                    > */}
+                    {gamesData.map((game: any, index: number) => (
+                        <div
+                            key={game.id}
+                            style={{
+                                marginBottom:
+                                    index !== gamesData.length - 1 ? '50px' : 0,
+                            }}
+                        >
+                            <CardItemBigSize
+                                title={game.name}
+                                backGroundImg={game.background_image}
+                                id={game.id}
+                                added_by_status={game.added_by_status.owned}
+                                released={game.released}
+                                genres={game.genres}
+                                short_screenshots={game.short_screenshots}
+                                platforms={game.platforms}
+                            />
+                        </div>
+                    ))}
+                    {/* </InfiniteScroll> */}
                 </Box>
             )}
         </Box>
     )
 }
 
-export default ThisWeek
+export default NextWeek

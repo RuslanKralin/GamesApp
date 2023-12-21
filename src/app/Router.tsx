@@ -6,7 +6,14 @@ import {
 } from 'react-router-dom'
 
 import { Layout } from './Layout'
-import { AboutGame, Home, LastDays, ThisWeek, GanresPage } from 'pages'
+import {
+    AboutGame,
+    Home,
+    LastDays,
+    ThisWeek,
+    GanresPage,
+    NextWeek,
+} from 'pages'
 import { ROUTES } from 'shared/consts/routes' // ошибка в ином случае, решить позже
 import { Genres } from 'pages/Genres'
 
@@ -23,6 +30,7 @@ const router = createBrowserRouter(
                 <Route path={ROUTES.THIS_WEEK} element={<ThisWeek />} />
                 <Route path={ROUTES.ABOUT_GAME} element={<AboutGame />} />
                 <Route path={ROUTES.LAST_DAYS} element={<LastDays />} />
+                <Route path={ROUTES.NEXT_WEEK} element={<NextWeek />} />
                 <Route path={ROUTES.GENRE} element={<GanresPage />} />
                 <Route path={ROUTES.GENRES_PAGE} element={<Genres />} />
             </Route>
