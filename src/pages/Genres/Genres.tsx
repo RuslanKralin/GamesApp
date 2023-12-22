@@ -44,7 +44,6 @@ function Genres() {
                 sx={{
                     display: 'flex',
                     flexWrap: 'wrap',
-                    // justifyContent: 'space-between',
                     gap: '30px',
                 }}
             >
