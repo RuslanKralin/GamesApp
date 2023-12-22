@@ -193,7 +193,11 @@ function Aside() {
                 All Games
             </Link>
 
-            <Link href="#" underline="none" sx={linkTitleStyle}>
+            <Link
+                href={ROUTES.BROWSE_PAGE}
+                underline="none"
+                sx={linkTitleStyle}
+            >
                 Browse
             </Link>
             <Box sx={{ marginBottom: '30px' }}>

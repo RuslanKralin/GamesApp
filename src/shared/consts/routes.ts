@@ -14,4 +14,6 @@ export const ROUTES = {
     GENRE: '/ganres/:id',
 
     GENRES_PAGE: '/genres',
+
+    BROWSE_PAGE: '/browse',
 }
