@@ -11,7 +11,7 @@ import {
     Home,
     LastDays,
     ThisWeek,
-    GanresPage,
+    GenresPage,
     NextWeek,
 } from 'pages'
 import { ROUTES } from 'shared/consts/routes' // ошибка в ином случае, решить позже
@@ -31,7 +31,7 @@ const router = createBrowserRouter(
                 <Route path={ROUTES.ABOUT_GAME} element={<AboutGame />} />
                 <Route path={ROUTES.LAST_DAYS} element={<LastDays />} />
                 <Route path={ROUTES.NEXT_WEEK} element={<NextWeek />} />
-                <Route path={ROUTES.GENRE} element={<GanresPage />} />
+                <Route path={ROUTES.GENRE} element={<GenresPage />} />
                 <Route path={ROUTES.GENRES_PAGE} element={<Genres />} />
             </Route>
         </>

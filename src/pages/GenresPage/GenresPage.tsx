@@ -32,7 +32,7 @@ async function getGames(URL: string) {
     return data
 }
 
-function GanresPage() {
+function GenresPage() {
     const { id } = useParams()
     const { REACT_APP_API_ENDPOINT, REACT_APP_API_KEY } = process.env
 
@@ -270,4 +270,4 @@ function GanresPage() {
     )
 }
 
-export default GanresPage
+export default GenresPage

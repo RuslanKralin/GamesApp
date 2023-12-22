@@ -35,7 +35,7 @@ const linkTitleStyle = {
     },
 }
 
-function Ganres() {
+function Genres() {
     const [showMore, setShowMore] = useState(false)
     function HandleChange() {
         setShowMore((prev) => !prev)
@@ -279,4 +279,4 @@ function Ganres() {
     )
 }
 
-export default Ganres
+export default Genres

@@ -15,7 +15,7 @@ import ComputerIcon from '@mui/icons-material/Computer'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
 
 import { ROUTES } from 'shared/consts/routes'
-import { Ganres } from './ui/Ganres'
+import { Genres } from './ui/Genres'
 
 const titleStyle = {
     color: 'primary',
@@ -276,7 +276,7 @@ function Aside() {
             </Box>
 
             {/* GANRES BLOCK */}
-            <Ganres />
+            <Genres />
         </Box>
     )
 }
