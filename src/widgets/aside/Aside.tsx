@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { generatePath, useNavigate } from 'react-router-dom'
 
 import { Box, Typography, Link, Button } from '@mui/material'
 import StarIcon from '@mui/icons-material/Star'
@@ -15,7 +16,7 @@ import ComputerIcon from '@mui/icons-material/Computer'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
 
 import { ROUTES } from 'shared/consts/routes'
-import { Ganres } from './ui/Ganres'
+import { Genres } from './ui/Genres'
 
 const titleStyle = {
     color: 'primary',
@@ -112,7 +113,10 @@ function Aside() {
                         <StarIcon sx={iconStyle} />
                         <Link
                             underline="none"
-                            href={ROUTES.LAST_DAYS}
+                            href={generatePath(ROUTES.COMMON, {
+                                type: String('lastDays'),
+                            })}
+                            // href={ROUTES.LAST_DAYS}
                             sx={linkSubStyle}
                         >
                             Last 30 days
@@ -123,7 +127,9 @@ function Aside() {
                         <LocalFireDepartmentIcon sx={iconStyle} />
                         <Link
                             underline="none"
-                            href={ROUTES.THIS_WEEK}
+                            href={generatePath(ROUTES.COMMON, {
+                                type: String('thisWeek'),
+                            })}
                             sx={linkSubStyle}
                         >
                             This week
@@ -133,7 +139,9 @@ function Aside() {
                         <FastForwardIcon sx={iconStyle} />
                         <Link
                             underline="none"
-                            href={ROUTES.NEXT_WEEK}
+                            href={generatePath(ROUTES.COMMON, {
+                                type: String('nextWeek'),
+                            })}
                             sx={linkSubStyle}
                         >
                             Next week
@@ -193,7 +201,11 @@ function Aside() {
                 All Games
             </Link>
 
-            <Link href="#" underline="none" sx={linkTitleStyle}>
+            <Link
+                href={ROUTES.BROWSE_PAGE}
+                underline="none"
+                sx={linkTitleStyle}
+            >
                 Browse
             </Link>
             <Box sx={{ marginBottom: '30px' }}>
@@ -276,7 +288,7 @@ function Aside() {
             </Box>
 
             {/* GANRES BLOCK */}
-            <Ganres />
+            <Genres />
         </Box>
     )
 }

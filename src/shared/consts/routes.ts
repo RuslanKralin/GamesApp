@@ -3,6 +3,8 @@ export const ROUTES = {
 
     DEFAULT: '/',
 
+    COMMON: '/page/:type',
+
     THIS_WEEK: '/this_week',
 
     ABOUT_GAME: '/about/:id',
@@ -14,4 +16,6 @@ export const ROUTES = {
     GENRE: '/ganres/:id',
 
     GENRES_PAGE: '/genres',
+
+    BROWSE_PAGE: '/browse',
 }

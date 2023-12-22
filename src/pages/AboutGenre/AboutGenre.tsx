@@ -32,11 +32,11 @@ async function getGames(URL: string) {
     return data
 }
 
-function GanresPage() {
+function AboutGenre() {
     const { id } = useParams()
     const { REACT_APP_API_ENDPOINT, REACT_APP_API_KEY } = process.env
 
-    const URL: string = `https://rawg.io/api/games?genres=${id}&page=1&page_size=40&filter=true&comments=true&key=${REACT_APP_API_KEY}`
+    const URL: string = `${REACT_APP_API_ENDPOINT}/games?genres=${id}&page=1&page_size=40&filter=true&comments=true&key=${REACT_APP_API_KEY}`
 
     const [displayOptions, setDisplayOptions] =
         useState<DisplayOptinsType>('lines')
@@ -270,4 +270,4 @@ function GanresPage() {
     )
 }
 
-export default GanresPage
+export default AboutGenre
