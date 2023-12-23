@@ -10,9 +10,13 @@ type LinkTypeProps = {
 
 function BtnFilter(props: LinkTypeProps) {
     return (
-        <Box sx={{ display: 'flex' }}>
-            <Link sx={{ mr: '5px' }}>{props.name}</Link>
-            <Typography sx={{ color: 'grey' }}>{props.count}</Typography>
+        <Box sx={{ display: 'flex', alignItems: 'center', cursor: 'pointer' }}>
+            <Link sx={{ mr: '5px', fontSize: '24px', fontWeight: '700' }}>
+                {props.name}
+            </Link>
+            <Typography sx={{ color: 'grey', fontSize: '24px' }}>
+                {props.count}
+            </Typography>
             <ArrowForwardIosIcon style={{ color: 'grey' }} />
         </Box>
     )
