@@ -17,6 +17,7 @@ import {
 import { ROUTES } from 'shared/consts/routes' // ошибка в ином случае, решить позже
 import { Genres } from 'pages/Genres'
 import { Browse } from 'pages/Browse'
+import { Platforms } from 'pages/Platforms'
 
 const router = createBrowserRouter(
     createRoutesFromElements(
@@ -35,6 +36,7 @@ const router = createBrowserRouter(
                 <Route path={ROUTES.GENRE} element={<GenresPage />} />
                 <Route path={ROUTES.GENRES_PAGE} element={<Genres />} />
                 <Route path={ROUTES.BROWSE_PAGE} element={<Browse />} />
+                <Route path={ROUTES.PLATFIRM_PAGE} element={<Platforms />} />
             </Route>
         </>
     )

@@ -16,4 +16,6 @@ export const ROUTES = {
     GENRES_PAGE: '/genres',
 
     BROWSE_PAGE: '/browse',
+
+    PLATFIRM_PAGE: '/platform',
 }

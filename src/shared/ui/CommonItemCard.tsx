@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Box, Button, Typography, Link, Divider } from '@mui/material'
+import { Box, Button, Typography, Link, Divider, Avatar } from '@mui/material'
 import PersonIcon from '@mui/icons-material/Person'
 
 const titleLinkStyle = {
@@ -49,29 +49,30 @@ const darkOverlayStyle = {
 }
 
 type Game = {
-    id: number
-    name: string
-    added: number
+    id?: number
+    name?: string
+    added?: number
 }
 
-type GenreItemPropsType = {
-    name: string
-    games_count: number
-    image_background: string
-    games: Array<Game>
+type BrowseItemPropsType = {
+    name?: string
+    games_count?: number
+    image_background?: string
+    games?: Array<Game>
+    image?: string
 }
 
-function GenreItem(props: GenreItemPropsType) {
+function BrowseItem(props: BrowseItemPropsType) {
     return (
         <Box
             sx={{
                 flexBasis: '23%',
-                height: '290px',
+                height: `${props.image ? '400px' : '290px'}`,
                 backgroundImage: `url(${props.image_background})`,
                 backgroundPosition: 'center',
                 backgroundSize: 'cover',
                 borderRadius: '7px',
-                position: 'relative', // Добавлено для позиционирования затемняющего слоя
+                position: 'relative',
             }}
         >
             {/* Затемняющий слой */}
@@ -85,6 +86,13 @@ function GenreItem(props: GenreItemPropsType) {
                     mb: '30px',
                 }}
             >
+                {props.image && (
+                    <Avatar
+                        alt={props.name}
+                        src={props.image}
+                        sx={{ width: 130, height: 130 }}
+                    />
+                )}
                 <Typography sx={{ mb: '5px', zIndex: 3 }}>
                     <Link href="#" sx={titleLinkStyle}>
                         {props.name}
@@ -109,12 +117,17 @@ function GenreItem(props: GenreItemPropsType) {
                         mb: '5px',
                     }}
                 >
-                    <Typography sx={{ fontWeight: '700' }}>
-                        Popular items
-                    </Typography>
-                    <Typography sx={{ color: 'white' }}>
-                        {props.games_count}
-                    </Typography>
+                    {props.image ? (
+                        <Typography sx={{ fontWeight: '700' }}>
+                            Known for
+                        </Typography>
+                    ) : (
+                        <Typography sx={{ fontWeight: '700' }}>
+                            Popular items
+                        </Typography>
+                    )}
+
+                    <Typography>{props.games_count} </Typography>
                 </Box>
                 <Box sx={{ mb: '15px' }}>
                     <Divider
@@ -134,13 +147,21 @@ function GenreItem(props: GenreItemPropsType) {
                         }}
                     >
                         <Link href="#" sx={gameLinkStyle}>
-                            {props.games[0]?.name.length > 20
-                                ? `${props.games[0]?.name.substring(0, 20)}...`
-                                : props.games[0]?.name}
+                            {props.games &&
+                                props.games[0] &&
+                                props.games[0].name &&
+                                (props.games[0].name.length > 20
+                                    ? `${props.games[0].name.substring(
+                                          0,
+                                          20
+                                      )}...`
+                                    : props.games[0].name)}
                         </Link>
                         <Box sx={{ display: 'flex' }}>
                             {' '}
-                            <Typography>{props.games[0]?.added}</Typography>
+                            <Typography>
+                                {props.games && props.games[0].added}
+                            </Typography>
                             <PersonIcon sx={{ width: '18px' }} />
                         </Box>
                     </Box>
@@ -152,13 +173,21 @@ function GenreItem(props: GenreItemPropsType) {
                         }}
                     >
                         <Link href="#" sx={gameLinkStyle}>
-                            {props.games[1]?.name.length > 20
-                                ? `${props.games[1]?.name.substring(0, 20)}...`
-                                : props.games[1]?.name}
+                            {props.games &&
+                                props.games[1] &&
+                                props.games[1].name &&
+                                (props.games[1].name.length > 20
+                                    ? `${props.games[1].name.substring(
+                                          0,
+                                          20
+                                      )}...`
+                                    : props.games[1].name)}
                         </Link>
                         <Box sx={{ display: 'flex' }}>
                             {' '}
-                            <Typography>{props.games[1]?.added}</Typography>
+                            <Typography>
+                                {props.games && props.games[1]?.added}
+                            </Typography>
                             <PersonIcon sx={{ width: '18px' }} />
                         </Box>
                     </Box>
@@ -170,13 +199,21 @@ function GenreItem(props: GenreItemPropsType) {
                         }}
                     >
                         <Link href="#" sx={gameLinkStyle}>
-                            {props.games[2]?.name.length > 20
-                                ? `${props.games[2]?.name.substring(0, 20)}...`
-                                : props.games[2]?.name}
+                            {props.games &&
+                                props.games[2] &&
+                                props.games[2].name &&
+                                (props.games[2].name.length > 20
+                                    ? `${props.games[2].name.substring(
+                                          0,
+                                          20
+                                      )}...`
+                                    : props.games[2].name)}
                         </Link>
                         <Box sx={{ display: 'flex' }}>
                             {' '}
-                            <Typography>{props.games[2]?.added}</Typography>
+                            <Typography>
+                                {props.games && props.games[2]?.added}
+                            </Typography>
                             <PersonIcon sx={{ width: '18px' }} />
                         </Box>
                     </Box>
@@ -186,4 +223,4 @@ function GenreItem(props: GenreItemPropsType) {
     )
 }
 
-export default GenreItem
+export default BrowseItem

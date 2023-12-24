@@ -80,10 +80,12 @@ function Browse() {
             <Box sx={{ mb: '20px' }}>
                 {data.results.length > 0 && (
                     <Box sx={{ mb: '30px' }}>
-                        <BtnFilter
-                            name={data.results[0].name}
-                            count={data.results[0].count}
-                        />
+                        <Link href={ROUTES.PLATFIRM_PAGE} underline="none">
+                            <BtnFilter
+                                name={data.results[0].name}
+                                count={data.results[0].count}
+                            />
+                        </Link>
                     </Box>
                 )}
                 <Box
