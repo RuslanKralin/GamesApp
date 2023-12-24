@@ -42,9 +42,8 @@ const darkOverlayStyle = {
     left: 0,
     width: '100%',
     height: '100%',
-    backgroundColor: 'rgba(255, 255, 255, 0.3)',
     backgroundImage:
-        'linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1))',
+        'linear-gradient(to bottom, rgba(32, 32, 32, 0.5), rgb(32, 32, 32) 70%)',
     borderRadius: '7px',
 }
 
@@ -54,15 +53,16 @@ type Game = {
     added?: number
 }
 
-type BrowseItemPropsType = {
+type PropsType = {
     name?: string
     games_count?: number
     image_background?: string
     games?: Array<Game>
     image?: string
+    // games_count: number
 }
 
-function BrowseItem(props: BrowseItemPropsType) {
+function BrowseItem(props: PropsType) {
     return (
         <Box
             sx={{
@@ -127,7 +127,9 @@ function BrowseItem(props: BrowseItemPropsType) {
                         </Typography>
                     )}
 
-                    <Typography>{props.games_count} </Typography>
+                    <Typography sx={{ color: '#ffffff66' }}>
+                        {props.games_count}{' '}
+                    </Typography>
                 </Box>
                 <Box sx={{ mb: '15px' }}>
                     <Divider
@@ -159,10 +161,12 @@ function BrowseItem(props: BrowseItemPropsType) {
                         </Link>
                         <Box sx={{ display: 'flex' }}>
                             {' '}
-                            <Typography>
+                            <Typography sx={{ color: '#ffffff66' }}>
                                 {props.games && props.games[0].added}
                             </Typography>
-                            <PersonIcon sx={{ width: '18px' }} />
+                            <PersonIcon
+                                sx={{ width: '18px', color: '#ffffff66' }}
+                            />
                         </Box>
                     </Box>
                     <Box
@@ -185,10 +189,12 @@ function BrowseItem(props: BrowseItemPropsType) {
                         </Link>
                         <Box sx={{ display: 'flex' }}>
                             {' '}
-                            <Typography>
+                            <Typography sx={{ color: '#ffffff66' }}>
                                 {props.games && props.games[1]?.added}
                             </Typography>
-                            <PersonIcon sx={{ width: '18px' }} />
+                            <PersonIcon
+                                sx={{ width: '18px', color: '#ffffff66' }}
+                            />
                         </Box>
                     </Box>
                     <Box
@@ -211,10 +217,12 @@ function BrowseItem(props: BrowseItemPropsType) {
                         </Link>
                         <Box sx={{ display: 'flex' }}>
                             {' '}
-                            <Typography>
+                            <Typography sx={{ color: '#ffffff66' }}>
                                 {props.games && props.games[2]?.added}
                             </Typography>
-                            <PersonIcon sx={{ width: '18px' }} />
+                            <PersonIcon
+                                sx={{ width: '18px', color: '#ffffff66' }}
+                            />
                         </Box>
                     </Box>
                 </Box>

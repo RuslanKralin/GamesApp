@@ -1,6 +1,6 @@
 import { Box, Typography } from '@mui/material'
 import React, { useEffect, useState } from 'react'
-import { GenreItem } from './ui'
+import { CommonItemCard } from 'shared/ui'
 
 async function getGenres(URL: string) {
     const response = await fetch(URL)
@@ -48,7 +48,7 @@ function Genres() {
                 }}
             >
                 {genresData.map((g: any) => (
-                    <GenreItem
+                    <CommonItemCard
                         name={g.name}
                         games_count={g.games_count}
                         image_background={g.image_background}

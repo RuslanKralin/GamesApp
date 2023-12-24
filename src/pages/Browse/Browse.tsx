@@ -1,7 +1,9 @@
-import { Box, Link, Typography } from '@mui/material'
 import React, { useEffect, useState } from 'react'
-import { BrowseItem, BtnFilter } from './ui'
+
+import { Box, Link, Typography } from '@mui/material'
+import { BtnFilter } from './ui'
 import { ROUTES } from 'shared/consts/routes'
+import { CommonItemCard } from 'shared/ui'
 
 interface Game {
     id: number
@@ -101,7 +103,7 @@ function Browse() {
                         data.results[0].items
                             .slice(0, 4)
                             .map((g: any) => (
-                                <BrowseItem
+                                <CommonItemCard
                                     name={g.name}
                                     image_background={g.image_background}
                                     games={g.games}
@@ -135,7 +137,7 @@ function Browse() {
                         data.results[1].items
                             .slice(0, 4)
                             .map((g: any) => (
-                                <BrowseItem
+                                <CommonItemCard
                                     name={g.name}
                                     image_background={g.image_background}
                                     games={g.games}
@@ -167,7 +169,7 @@ function Browse() {
                         data.results[2].items
                             .slice(0, 4)
                             .map((g: any) => (
-                                <BrowseItem
+                                <CommonItemCard
                                     name={g.name}
                                     image_background={g.image_background}
                                     games={g.games}
@@ -199,7 +201,7 @@ function Browse() {
                         data.results[3].items
                             .slice(0, 4)
                             .map((g: any) => (
-                                <BrowseItem
+                                <CommonItemCard
                                     name={g.name}
                                     image_background={g.image_background}
                                     games={g.games}
@@ -232,7 +234,7 @@ function Browse() {
                         data.results[4].items
                             .slice(0, 4)
                             .map((g: any) => (
-                                <BrowseItem
+                                <CommonItemCard
                                     name={g.name}
                                     image_background={g.image_background}
                                     games={g.games}
@@ -264,7 +266,7 @@ function Browse() {
                         data.results[5].items
                             .slice(0, 4)
                             .map((g: any) => (
-                                <BrowseItem
+                                <CommonItemCard
                                     name={g.name}
                                     image_background={g.image_background}
                                     games={g.games}
@@ -296,7 +298,7 @@ function Browse() {
                         data.results[6].items
                             .slice(0, 4)
                             .map((g: any) => (
-                                <BrowseItem
+                                <CommonItemCard
                                     name={g.name}
                                     image_background={g.image_background}
                                     games={g.games}

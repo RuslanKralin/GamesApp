@@ -24,6 +24,7 @@ interface Result {
     items: CardInfo[]
     image_background: string
     games: Array<Game>
+    games_count: number
 }
 
 interface Data {
@@ -116,6 +117,7 @@ function Platforms() {
                                 name={p.name}
                                 image_background={p.image_background}
                                 games={p.games}
+                                games_count={p.games_count}
                             />
                         ))}
                 </Box>
