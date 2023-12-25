@@ -17,3 +17,8 @@ export const URL_PAGES = {
     ALL_TIME_TOP_250:
         'https://rawg.io/api/games/lists/popular?discover=true&&page_size=20&page=1&key=',
 }
+//  https://rawg.io/api/games/lists
+
+export const gamesListTitle = {
+    'resent-games': 'This week',
+}
