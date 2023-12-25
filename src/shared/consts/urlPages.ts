@@ -19,6 +19,11 @@ export const URL_PAGES = {
 }
 //  https://rawg.io/api/games/lists
 
-export const gamesListTitle = {
+export const GAMES_LIST_TITLE = {
     'resent-games': 'This week',
+    'recent-games-past': 'Last 30 days',
+    'recent-games-future': 'Next week',
+    greatest: 'Best of the year',
+    'greatest?year=2022': 'Popular in 2022',
+    popular: 'All time top 250',
 }

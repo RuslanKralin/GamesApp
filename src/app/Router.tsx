@@ -9,10 +9,10 @@ import { Layout } from './Layout'
 import {
     AboutGame,
     Home,
-    LastDays,
-    ThisWeek,
+    // LastDays,
+    // ThisWeek,
     AboutGenre,
-    NextWeek,
+    // NextWeek,
     Browse,
 } from 'pages'
 import { ROUTES } from 'shared/consts/routes' // ошибка в ином случае, решить позже

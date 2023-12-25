@@ -114,7 +114,7 @@ function Aside() {
                         <Link
                             underline="none"
                             href={generatePath(ROUTES.COMMON, {
-                                type: String('lastDays'),
+                                type: String('recent-games-past'),
                             })}
                             // href={ROUTES.LAST_DAYS}
                             sx={linkSubStyle}
@@ -128,7 +128,7 @@ function Aside() {
                         <Link
                             underline="none"
                             href={generatePath(ROUTES.COMMON, {
-                                type: String('thisWeek'),
+                                type: String('recent-games'),
                             })}
                             sx={linkSubStyle}
                         >
@@ -140,7 +140,7 @@ function Aside() {
                         <Link
                             underline="none"
                             href={generatePath(ROUTES.COMMON, {
-                                type: String('nextWeek'),
+                                type: String('recent-games-future'),
                             })}
                             sx={linkSubStyle}
                         >
@@ -173,7 +173,9 @@ function Aside() {
 
                         <Link
                             underline="none"
-                            href={ROUTES.LAST_DAYS}
+                            href={generatePath(ROUTES.COMMON, {
+                                type: String('greatest'),
+                            })}
                             sx={linkSubStyle}
                         >
                             Best of the year
@@ -183,7 +185,9 @@ function Aside() {
                         <AssessmentIcon sx={iconStyle} />
                         <Link
                             underline="none"
-                            href={ROUTES.THIS_WEEK}
+                            href={generatePath(ROUTES.COMMON, {
+                                type: String('greatest?year=2022'),
+                            })}
                             sx={linkSubStyle}
                         >
                             Popular in 2022
@@ -191,7 +195,13 @@ function Aside() {
                     </Box>
                     <Box sx={linkItemSytle}>
                         <Diversity1Icon sx={iconStyle} />
-                        <Link underline="none" sx={linkSubStyle}>
+                        <Link
+                            underline="none"
+                            href={generatePath(ROUTES.COMMON, {
+                                type: String('popular'),
+                            })}
+                            sx={linkSubStyle}
+                        >
                             All the time top 250
                         </Link>
                     </Box>

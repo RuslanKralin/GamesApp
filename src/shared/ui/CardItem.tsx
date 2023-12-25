@@ -67,7 +67,7 @@ type CardItemPropsType = {
     title: string
     backGroundImg: string
     id: number
-    added_by_status: number
+    added_by_status?: number
     released: string
     genres: string[]
     short_screenshots: string[]

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useLocation } from 'react-router-dom'
+import { useLocation, useParams } from 'react-router-dom'
 import { Typography, Box, Button } from '@mui/material'
 import InfiniteScroll from 'react-infinite-scroll-component'
 import { CardItem } from 'shared/ui'
@@ -10,6 +10,19 @@ import { CardItemBigSize } from 'shared/ui'
 import GridOnIcon from '@mui/icons-material/GridOn'
 import WebAssetIcon from '@mui/icons-material/WebAsset'
 
+interface GamesListTitle {
+    [key: string]: string
+}
+
+const GAMES_LIST_TITLE: GamesListTitle = {
+    'recent-games': 'This week',
+    'recent-games-past': 'Last 30 days',
+    'recent-games-future': 'Next week',
+    greatest: 'Best of the year',
+    'greatest?year=2022': 'Popular in 2022',
+    popular: 'All time top 250',
+}
+
 const iconStyle = {
     border: '1px grey',
     borderRadius: '5px',
@@ -19,7 +32,15 @@ const iconStyle = {
     width: '50px',
     height: '50px',
 }
-type Fn = () => void
+type Fn = () => Promise<void | undefined>
+
+interface PageData {
+    count: number
+    next: string | null
+    previous: null
+    results: any[] // тут можно и подробнее в дальнейшем
+    user_platforms: boolean
+}
 
 type DisplayOptinsType = 'lines' | 'bigSize'
 async function getGames(URL: string) {
@@ -29,33 +50,45 @@ async function getGames(URL: string) {
 }
 
 function Common() {
-    const location = useLocation()
-    const currentURL = location.pathname
+    const params = useParams()
+    const { type } = params
+    // console.log(type)
+
+    // const location = useLocation()
+    // const currentURL = location.pathname
     // console.log(currentURL)
 
-    const [url, setUrl] = useState<string>('')
+    // const getTitle = (currentURL: string): string => {
+    //     if (currentURL === '/page/recent-games') {
+    //         return 'This week'
+    //     } else if (currentURL === '/page/recent-games-past') {
+    //         return 'Last 30 days'
+    //     } else if (currentURL === '/page/recent-games-future') {
+    //         return 'Next week'
+    //     } else if (currentURL === '/page/greatest') {
+    //         return 'Best of the year'
+    //     } else if (currentURL === '/page/greatest') {
+    //         return 'Best of the year'
+    //     }
+    //     const title = getTitle(currentURL)
+    //     return ''
+    // }
 
-    useEffect(() => {
-        function createUrl(currentURL: string) {
-            if (currentURL === '/page/thisWeek') {
-                setUrl(URL_PAGES.THIS_WEEK)
-            } else if (currentURL === '/page/lastDays') {
-                setUrl(URL_PAGES.LAST_DAYS)
-            } else if (currentURL === '/page/nextWeek') {
-                setUrl(URL_PAGES.NEXT_WEEK)
-            }
-        }
-
-        createUrl(currentURL)
-        console.log(URL)
-    }, [currentURL])
+    const title = type ? GAMES_LIST_TITLE[type] : ''
 
     const { REACT_APP_API_ENDPOINT, REACT_APP_API_KEY } = process.env
 
-    const URL: string = `${url}${REACT_APP_API_KEY}`
+    const URL: string = `https://rawg.io/api/games/lists/${type}?discover=true&ordering=-added&page_size=20&page=1&key=${REACT_APP_API_KEY}`
+
     // console.log(URL)
 
-    const [gamesData, setGamesData] = useState([])
+    const [gamesData, setGamesData] = useState<PageData>({
+        count: 0,
+        next: null,
+        previous: null,
+        results: [],
+        user_platforms: false,
+    })
 
     const [displayOptions, setDisplayOptions] =
         useState<DisplayOptinsType>('lines')
@@ -68,60 +101,36 @@ function Common() {
 
         setCorrentPage((prev) => prev + 1)
         const nextPageGames: [] = nextData.results
-        setGamesData((prevData) => [...prevData, ...nextPageGames])
-        console.log(nextPageGames)
+        setGamesData((prevData) => ({
+            ...prevData,
+            results: [...prevData.results, ...nextPageGames],
+        }))
+        // console.log(nextPageGames)
     }
 
     useEffect(() => {
         async function fetchData() {
             const data = await getGames(URL)
             console.log(data)
-            setGamesData(data.results)
+            setGamesData(data)
+            // console.log(data)
         }
 
         fetchData()
     }, [])
     return (
         <Box>
-            {currentURL === '/page/thisWeek' && (
-                <Typography
-                    variant="h2"
-                    sx={{
-                        color: 'white',
-                        fontWeight: '800',
-                        marginTop: '30px',
-                        marginBottom: '20px',
-                    }}
-                >
-                    This week
-                </Typography>
-            )}
-            {currentURL === '/page/lastDays' && (
-                <Typography
-                    variant="h2"
-                    sx={{
-                        color: 'white',
-                        fontWeight: '800',
-                        marginTop: '30px',
-                        marginBottom: '20px',
-                    }}
-                >
-                    Last days
-                </Typography>
-            )}
-            {currentURL === '/page/nextWeek' && (
-                <Typography
-                    variant="h2"
-                    sx={{
-                        color: 'white',
-                        fontWeight: '800',
-                        marginTop: '30px',
-                        marginBottom: '20px',
-                    }}
-                >
-                    Next week
-                </Typography>
-            )}
+            <Typography
+                variant="h2"
+                sx={{
+                    color: 'white',
+                    fontWeight: '800',
+                    marginTop: '30px',
+                    marginBottom: '20px',
+                }}
+            >
+                {title}
+            </Typography>
 
             {/* <GameFiltres /> */}
             <Box
@@ -201,87 +210,132 @@ function Common() {
                 </Box>
             </Box>
 
-            {displayOptions === 'lines' && (
-                <InfiniteScroll
-                    dataLength={gamesData.length}
-                    next={fetchMoreData}
-                    hasMore={true}
-                    loader={<h4>Loading...</h4>}
-                    endMessage={
-                        <p style={{ textAlign: 'center' }}>
-                            <b>Yay! You have seen it all</b>
-                        </p>
-                    }
+            {gamesData.next !== null ? (
+                <>
+                    {displayOptions === 'lines' && (
+                        <InfiniteScroll
+                            dataLength={gamesData.results.length}
+                            next={fetchMoreData}
+                            hasMore={true}
+                            loader={<h4>Loading...</h4>}
+                            endMessage={
+                                <p style={{ textAlign: 'center' }}>
+                                    <b>Yay! You have seen it all</b>
+                                </p>
+                            }
+                        >
+                            <Box
+                                sx={{
+                                    display: 'flex',
+                                    flexWrap: 'wrap',
+                                    gap: '2rem',
+                                    // justifyContent: 'space-between',
+                                }}
+                            >
+                                {gamesData.results.map((game: any) => (
+                                    <CardItem
+                                        key={game.id}
+                                        title={game.name}
+                                        backGroundImg={game.background_image}
+                                        id={game.id}
+                                        added_by_status={
+                                            game.added_by_status?.owned
+                                        }
+                                        released={game.released}
+                                        genres={game.genres}
+                                        short_screenshots={
+                                            game.short_screenshots
+                                        }
+                                        parent_platforms={game.parent_platforms}
+                                    />
+                                ))}
+                            </Box>
+                        </InfiniteScroll>
+                    )}
+
+                    {displayOptions === 'bigSize' && (
+                        <Box
+                            sx={{
+                                display: 'flex',
+                                flexDirection: 'column',
+                                alignItems: 'center',
+                                marginLeft: 'auto',
+                                marginRight: 'auto',
+                            }}
+                        >
+                            <InfiniteScroll
+                                dataLength={gamesData.results.length}
+                                next={fetchMoreData}
+                                hasMore={true}
+                                loader={<h4>Loading...</h4>}
+                                endMessage={
+                                    <p style={{ textAlign: 'center' }}>
+                                        <b>Yay! You have seen it all</b>
+                                    </p>
+                                }
+                            >
+                                {gamesData.results &&
+                                    gamesData.results.map(
+                                        (game: any, index: number) => (
+                                            <div
+                                                key={game.id}
+                                                style={{
+                                                    marginBottom:
+                                                        index !==
+                                                        gamesData.results
+                                                            .length -
+                                                            1
+                                                            ? '50px'
+                                                            : 0,
+                                                }}
+                                            >
+                                                <CardItemBigSize
+                                                    title={game.name}
+                                                    backGroundImg={
+                                                        game.background_image
+                                                    }
+                                                    id={game.id}
+                                                    added_by_status={
+                                                        game.added_by_status
+                                                            ?.owned
+                                                    }
+                                                    released={game.released}
+                                                    genres={game.genres}
+                                                    platforms={game.platforms}
+                                                    short_screenshots={
+                                                        game.short_screenshots
+                                                    }
+                                                />
+                                            </div>
+                                        )
+                                    )}
+                            </InfiniteScroll>
+                        </Box>
+                    )}
+                </>
+            ) : (
+                <Box
+                    sx={{
+                        display: 'flex',
+                        flexWrap: 'wrap',
+                        gap: '2rem',
+                        // justifyContent: 'space-between',
+                    }}
                 >
-                    <Box
-                        sx={{
-                            display: 'flex',
-                            flexWrap: 'wrap',
-                            gap: '2rem',
-                            justifyContent: 'space-between',
-                        }}
-                    >
-                        {gamesData.map((game: any) => (
+                    {gamesData.results &&
+                        gamesData.results.map((game: any) => (
                             <CardItem
                                 key={game.id}
                                 title={game.name}
                                 backGroundImg={game.background_image}
                                 id={game.id}
-                                added_by_status={game.added_by_status.owned}
+                                added_by_status={game.added_by_status?.owned}
                                 released={game.released}
                                 genres={game.genres}
                                 short_screenshots={game.short_screenshots}
                                 parent_platforms={game.parent_platforms}
                             />
                         ))}
-                    </Box>
-                </InfiniteScroll>
-            )}
-
-            {displayOptions === 'bigSize' && (
-                <Box
-                    sx={{
-                        display: 'flex',
-                        flexDirection: 'column',
-                        alignItems: 'center',
-                        marginLeft: 'auto',
-                        marginRight: 'auto',
-                    }}
-                >
-                    <InfiniteScroll
-                        dataLength={gamesData.length}
-                        next={fetchMoreData}
-                        hasMore={true}
-                        loader={<h4>Loading...</h4>}
-                        endMessage={
-                            <p style={{ textAlign: 'center' }}>
-                                <b>Yay! You have seen it all</b>
-                            </p>
-                        }
-                    >
-                        {gamesData.map((game: any, index: number) => (
-                            <div
-                                key={game.id}
-                                style={{
-                                    marginBottom:
-                                        index !== gamesData.length - 1
-                                            ? '50px'
-                                            : 0,
-                                }}
-                            >
-                                <CardItemBigSize
-                                    title={game.name}
-                                    backGroundImg={game.background_image}
-                                    id={game.id}
-                                    added_by_status={game.added_by_status.owned}
-                                    released={game.released}
-                                    genres={game.genres}
-                                    short_screenshots={game.short_screenshots}
-                                    platforms={game.platforms}
-                                />
-                            </div>
-                        ))}
-                    </InfiniteScroll>
                 </Box>
             )}
         </Box>
