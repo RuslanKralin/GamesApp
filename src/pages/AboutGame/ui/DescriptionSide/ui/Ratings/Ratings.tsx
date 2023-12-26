@@ -13,13 +13,14 @@ interface RatingsPropsType {
 }
 
 function Ratings(props: RatingsPropsType) {
+    console.log(props.ratings)
     return (
         <Box sx={{ display: 'flex', flexDirection: 'column' }}>
             <Box
                 sx={{
+                    borderRadius: '50px',
                     display: 'flex',
-                    borderRadius: '10px',
-                    width: '100%',
+                    width: '600px',
                     mb: '30px',
                 }}
             >
@@ -28,7 +29,8 @@ function Ratings(props: RatingsPropsType) {
                         backgroundImage:
                             'linear-gradient(180deg,#b4ec51,#429321)',
                         height: '50px',
-                        width: '100px',
+                        flexBasis: `${props.ratings?.[0]?.percent}%`,
+                        // flexGrow: 1,
                     }}
                 ></Box>
 
@@ -37,7 +39,7 @@ function Ratings(props: RatingsPropsType) {
                         backgroundImage:
                             'linear-gradient(0deg,#4354b9,#649bff)',
                         height: '50px',
-                        width: '100px',
+                        flexBasis: `${props.ratings?.[1]?.percent}%`,
                     }}
                 ></Box>
                 <Box
@@ -45,7 +47,7 @@ function Ratings(props: RatingsPropsType) {
                         backgroundImage:
                             'linear-gradient(180deg,#fad961,#f76b1c)',
                         height: '50px',
-                        width: '100px',
+                        flexBasis: `${props.ratings?.[2]?.percent}%`,
                     }}
                 ></Box>
                 <Box
@@ -53,11 +55,17 @@ function Ratings(props: RatingsPropsType) {
                         backgroundImage:
                             'linear-gradient(180deg,#ff5764,#f11a2a)',
                         height: '50px',
-                        width: '100px',
+                        flexBasis: `${props.ratings?.[3]?.percent}%`,
                     }}
                 ></Box>
             </Box>
-            <Box sx={{ display: 'flex', mb: '30px' }}>
+            <Box
+                sx={{
+                    display: 'flex',
+                    mb: '30px',
+                    justifyContent: 'space-between',
+                }}
+            >
                 <Button
                     sx={{
                         padding: '5px 20px',
@@ -89,7 +97,10 @@ function Ratings(props: RatingsPropsType) {
                         ></Box>
                     }
                 >
-                    Exceptional<Typography sx={{ ml: '10px' }}>106</Typography>
+                    Exceptional
+                    <Typography sx={{ ml: '10px' }}>
+                        {props.ratings?.[0]?.count}
+                    </Typography>
                 </Button>
 
                 <Button
@@ -123,7 +134,11 @@ function Ratings(props: RatingsPropsType) {
                         ></Box>
                     }
                 >
-                    Recommended<Typography sx={{ ml: '10px' }}>106</Typography>
+                    Recommended
+                    <Typography sx={{ ml: '10px' }}>
+                        {' '}
+                        {props.ratings?.[1]?.count}
+                    </Typography>
                 </Button>
                 <Button
                     sx={{
@@ -156,7 +171,11 @@ function Ratings(props: RatingsPropsType) {
                         ></Box>
                     }
                 >
-                    Meh<Typography sx={{ ml: '10px' }}>106</Typography>
+                    Meh
+                    <Typography sx={{ ml: '10px' }}>
+                        {' '}
+                        {props.ratings?.[2]?.count}
+                    </Typography>
                 </Button>
                 <Button
                     sx={{
@@ -189,7 +208,11 @@ function Ratings(props: RatingsPropsType) {
                         ></Box>
                     }
                 >
-                    Skip<Typography sx={{ ml: '10px' }}>106</Typography>
+                    Skip
+                    <Typography sx={{ ml: '10px' }}>
+                        {' '}
+                        {props.ratings?.[3]?.count}
+                    </Typography>
                 </Button>
             </Box>
         </Box>
