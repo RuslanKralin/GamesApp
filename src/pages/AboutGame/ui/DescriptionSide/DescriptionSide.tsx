@@ -3,7 +3,7 @@ import React from 'react'
 import { Typography, Box } from '@mui/material'
 import SportsEsportsIcon from '@mui/icons-material/SportsEsports'
 import WindowOutlinedIcon from '@mui/icons-material/WindowOutlined'
-import { About, BtnGroup } from './ui'
+import { About, BtnGroup, Ratings } from './ui'
 import { Info } from './ui/Info'
 
 export type PlatformsType = {
@@ -58,6 +58,7 @@ function DescriptionSide(props: DescriptionSidePropsType) {
                 </Typography>
             </Box>
             <BtnGroup />
+            <Ratings />
             <About aboutGame={props.aboutGame} />
             <Info
                 platforms={props.platforms}
