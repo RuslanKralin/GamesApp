@@ -256,7 +256,11 @@ function Aside() {
                 </Box>
             </Box>
 
-            <Link href="#" underline="none" sx={linkTitleStyle}>
+            <Link
+                href={ROUTES.PLATFIRM_PAGE}
+                underline="none"
+                sx={linkTitleStyle}
+            >
                 Platforms
             </Link>
             <Box sx={{ marginBottom: '30px' }}>

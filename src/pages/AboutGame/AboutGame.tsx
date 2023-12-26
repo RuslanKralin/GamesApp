@@ -18,6 +18,12 @@ export type BuyBtnStores = {
     image_background: string
     url: string
 }
+
+interface Chart {
+    name: string
+    position: number
+    change: string
+}
 interface AboutGamePropsType {
     name: string
     background_image: string
@@ -30,6 +36,8 @@ interface AboutGamePropsType {
     genres: string[]
     developers: string[]
     publishers: string[]
+    ratings: any[]
+    charts?: Chart[]
 }
 
 function AboutGame() {
@@ -130,6 +138,8 @@ function AboutGame() {
                         released={gamesData?.released}
                         developers={gamesData?.developers}
                         publishers={gamesData?.publishers}
+                        ratings={gamesData?.ratings || []}
+                        charts={gamesData?.charts || []}
                     />
                 </Box>
                 <Box sx={{ flexBasis: '40%' }}>

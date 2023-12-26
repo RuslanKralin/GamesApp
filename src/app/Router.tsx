@@ -6,9 +6,13 @@ import {
 } from 'react-router-dom'
 
 import { Layout } from './Layout'
+
 import { AboutGame, Home, AboutGenre, Browse, GameListPage } from 'pages'
+
 import { ROUTES } from 'shared/consts/routes' // ошибка в ином случае, решить позже
 import { Genres } from 'pages/Genres'
+import { Browse } from 'pages/Browse'
+import { Platforms } from 'pages/Platforms'
 
 const router = createBrowserRouter(
     createRoutesFromElements(
@@ -25,9 +29,17 @@ const router = createBrowserRouter(
                     element={<GameListPage />}
                 />
                 <Route path={ROUTES.ABOUT_GAME} element={<AboutGame />} />
+
                 <Route path={ROUTES.GENRE} element={<AboutGenre />} />
                 <Route path={ROUTES.GENRES_PAGE} element={<Genres />} />
                 <Route path={ROUTES.BROWSE_PAGE} element={<Browse />} />
+
+  
+                <Route path={ROUTES.GENRE} element={<GenresPage />} />
+                <Route path={ROUTES.GENRES_PAGE} element={<Genres />} />
+                <Route path={ROUTES.BROWSE_PAGE} element={<Browse />} />
+                <Route path={ROUTES.PLATFIRM_PAGE} element={<Platforms />} />
+
             </Route>
         </>
     )
