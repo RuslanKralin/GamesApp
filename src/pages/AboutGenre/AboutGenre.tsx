@@ -1,15 +1,20 @@
 import React, { useEffect, useState } from 'react'
-import InfiniteScroll from 'react-infinite-scroll-component'
-import { Typography, Box, Button } from '@mui/material'
+import { Box, Button, Typography } from '@mui/material'
+import { useParams } from 'react-router-dom'
 
+import { TagGroup } from './ui/TagGroup'
 import GridOnIcon from '@mui/icons-material/GridOn'
 import WebAssetIcon from '@mui/icons-material/WebAsset'
+import { CardItem, CardItemBigSize } from 'shared/ui'
+import InfiniteScroll from 'react-infinite-scroll-component'
 
-import { CardItem } from 'shared/ui'
-import { CardItemBigSize } from 'shared/ui'
-
-type DisplayOptinsType = 'lines' | 'bigSize'
 type Fn = () => void
+type DisplayOptinsType = 'lines' | 'bigSize'
+interface TypeGamesData {
+    description: string
+    results: never[]
+    seo_h1: string
+}
 
 const iconStyle = {
     border: '1px grey',
@@ -27,58 +32,87 @@ async function getGames(URL: string) {
     return data
 }
 
-function ThisWeek() {
+function AboutGenre() {
+    const { id } = useParams()
     const { REACT_APP_API_ENDPOINT, REACT_APP_API_KEY } = process.env
 
-    const URL: string = `${REACT_APP_API_ENDPOINT}/games?key=${REACT_APP_API_KEY}&dates=2023-12-01,2023-12-07`
+    const URL: string = `${REACT_APP_API_ENDPOINT}/games?genres=${id}&page=1&page_size=40&filter=true&comments=true&key=${REACT_APP_API_KEY}`
 
-    const [gamesData, setGamesData] = useState([])
     const [displayOptions, setDisplayOptions] =
         useState<DisplayOptinsType>('lines')
+
+    const [gamesData, setGamesData] = useState<TypeGamesData>({
+        description: '',
+        results: [],
+        seo_h1: '',
+    })
 
     const [correntPage, setCorrentPage] = useState(2)
 
     const fetchMoreData: Fn = async () => {
         const response = await fetch(
-            `${REACT_APP_API_ENDPOINT}/games?key=${REACT_APP_API_KEY}&page=${correntPage}` // исправить на корректный запрос, проблемы со скроллом
+            `${URL}&key=${REACT_APP_API_KEY}&page=${correntPage}`
         )
         const nextData = await response.json()
 
         setCorrentPage((prev) => prev + 1)
         const nextPageGames: [] = nextData.results
-        setGamesData((prevData) => [...prevData, ...nextPageGames])
-        console.log(nextPageGames)
+        setGamesData((prevData) => ({
+            ...prevData,
+            results: [...prevData.results, ...nextPageGames],
+        }))
+        // console.log(nextPageGames)
     }
 
     useEffect(() => {
         async function fetchData() {
             const data = await getGames(URL)
-            console.log(data)
-            setGamesData(data.results)
-        }
 
+            setGamesData(data)
+            // console.log(data.results)
+            // setPageDataInfo(data);
+            console.log(gamesData.description)
+        }
         fetchData()
+
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
     return (
-        <Box>
-            <Typography
-                variant="h2"
-                sx={{
-                    color: 'white',
-                    fontWeight: '800',
-                    marginTop: '30px',
-                    marginBottom: '20px',
-                }}
-            >
-                This week
-            </Typography>
-
+        <Box
+            sx={{
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '20px',
+                mt: '50px',
+            }}
+        >
             <Box
                 sx={{
                     display: 'flex',
                     justifyContent: 'space-between',
                     alignItems: 'center',
-                    marginBottom: '30px',
+                }}
+            >
+                <Typography variant="h1" sx={{ fontWeight: '700' }}>
+                    {gamesData.seo_h1}
+                </Typography>
+                <Box>
+                    <Button>qwe</Button>
+                    <Button>qwe</Button>
+                </Box>
+            </Box>
+            <Box>
+                <Typography>
+                    {gamesData.description.replace(/<\/?p>/g, '')}
+                </Typography>
+            </Box>
+            <TagGroup />
+            <Box
+                sx={{
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                    alignItems: 'center',
+                    mb: '30px',
                 }}
             >
                 <Box sx={{ display: 'flex', gap: '10px' }}>
@@ -149,10 +183,9 @@ function ThisWeek() {
                     </Box>
                 </Box>
             </Box>
-
             {displayOptions === 'lines' && (
                 <InfiniteScroll
-                    dataLength={gamesData.length}
+                    dataLength={gamesData.results.length}
                     next={fetchMoreData}
                     hasMore={true}
                     loader={<h4>Loading...</h4>}
@@ -170,7 +203,7 @@ function ThisWeek() {
                             justifyContent: 'space-between',
                         }}
                     >
-                        {gamesData.map((game: any) => (
+                        {gamesData.results.map((game: any) => (
                             <CardItem
                                 key={game.id}
                                 title={game.name}
@@ -198,7 +231,7 @@ function ThisWeek() {
                     }}
                 >
                     <InfiniteScroll
-                        dataLength={gamesData.length}
+                        dataLength={gamesData.results.length}
                         next={fetchMoreData}
                         hasMore={true}
                         loader={<h4>Loading...</h4>}
@@ -208,12 +241,12 @@ function ThisWeek() {
                             </p>
                         }
                     >
-                        {gamesData.map((game: any, index: number) => (
+                        {gamesData.results.map((game: any, index: number) => (
                             <div
                                 key={game.id}
                                 style={{
                                     marginBottom:
-                                        index !== gamesData.length - 1
+                                        index !== gamesData.results.length - 1
                                             ? '50px'
                                             : 0,
                                 }}
@@ -237,4 +270,4 @@ function ThisWeek() {
     )
 }
 
-export default ThisWeek
+export default AboutGenre

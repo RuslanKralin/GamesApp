@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { generatePath, useNavigate } from 'react-router-dom'
 
 import { Box, Typography, Link, Button } from '@mui/material'
 import StarIcon from '@mui/icons-material/Star'
@@ -112,7 +113,10 @@ function Aside() {
                         <StarIcon sx={iconStyle} />
                         <Link
                             underline="none"
-                            href={ROUTES.LAST_DAYS}
+                            href={generatePath(ROUTES.GAME_LIST_PAGE, {
+                                type: String('recent-games-past'),
+                            })}
+                            // href={ROUTES.LAST_DAYS}
                             sx={linkSubStyle}
                         >
                             Last 30 days
@@ -123,7 +127,9 @@ function Aside() {
                         <LocalFireDepartmentIcon sx={iconStyle} />
                         <Link
                             underline="none"
-                            href={ROUTES.THIS_WEEK}
+                            href={generatePath(ROUTES.GAME_LIST_PAGE, {
+                                type: String('recent-games'),
+                            })}
                             sx={linkSubStyle}
                         >
                             This week
@@ -133,7 +139,9 @@ function Aside() {
                         <FastForwardIcon sx={iconStyle} />
                         <Link
                             underline="none"
-                            href={ROUTES.NEXT_WEEK}
+                            href={generatePath(ROUTES.GAME_LIST_PAGE, {
+                                type: String('recent-games-future'),
+                            })}
                             sx={linkSubStyle}
                         >
                             Next week
@@ -165,7 +173,9 @@ function Aside() {
 
                         <Link
                             underline="none"
-                            href={ROUTES.LAST_DAYS}
+                            href={generatePath(ROUTES.GAME_LIST_PAGE, {
+                                type: String('greatest'),
+                            })}
                             sx={linkSubStyle}
                         >
                             Best of the year
@@ -175,7 +185,9 @@ function Aside() {
                         <AssessmentIcon sx={iconStyle} />
                         <Link
                             underline="none"
-                            href={ROUTES.THIS_WEEK}
+                            href={generatePath(ROUTES.GAME_LIST_PAGE, {
+                                type: String('greatest?year=2022'),
+                            })}
                             sx={linkSubStyle}
                         >
                             Popular in 2022
@@ -183,7 +195,13 @@ function Aside() {
                     </Box>
                     <Box sx={linkItemSytle}>
                         <Diversity1Icon sx={iconStyle} />
-                        <Link underline="none" sx={linkSubStyle}>
+                        <Link
+                            underline="none"
+                            href={generatePath(ROUTES.GAME_LIST_PAGE, {
+                                type: String('popular'),
+                            })}
+                            sx={linkSubStyle}
+                        >
                             All the time top 250
                         </Link>
                     </Box>

@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from 'react'
 
 import { Box, Link, Typography } from '@mui/material'
@@ -58,12 +59,17 @@ function Browse() {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
+
     return (
         <Box
             sx={{
                 display: 'flex',
                 flexDirection: 'column',
+
+    
+
                 gap: '30px',
+
                 mt: '50px',
             }}
         >
@@ -78,6 +84,8 @@ function Browse() {
                     Browse
                 </Typography>
             </Box>
+
+
 
             <Box sx={{ mb: '20px' }}>
                 {data.results.length > 0 && (
@@ -307,6 +315,7 @@ function Browse() {
                             ))}
                 </Box>
             </Box>
+
         </Box>
     )
 }
