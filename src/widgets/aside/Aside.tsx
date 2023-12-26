@@ -113,7 +113,7 @@ function Aside() {
                         <StarIcon sx={iconStyle} />
                         <Link
                             underline="none"
-                            href={generatePath(ROUTES.COMMON, {
+                            href={generatePath(ROUTES.GAME_LIST_PAGE, {
                                 type: String('recent-games-past'),
                             })}
                             // href={ROUTES.LAST_DAYS}
@@ -127,7 +127,7 @@ function Aside() {
                         <LocalFireDepartmentIcon sx={iconStyle} />
                         <Link
                             underline="none"
-                            href={generatePath(ROUTES.COMMON, {
+                            href={generatePath(ROUTES.GAME_LIST_PAGE, {
                                 type: String('recent-games'),
                             })}
                             sx={linkSubStyle}
@@ -139,7 +139,7 @@ function Aside() {
                         <FastForwardIcon sx={iconStyle} />
                         <Link
                             underline="none"
-                            href={generatePath(ROUTES.COMMON, {
+                            href={generatePath(ROUTES.GAME_LIST_PAGE, {
                                 type: String('recent-games-future'),
                             })}
                             sx={linkSubStyle}
@@ -173,7 +173,7 @@ function Aside() {
 
                         <Link
                             underline="none"
-                            href={generatePath(ROUTES.COMMON, {
+                            href={generatePath(ROUTES.GAME_LIST_PAGE, {
                                 type: String('greatest'),
                             })}
                             sx={linkSubStyle}
@@ -185,7 +185,7 @@ function Aside() {
                         <AssessmentIcon sx={iconStyle} />
                         <Link
                             underline="none"
-                            href={generatePath(ROUTES.COMMON, {
+                            href={generatePath(ROUTES.GAME_LIST_PAGE, {
                                 type: String('greatest?year=2022'),
                             })}
                             sx={linkSubStyle}
@@ -197,7 +197,7 @@ function Aside() {
                         <Diversity1Icon sx={iconStyle} />
                         <Link
                             underline="none"
-                            href={generatePath(ROUTES.COMMON, {
+                            href={generatePath(ROUTES.GAME_LIST_PAGE, {
                                 type: String('popular'),
                             })}
                             sx={linkSubStyle}

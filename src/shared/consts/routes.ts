@@ -3,7 +3,7 @@ export const ROUTES = {
 
     DEFAULT: '/',
 
-    COMMON: '/page/:type',
+    GAME_LIST_PAGE: '/page/:type',
 
     THIS_WEEK: '/this_week',
 

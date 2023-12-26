@@ -6,18 +6,9 @@ import {
 } from 'react-router-dom'
 
 import { Layout } from './Layout'
-import {
-    AboutGame,
-    Home,
-    // LastDays,
-    // ThisWeek,
-    AboutGenre,
-    // NextWeek,
-    Browse,
-} from 'pages'
+import { AboutGame, Home, AboutGenre, Browse, GameListPage } from 'pages'
 import { ROUTES } from 'shared/consts/routes' // ошибка в ином случае, решить позже
 import { Genres } from 'pages/Genres'
-import { Common } from 'pages/Common'
 
 const router = createBrowserRouter(
     createRoutesFromElements(
@@ -29,10 +20,10 @@ const router = createBrowserRouter(
                 }
             >
                 <Route path={ROUTES.HOME} element={<Home />} />
-                <Route path={ROUTES.COMMON} element={<Common />} />
-                {/* <Route path={ROUTES.THIS_WEEK} element={<ThisWeek />} /> */}
-                {/* <Route path={ROUTES.LAST_DAYS} element={<LastDays />} /> */}
-                {/* <Route path={ROUTES.NEXT_WEEK} element={<NextWeek />} /> */}
+                <Route
+                    path={ROUTES.GAME_LIST_PAGE}
+                    element={<GameListPage />}
+                />
                 <Route path={ROUTES.ABOUT_GAME} element={<AboutGame />} />
                 <Route path={ROUTES.GENRE} element={<AboutGenre />} />
                 <Route path={ROUTES.GENRES_PAGE} element={<Genres />} />

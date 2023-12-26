@@ -49,30 +49,9 @@ async function getGames(URL: string) {
     return data
 }
 
-function Common() {
+function GameListPage() {
     const params = useParams()
     const { type } = params
-    // console.log(type)
-
-    // const location = useLocation()
-    // const currentURL = location.pathname
-    // console.log(currentURL)
-
-    // const getTitle = (currentURL: string): string => {
-    //     if (currentURL === '/page/recent-games') {
-    //         return 'This week'
-    //     } else if (currentURL === '/page/recent-games-past') {
-    //         return 'Last 30 days'
-    //     } else if (currentURL === '/page/recent-games-future') {
-    //         return 'Next week'
-    //     } else if (currentURL === '/page/greatest') {
-    //         return 'Best of the year'
-    //     } else if (currentURL === '/page/greatest') {
-    //         return 'Best of the year'
-    //     }
-    //     const title = getTitle(currentURL)
-    //     return ''
-    // }
 
     const title = type ? GAMES_LIST_TITLE[type] : ''
 
@@ -229,7 +208,6 @@ function Common() {
                                     display: 'flex',
                                     flexWrap: 'wrap',
                                     gap: '2rem',
-                                    // justifyContent: 'space-between',
                                 }}
                             >
                                 {gamesData.results.map((game: any) => (
@@ -319,7 +297,6 @@ function Common() {
                         display: 'flex',
                         flexWrap: 'wrap',
                         gap: '2rem',
-                        // justifyContent: 'space-between',
                     }}
                 >
                     {gamesData.results &&
@@ -342,4 +319,4 @@ function Common() {
     )
 }
 
-export default Common
+export default GameListPage
