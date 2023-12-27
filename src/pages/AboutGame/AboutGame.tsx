@@ -38,6 +38,7 @@ interface AboutGamePropsType {
     publishers: string[]
     ratings: any[]
     charts?: Chart[]
+    ratings_count: number | undefined
 }
 
 function AboutGame() {
@@ -140,6 +141,7 @@ function AboutGame() {
                         publishers={gamesData?.publishers}
                         ratings={gamesData?.ratings || []}
                         charts={gamesData?.charts || []}
+                        ratings_count={gamesData?.ratings_count || undefined}
                     />
                 </Box>
                 <Box sx={{ flexBasis: '40%' }}>

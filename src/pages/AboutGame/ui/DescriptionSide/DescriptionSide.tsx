@@ -20,6 +20,7 @@ type DescriptionSidePropsType = {
     publishers: string[] | undefined
     ratings: any[]
     charts: any[]
+    ratings_count: number | undefined
 }
 
 function DescriptionSide(props: DescriptionSidePropsType) {
@@ -60,7 +61,7 @@ function DescriptionSide(props: DescriptionSidePropsType) {
                 </Typography>
             </Box>
             <BtnGroup />
-            <Charts charts={props.charts} />
+            <Charts charts={props.charts} ratings_count={props.ratings_count} />
             <Ratings ratings={props.ratings} />
             <About aboutGame={props.aboutGame} />
             <Info
