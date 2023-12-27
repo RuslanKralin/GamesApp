@@ -1,6 +1,14 @@
 import React from 'react'
 
 import { Box, Button, Typography } from '@mui/material'
+// @ts-ignore
+import goal from 'shared/assets/images/goal.png'
+// @ts-ignore
+import recommended from 'shared/assets/images/recommended.png'
+// @ts-ignore
+import badRating from 'shared/assets/images/badRating.png'
+// @ts-ignore
+import meh from 'shared/assets/images/meh.webp'
 
 interface Rate {
     title?: string
@@ -16,6 +24,9 @@ function Ratings(props: RatingsPropsType) {
     console.log(props.ratings)
     return (
         <Box sx={{ display: 'flex', flexDirection: 'column' }}>
+            <Typography sx={{ color: 'grey', mb: '10px' }}>
+                Click to rate
+            </Typography>
             <Box
                 sx={{
                     borderRadius: '50px',
@@ -26,13 +37,31 @@ function Ratings(props: RatingsPropsType) {
             >
                 <Box
                     sx={{
+                        // borderTopLeftRadius: '20px',
                         backgroundImage:
                             'linear-gradient(180deg,#b4ec51,#429321)',
                         height: '50px',
                         flexBasis: `${props.ratings?.[0]?.percent}%`,
-                        // flexGrow: 1,
+                        position: 'relative',
+                        overflow: 'hidden',
                     }}
-                ></Box>
+                >
+                    {props.ratings?.[0]?.percent &&
+                        props.ratings?.[0]?.percent > 10 && (
+                            <img
+                                alt="goal"
+                                src={goal}
+                                style={{
+                                    position: 'absolute',
+                                    top: '5px',
+                                    left: '20px',
+                                    width: '55px',
+                                    height: '55px',
+                                    marginLeft: '-20px',
+                                }}
+                            />
+                        )}
+                </Box>
 
                 <Box
                     sx={{
@@ -40,24 +69,76 @@ function Ratings(props: RatingsPropsType) {
                             'linear-gradient(0deg,#4354b9,#649bff)',
                         height: '50px',
                         flexBasis: `${props.ratings?.[1]?.percent}%`,
+                        position: 'relative',
+                        overflow: 'hidden',
                     }}
-                ></Box>
+                >
+                    {props.ratings?.[1]?.percent &&
+                        props.ratings?.[1]?.percent > 10 && (
+                            <img
+                                alt="recommended"
+                                src={recommended}
+                                style={{
+                                    position: 'absolute',
+                                    top: '5px',
+                                    width: '55px',
+                                    height: '55px',
+                                    marginLeft: '-20px',
+                                }}
+                            />
+                        )}
+                </Box>
                 <Box
                     sx={{
                         backgroundImage:
                             'linear-gradient(180deg,#fad961,#f76b1c)',
                         height: '50px',
                         flexBasis: `${props.ratings?.[2]?.percent}%`,
+                        position: 'relative',
+                        overflow: 'hidden',
                     }}
-                ></Box>
+                >
+                    {' '}
+                    {props.ratings?.[2]?.percent &&
+                        props.ratings?.[2]?.percent > 10 && (
+                            <img
+                                alt="meh"
+                                src={meh}
+                                style={{
+                                    position: 'absolute',
+                                    top: '5px',
+                                    width: '55px',
+                                    height: '55px',
+                                    marginLeft: '-20px',
+                                }}
+                            />
+                        )}
+                </Box>
                 <Box
                     sx={{
                         backgroundImage:
                             'linear-gradient(180deg,#ff5764,#f11a2a)',
                         height: '50px',
                         flexBasis: `${props.ratings?.[3]?.percent}%`,
+                        position: 'relative',
+                        overflow: 'hidden',
                     }}
-                ></Box>
+                >
+                    {props.ratings?.[3]?.percent &&
+                        props.ratings?.[3]?.percent > 10 && (
+                            <img
+                                alt="badRating"
+                                src={badRating}
+                                style={{
+                                    position: 'absolute',
+                                    top: '5px',
+                                    width: '55px',
+                                    height: '55px',
+                                    marginLeft: '-20px',
+                                }}
+                            />
+                        )}
+                </Box>
             </Box>
             <Box
                 sx={{
