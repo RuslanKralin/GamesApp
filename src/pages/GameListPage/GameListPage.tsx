@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import { Typography, Box, Button } from '@mui/material'
-import InfiniteScroll from 'react-infinite-scroll-component'
-import { CardItem } from 'shared/ui'
+import { Typography, Box } from '@mui/material'
 
+import InfiniteScroll from 'react-infinite-scroll-component'
+
+import { CardItem } from 'shared/ui'
 import { CardItemBigSize } from 'shared/ui'
 import GameFiltres from 'shared/ui/GameFiltres'
-import GridOnIcon from '@mui/icons-material/GridOn'
-import WebAssetIcon from '@mui/icons-material/WebAsset'
 
 interface GamesListTitle {
     [key: string]: string
@@ -50,8 +49,6 @@ function GameListPage() {
     const { REACT_APP_API_ENDPOINT, REACT_APP_API_KEY } = process.env
 
     const URL: string = `${REACT_APP_API_ENDPOINT}/games/lists/${type}?discover=true&ordering=-added&page_size=20&page=1&key=${REACT_APP_API_KEY}`
-
-    // console.log(URL)
 
     const [gamesData, setGamesData] = useState<PageData>({
         count: 0,
@@ -212,28 +209,78 @@ function GameListPage() {
                     )}
                 </>
             ) : (
-                <Box
-                    sx={{
-                        display: 'flex',
-                        flexWrap: 'wrap',
-                        gap: '2rem',
-                    }}
-                >
-                    {gamesData.results &&
-                        gamesData.results.map((game: any) => (
-                            <CardItem
-                                key={game.id}
-                                title={game.name}
-                                backGroundImg={game.background_image}
-                                id={game.id}
-                                added_by_status={game.added_by_status?.owned}
-                                released={game.released}
-                                genres={game.genres}
-                                short_screenshots={game.short_screenshots}
-                                parent_platforms={game.parent_platforms}
-                            />
-                        ))}
-                </Box>
+                <>
+                    {displayOptions === 'lines' && (
+                        <Box
+                            sx={{
+                                display: 'flex',
+                                flexWrap: 'wrap',
+                                gap: '2rem',
+                            }}
+                        >
+                            {gamesData.results.map((game: any) => (
+                                <CardItem
+                                    key={game.id}
+                                    title={game.name}
+                                    backGroundImg={game.background_image}
+                                    id={game.id}
+                                    added_by_status={
+                                        game.added_by_status?.owned
+                                    }
+                                    released={game.released}
+                                    genres={game.genres}
+                                    short_screenshots={game.short_screenshots}
+                                    parent_platforms={game.parent_platforms}
+                                />
+                            ))}
+                        </Box>
+                    )}
+
+                    {displayOptions === 'bigSize' && (
+                        <Box
+                            sx={{
+                                display: 'flex',
+                                flexDirection: 'column',
+                                alignItems: 'center',
+                                marginLeft: 'auto',
+                                marginRight: 'auto',
+                            }}
+                        >
+                            {gamesData.results &&
+                                gamesData.results.map(
+                                    (game: any, index: number) => (
+                                        <div
+                                            key={game.id}
+                                            style={{
+                                                marginBottom:
+                                                    index !==
+                                                    gamesData.results.length - 1
+                                                        ? '50px'
+                                                        : 0,
+                                            }}
+                                        >
+                                            <CardItemBigSize
+                                                title={game.name}
+                                                backGroundImg={
+                                                    game.background_image
+                                                }
+                                                id={game.id}
+                                                added_by_status={
+                                                    game.added_by_status?.owned
+                                                }
+                                                released={game.released}
+                                                genres={game.genres}
+                                                platforms={game.platforms}
+                                                short_screenshots={
+                                                    game.short_screenshots
+                                                }
+                                            />
+                                        </div>
+                                    )
+                                )}
+                        </Box>
+                    )}
+                </>
             )}
         </Box>
     )

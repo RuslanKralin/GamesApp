@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import { Typography, Box, Button } from '@mui/material'
+
 import InfiniteScroll from 'react-infinite-scroll-component'
 
 import GridOnIcon from '@mui/icons-material/GridOn'
 import WebAssetIcon from '@mui/icons-material/WebAsset'
 
 import { default as CardItem } from '../../shared/ui/CardItem'
+import GameFiltres from 'shared/ui/GameFiltres'
 import { CardItemBigSize } from 'shared/ui'
 // import { useBoolState } from 'shared/hooks'
 
@@ -42,6 +44,10 @@ function Home() {
 
     const [displayOptions, setDisplayOptions] =
         useState<DisplayOptinsType>('lines')
+
+    const displeyOptionsHandler = (option: DisplayOptinsType) => {
+        setDisplayOptions(option)
+    }
 
     const [gamesData, setGamesData] = useState([])
 
@@ -91,82 +97,8 @@ function Home() {
             >
                 Based on player counts and release date
             </Typography>
-            <Box
-                sx={{
-                    display: 'flex',
-                    justifyContent: 'space-between',
-                    alignItems: 'center',
-                    marginBottom: '30px',
-                }}
-            >
-                <Box sx={{ display: 'flex', gap: '10px' }}>
-                    <Button
-                        sx={{
-                            color: 'primary',
-                            backgroundColor: 'background.btn',
-                            '&:hover': {
-                                backgroundColor: 'background.btnHover',
-                                transition: 'backgroundColor 0.3s ease',
-                            },
-                        }}
-                    >
-                        Order by:{' '}
-                    </Button>
-                    <Button
-                        sx={{
-                            color: 'primary',
-                            backgroundColor: 'background.btn',
-                            '&:hover': {
-                                backgroundColor: 'background.btnHover',
-                                transition: 'backgroundColor 0.3s ease',
-                            },
-                        }}
-                    >
-                        Platforms:{' '}
-                    </Button>
-                </Box>
-                <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                    <Typography sx={{ color: 'grey', marginRight: '20px' }}>
-                        Display options:
-                    </Typography>
-                    <Box sx={{ display: 'flex', gap: '10px' }}>
-                        <Button
-                            sx={{
-                                backgroundColor: 'background.btn',
-                                padding: 0,
-                                minWidth: 0,
-                                '& .MuiButton-label': {
-                                    padding: 0,
-                                },
-                                '&:hover': {
-                                    backgroundColor: 'background.btnHover',
-                                    transition: 'backgroundColor 0.3s ease',
-                                },
-                            }}
-                            onClick={() => setDisplayOptions('lines')}
-                        >
-                            <GridOnIcon style={iconStyle} />
-                        </Button>
-                        <Button
-                            sx={{
-                                backgroundColor: 'background.btn',
-                                padding: 0,
-                                minWidth: 0,
-                                '& .MuiButton-label': {
-                                    padding: 0,
-                                },
-                                '&:hover': {
-                                    backgroundColor: 'background.btnHover',
-                                    transition: 'backgroundColor 0.3s ease',
-                                },
-                            }}
-                            onClick={() => setDisplayOptions('bigSize')}
-                        >
-                            <WebAssetIcon style={iconStyle} />
-                        </Button>
-                    </Box>
-                </Box>
-            </Box>
+
+            <GameFiltres displeyOptionsHandler={displeyOptionsHandler} />
 
             {displayOptions === 'lines' && (
                 <InfiniteScroll
