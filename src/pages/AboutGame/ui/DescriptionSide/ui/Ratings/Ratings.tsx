@@ -21,13 +21,6 @@ interface RatingsPropsType {
 }
 
 function Ratings(props: RatingsPropsType) {
-    const totalRating: number =
-        (props.ratings?.[0]?.count || 0) +
-        (props.ratings?.[1]?.count || 0) +
-        (props.ratings?.[2]?.count || 0) +
-        (props.ratings?.[3]?.count || 0)
-
-    console.log(totalRating)
     const rating: Array<number | undefined> = [
         props.ratings?.[0]?.percent,
         props.ratings?.[1]?.percent,

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Box, Button, Typography } from '@mui/material'
 
 import GridOnIcon from '@mui/icons-material/GridOn'
@@ -14,11 +14,12 @@ const iconStyle = {
     height: '50px',
 }
 
-type DisplayOptinsType = 'lines' | 'bigSize'
+type DisplayOptionsType = 'lines' | 'bigSize'
+type Props = {
+    displeyOptionsHandler: (option: DisplayOptionsType) => void
+}
 
-function GameFiltres() {
-    const [displayOptions, setDisplayOptions] =
-        useState<DisplayOptinsType>('lines')
+function GameFiltres({ displeyOptionsHandler }: Props) {
     return (
         <Box
             sx={{
@@ -72,7 +73,7 @@ function GameFiltres() {
                                 transition: 'backgroundColor 0.3s ease',
                             },
                         }}
-                        onClick={() => setDisplayOptions('lines')}
+                        onClick={() => displeyOptionsHandler('lines')}
                     >
                         <GridOnIcon style={iconStyle} />
                     </Button>
@@ -89,7 +90,7 @@ function GameFiltres() {
                                 transition: 'backgroundColor 0.3s ease',
                             },
                         }}
-                        onClick={() => setDisplayOptions('bigSize')}
+                        onClick={() => displeyOptionsHandler('bigSize')}
                     >
                         <WebAssetIcon style={iconStyle} />
                     </Button>

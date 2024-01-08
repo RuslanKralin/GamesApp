@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react'
-import { useLocation, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import { Typography, Box, Button } from '@mui/material'
 import InfiniteScroll from 'react-infinite-scroll-component'
 import { CardItem } from 'shared/ui'
-import { URL_PAGES } from 'shared/consts/urlPages'
 
 import { CardItemBigSize } from 'shared/ui'
-// import GameFiltres from 'shared/ui/GameFiltres'
+import GameFiltres from 'shared/ui/GameFiltres'
 import GridOnIcon from '@mui/icons-material/GridOn'
 import WebAssetIcon from '@mui/icons-material/WebAsset'
 
@@ -23,15 +22,6 @@ const GAMES_LIST_TITLE: GamesListTitle = {
     popular: 'All time top 250',
 }
 
-const iconStyle = {
-    border: '1px grey',
-    borderRadius: '5px',
-    color: 'white',
-    backgroundColor: '#ffffff12',
-    padding: '5px',
-    width: '50px',
-    height: '50px',
-}
 type Fn = () => Promise<void | undefined>
 
 interface PageData {
@@ -43,6 +33,7 @@ interface PageData {
 }
 
 type DisplayOptinsType = 'lines' | 'bigSize'
+
 async function getGames(URL: string) {
     const response = await fetch(URL)
     const data = await response.json()
@@ -52,12 +43,13 @@ async function getGames(URL: string) {
 function GameListPage() {
     const params = useParams()
     const { type } = params
+    console.log(type)
 
     const title = type ? GAMES_LIST_TITLE[type] : ''
 
     const { REACT_APP_API_ENDPOINT, REACT_APP_API_KEY } = process.env
 
-    const URL: string = `https://rawg.io/api/games/lists/${type}?discover=true&ordering=-added&page_size=20&page=1&key=${REACT_APP_API_KEY}`
+    const URL: string = `${REACT_APP_API_ENDPOINT}/games/lists/${type}?discover=true&ordering=-added&page_size=20&page=1&key=${REACT_APP_API_KEY}`
 
     // console.log(URL)
 
@@ -71,6 +63,10 @@ function GameListPage() {
 
     const [displayOptions, setDisplayOptions] =
         useState<DisplayOptinsType>('lines')
+
+    const displeyOptionsHandler = (option: DisplayOptinsType) => {
+        setDisplayOptions(option)
+    }
 
     const [correntPage, setCorrentPage] = useState(2)
 
@@ -111,83 +107,7 @@ function GameListPage() {
                 {title}
             </Typography>
 
-            {/* <GameFiltres /> */}
-            <Box
-                sx={{
-                    display: 'flex',
-                    justifyContent: 'space-between',
-                    alignItems: 'center',
-                    marginBottom: '30px',
-                }}
-            >
-                <Box sx={{ display: 'flex', gap: '10px' }}>
-                    <Button
-                        sx={{
-                            color: 'primary',
-                            backgroundColor: 'background.btn',
-                            '&:hover': {
-                                backgroundColor: 'background.btnHover',
-                                transition: 'backgroundColor 0.3s ease',
-                            },
-                        }}
-                    >
-                        Order by:{' '}
-                    </Button>
-                    <Button
-                        sx={{
-                            color: 'primary',
-                            backgroundColor: 'background.btn',
-                            '&:hover': {
-                                backgroundColor: 'background.btnHover',
-                                transition: 'backgroundColor 0.3s ease',
-                            },
-                        }}
-                    >
-                        Platforms:{' '}
-                    </Button>
-                </Box>
-                <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                    <Typography sx={{ color: 'grey', marginRight: '20px' }}>
-                        Display options:
-                    </Typography>
-                    <Box sx={{ display: 'flex', gap: '10px' }}>
-                        <Button
-                            sx={{
-                                backgroundColor: 'background.btn',
-                                padding: 0,
-                                minWidth: 0,
-                                '& .MuiButton-label': {
-                                    padding: 0,
-                                },
-                                '&:hover': {
-                                    backgroundColor: 'background.btnHover',
-                                    transition: 'backgroundColor 0.3s ease',
-                                },
-                            }}
-                            onClick={() => setDisplayOptions('lines')}
-                        >
-                            <GridOnIcon style={iconStyle} />
-                        </Button>
-                        <Button
-                            sx={{
-                                backgroundColor: 'background.btn',
-                                padding: 0,
-                                minWidth: 0,
-                                '& .MuiButton-label': {
-                                    padding: 0,
-                                },
-                                '&:hover': {
-                                    backgroundColor: 'background.btnHover',
-                                    transition: 'backgroundColor 0.3s ease',
-                                },
-                            }}
-                            onClick={() => setDisplayOptions('bigSize')}
-                        >
-                            <WebAssetIcon style={iconStyle} />
-                        </Button>
-                    </Box>
-                </Box>
-            </Box>
+            <GameFiltres displeyOptionsHandler={displeyOptionsHandler} />
 
             {gamesData.next !== null ? (
                 <>
