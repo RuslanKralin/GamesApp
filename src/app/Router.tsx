@@ -23,6 +23,7 @@ const router = createBrowserRouter(
                     <Layout url="https://media.rawg.io/media/screenshots/3e4/3e4576a772b3df47bfc52b86e4cf7e03.jpg" />
                 }
             >
+                <Route path={ROUTES.DEFAULT} element={<Home />} />
                 <Route path={ROUTES.HOME} element={<Home />} />
                 <Route
                     path={ROUTES.GAME_LIST_PAGE}

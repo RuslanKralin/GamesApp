@@ -1,10 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import { Typography, Box, Button } from '@mui/material'
+import { Typography, Box } from '@mui/material'
 
 import InfiniteScroll from 'react-infinite-scroll-component'
-
-import GridOnIcon from '@mui/icons-material/GridOn'
-import WebAssetIcon from '@mui/icons-material/WebAsset'
 
 import { default as CardItem } from '../../shared/ui/CardItem'
 import GameFiltres from 'shared/ui/GameFiltres'
@@ -13,16 +10,6 @@ import { CardItemBigSize } from 'shared/ui'
 
 type DisplayOptinsType = 'lines' | 'bigSize'
 type Fn = () => void
-
-const iconStyle = {
-    border: '1px grey',
-    borderRadius: '5px',
-    color: 'white',
-    backgroundColor: '#ffffff12',
-    padding: '5px',
-    width: '50px',
-    height: '50px',
-}
 
 async function getGames(URL: string) {
     const response = await fetch(URL)
