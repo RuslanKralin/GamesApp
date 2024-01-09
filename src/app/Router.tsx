@@ -34,8 +34,6 @@ const router = createBrowserRouter(
                 <Route path={ROUTES.GENRE} element={<AboutGenre />} />
                 <Route path={ROUTES.GENRES_PAGE} element={<Genres />} />
                 <Route path={ROUTES.BROWSE_PAGE} element={<Browse />} />
-
-                {/* <Route path={ROUTES.GENRE} element={<GenresPage />} /> */}
                 <Route path={ROUTES.GENRES_PAGE} element={<Genres />} />
                 <Route path={ROUTES.BROWSE_PAGE} element={<Browse />} />
                 <Route path={ROUTES.PLATFIRM_PAGE} element={<Platforms />} />

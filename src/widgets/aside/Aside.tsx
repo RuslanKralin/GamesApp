@@ -1,7 +1,7 @@
-import React, { useState } from 'react'
-import { generatePath, useNavigate } from 'react-router-dom'
+import React from 'react'
+import { generatePath } from 'react-router-dom'
 
-import { Box, Typography, Link, Button } from '@mui/material'
+import { Box, Typography, Link } from '@mui/material'
 import StarIcon from '@mui/icons-material/Star'
 import LocalFireDepartmentIcon from '@mui/icons-material/LocalFireDepartment'
 import FastForwardIcon from '@mui/icons-material/FastForward'
@@ -75,10 +75,6 @@ const iconStyle = {
 }
 
 function Aside() {
-    const { REACT_APP_API_ENDPOINT, REACT_APP_API_KEY } = process.env
-
-    // const [url, setUrl] = useState('')
-
     return (
         <Box
             sx={{
@@ -116,7 +112,6 @@ function Aside() {
                             href={generatePath(ROUTES.GAME_LIST_PAGE, {
                                 type: String('recent-games-past'),
                             })}
-                            // href={ROUTES.LAST_DAYS}
                             sx={linkSubStyle}
                         >
                             Last 30 days

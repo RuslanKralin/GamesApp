@@ -25,6 +25,16 @@ type searchData = {
 function Header() {
     const { REACT_APP_API_ENDPOINT, REACT_APP_API_KEY } = process.env
 
+    const [isHovered, setIsHovered] = useState(false)
+
+    const handleMouseEnter = () => {
+        setIsHovered(true)
+    }
+
+    const handleMouseLeave = () => {
+        setIsHovered(false)
+    }
+
     const [isOpenWindow, setIsOpenWindow] = useState(false)
     const [searchParams, setSearchParams] = useState<string>('')
     const [searchData, setSearchData] = useState<searchData>()
@@ -94,7 +104,6 @@ function Header() {
                     RAWG
                 </Box>
                 <Button
-                    // startIcon={goal}
                     color="warning"
                     variant="outlined"
                     size="small"
@@ -144,13 +153,11 @@ function Header() {
                             '&:hover': {
                                 backgroundColor: 'white',
                                 transition: 'background-color 0.3s ease',
-                                '&::placeholder': {
-                                    color: 'black',
+                            },
+                            '& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline':
+                                {
+                                    border: 'none',
                                 },
-                            },
-                            '&::placeholder': {
-                                color: 'grey',
-                            },
                         }}
                         variant="outlined"
                         placeholder="Search 860,253 games"
@@ -160,16 +167,19 @@ function Header() {
                                     <SearchIcon
                                         sx={{
                                             color: 'grey',
-                                            '&:hover': {
-                                                color: 'red', // не работает
-                                            },
                                         }}
                                     />
                                 </InputAdornment>
                             ),
                         }}
+                        inputProps={{
+                            onMouseEnter: handleMouseEnter,
+                            onMouseLeave: handleMouseLeave,
+                            style: {
+                                color: isHovered ? 'black' : 'inherit',
+                            },
+                        }}
                         onChange={debounseHandleChange}
-                        // value={searchParams}
                     />
                     {searchData &&
                         isOpenWindow === true &&
