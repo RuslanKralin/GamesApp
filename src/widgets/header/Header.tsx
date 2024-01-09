@@ -159,6 +159,10 @@ function Header() {
                                 {
                                     border: 'none',
                                 },
+                            '& .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline':
+                                {
+                                    border: 'none',
+                                },
                         }}
                         variant="outlined"
                         placeholder="Search 860,253 games"
