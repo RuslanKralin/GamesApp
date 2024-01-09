@@ -151,6 +151,7 @@ function Header() {
                             border: 'none',
                             borderRadius: '50px',
                             '&:hover': {
+                                border: 'none',
                                 backgroundColor: 'white',
                                 transition: 'background-color 0.3s ease',
                             },
